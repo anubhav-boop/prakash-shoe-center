@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cart - Prakash Shoe Center</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Simple notification style */
+  .notification {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Prakash Shoe Center</div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Categories ▼</a>
+        <ul class="dropdown-menu">
+          <li><a href="shoes.html">Shoes</a></li>
+          <li><a href="slippers.html">Slippers</a></li>
+          <li><a href="sandals.html">Sandals</a></li>
+          <li><a href="gumboots.html">Gumboots</a></li>
+          <li><a href="football-boots.html">Football Boots</a></li>
+          <li><a href="socks.html">Socks</a></li>
+        </ul>
+      </li>
+      <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+    </ul>
+    <input type="text" id="search-input" placeholder="Search shoes..." />
+  </nav>
+</header>
+
+<main>
+  <section class="cart-section">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <div class="cart-total">
+      <strong>Total:</strong> NPR <span id="total-price">0</span>
+    </div>
+    <button id="checkout-btn" disabled>Place Order (Cash on Delivery)</button>
+  </section>
+</main>
+
+<!-- Notification box -->
+<div id="notification" class="notification"></div>
+
+<script>
+    
+  // Utility to show notifications
+  function showNotification(message, duration = 3000) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.style.display = 'block';
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, duration);
+  }
+
+  // Load cart from localStorage
+  function loadCart() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  // Update cart count in nav
+  function updateCartCount() {
+    const cart = loadCart();
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cart-count').textContent = count;
+  }
+
+  const cartItemsContainer = document.getElementById('cart-items');
+  const totalPriceEl = document.getElementById('total-price');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  function renderCart() {
+    const cart = loadCart();
+    cartItemsContainer.innerHTML = '';
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      checkoutBtn.disabled = true;
+      totalPriceEl.textContent = '0';
+      updateCartCount();
+      return;
+    }
+
+    checkoutBtn.disabled = false;
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
+
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item';
+      itemDiv.innerHTML = `
+        <div>
+          <strong>${item.name}</strong> <br />
+          Size: ${item.size} | Color: ${item.color} <br />
+          Price: NPR ${item.price} <br />
+          Quantity: 
+          <button class="qty-btn" data-index="${index}" data-action="decrease">-</button>
+          <span class="qty-value">${item.quantity}</span>
+          <button class="qty-btn" data-index="${index}" data-action="increase">+</button>
+        </div>
+        <button class="remove-btn" data-index="${index}">Remove</button>
+      `;
+      cartItemsContainer.appendChild(itemDiv);
+    });
+
+    totalPriceEl.textContent = total.toFixed(2);
+
+    // Attach quantity button events
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const idx = e.target.dataset.index;
+        const action = e.target.dataset.action;
+        const cart = loadCart();
+
+        if (action === 'increase') {
+          cart[idx].quantity++;
+        } else if (action === 'decrease' && cart[idx].quantity > 1) {
+          cart[idx].quantity--;
+        }
+
+        saveCart(cart);
+        renderCart();
+      });
+    });
+
+    // Attach remove button events
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const idx = e.target.dataset.index;
+        let cart = loadCart();
+        cart.splice(idx, 1);
+        saveCart(cart);
+        renderCart();
+        showNotification('Item removed from cart.');
+      });
+    });
+
+    updateCartCount();
+  }
+
+  // Checkout button action
+  checkoutBtn.addEventListener('click', () => {
+    alert('Thank you for your order! Payment will be collected on delivery.');
+    localStorage.removeItem('cart');
+    renderCart();
+    showNotification('Order placed successfully!');
+  });
+
+  // Search bar functionality
+  const allProducts = [
+    { id: 'shoe1', name: 'Men Classic Leather Shoes', price: 2800, category: 'shoes', img: 'https://i.imgur.com/1Q9Z1Zl.jpg' },
+    { id: 'shoe2', name: 'Women Elegant Sandals', price: 2400, category: 'sandals', img: 'https://i.imgur.com/dxUecxM.jpg' },
+    { id: 'shoe3', name: 'Kids Sporty Sneakers', price: 2100, category: 'shoes', img: 'https://i.imgur.com/NkKxO2M.jpg' },
+    { id: 'slipper1', name: 'Men Comfortable Slippers', price: 1200, category: 'slippers', img: 'https://i.imgur.com/7HLzVyI.jpg' },
+    { id: 'gumboot1', name: 'Durable Gumboots for Rain', price: 2900, category: 'gumboots', img: 'https://i.imgur.com/2UuVBO5.jpg' },
+    { id: 'sock1', name: 'Pack of Cotton Socks', price: 600, category: 'socks', img: 'https://i.imgur.com/FtPtVvQ.jpg' }
+  ];
+
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', e => {
+    const query = e.target.value.toLowerCase();
+    const filtered = allProducts.filter(p => p.name.toLowerCase().includes(query));
+    if (filtered.length > 0) {
+      window.location.href = `product.html?id=${filtered[0].id}`;
+    }
+  });
+
+  // Initialize cart and cart count on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCart();
+    updateCartCount();
+  });
+</script>
+
+</body>
+</html>

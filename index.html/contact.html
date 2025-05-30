@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Us - Prakash Shoe Center</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">Prakash Shoe Center</div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Categories ▼</a>
+        <ul class="dropdown-menu">
+          <li><a href="shoes.html">Shoes</a></li>
+          <li><a href="slippers.html">Slippers</a></li>
+          <li><a href="sandals.html">Sandals</a></li>
+          <li><a href="gumboots.html">Gumboots</a></li>
+          <li><a href="football-boots.html">Football Boots</a></li>
+          <li><a href="socks.html">Socks</a></li>
+        </ul>
+      </li>
+      <li><a href="cart.html">Cart 🛒</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="contact-section">
+    <h2>Contact Us</h2>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:prakashshoecenter767@gmail.com">prakashshoecenter767@gmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+9779845071847">+977 9845071847</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+9779811252359">+977 9811252359</a></p>
+    </div>
+
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required placeholder="Your name" />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Your email" />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required placeholder="Write your message here"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<!-- Notification box -->
+<div id="notification" class="notification"></div>
+
+<script src="script.js"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (name && email && message) {
+      // Normally here you'd send data to server, but we'll just show notification.
+      window.showNotification('Thank you, ' + name + '! Your message has been sent.');
+      form.reset();
+    } else {
+      window.showNotification('Please fill all the fields.');
+    }
+    checkoutBtn.addEventListener('click', () => {
+  const cart = loadCart();
+  if (cart.length === 0) return;
+
+  // Show confirmation message
+  const notification = document.getElementById('notification');
+  notification.textContent = '✅ Order Placed – Status: Pending (Cash on Delivery)';
+  notification.classList.add('show');
+
+  // Clear cart after showing message
+  localStorage.removeItem('cart');
+  renderCart();
+
+  // Hide notification after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+    notification.textContent = '';
+  }, 3000);
+});
+
+  });
+</script>
+
+</body>
+</html>

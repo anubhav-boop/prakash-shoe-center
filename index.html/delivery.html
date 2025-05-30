@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Delivery Info - Prakash Shoe Center</title>
+</head>
+<body>
+  <h1>Enter your delivery information</h1>
+  <form id="delivery-form">
+    <label>
+      Phone Number:<br />
+      <input type="tel" id="phone" required />
+    </label><br /><br />
+    <label>
+      Address:<br />
+      <textarea id="address" required></textarea>
+    </label><br /><br />
+    <button type="submit">Place Order (Cash on Delivery)</button>
+  </form>
+
+  <div id="order-status"></div>
+
+  <script type="module" src="delivery.js"></script>
+</body>
+</html>

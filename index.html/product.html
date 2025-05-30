@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <ul class="nav-links">
+       <li><a href="index.html">Home</a></li>
+
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="product-detail">
+      <img id="product-image" src="" alt="Product Image" style="max-width: 300px;" />
+      <h2 id="product-name"></h2>
+      <p id="product-price"></p>
+
+      <label for="size-select">Select Size:</label>
+      <select id="size-select">
+        <option value="">Choose size</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+      </select>
+
+      <label for="color-select">Select Color:</label>
+      <select id="color-select">
+        <option value="">Choose color</option>
+        <option value="Black">Black</option>
+        <option value="Brown">Brown</option>
+        <option value="White">White</option>
+        <option value="Red">Red</option>
+      </select>
+
+      <button id="add-to-cart-btn" disabled>Add to Cart</button>
+    </div>
+  </main>
+
+  <script src="product.js"></script>
+  <a href="product.html?id=shoe1">View Men Classic Leather Shoes</a>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Details - Prakash Shoe Center</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="logo">Prakash Shoe Center</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shoes.html">Shoes</a></li>
+      <li><a href="slippers.html">Slippers</a></li>
+      <li><a href="cart.html">Cart 🛒</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="product-details" style="padding:2rem;">
+    <!-- Product details will be injected here by JS -->
+  </section>
+</main>
+
+<script src="product.js"></script>
+</body>
+</html>
+
+
+
+
+</body>
+</html>

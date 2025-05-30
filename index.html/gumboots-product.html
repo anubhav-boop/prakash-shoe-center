@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gumboots Details - Prakash Shoe Center</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { font-family: Arial, sans-serif; background: #f3f3f3; margin: 0; padding: 20px; }
+    header { background: #007bff; color: white; padding: 10px 20px; }
+    nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    main { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 20px auto; box-shadow: 0 2px 10px rgb(0 0 0 / 0.1); }
+    img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
+    h2 { margin-top: 15px; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
+    button { margin-top: 20px; padding: 12px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #0056b3; }
+    #notification {
+      position: fixed;
+      top: 20px; right: 20px;
+      background: #28a745; color: white; padding: 15px 25px; border-radius: 8px;
+      display: none; font-weight: bold;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Prakash Shoe Center - Gumboot Details</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gumboots.html">Gumboots</a></li>
+      <li><a href="cart.html">Cart 🛒</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="product-detail"></main>
+<div id="notification"></div>
+
+<script>
+  const gumboots = [
+    { id: 'gum1', name: 'Black Kids Gumboot', price: 950, img: 'https://i.imgur.com/qnLa2F2.jpg' },
+    { id: 'gum2', name: 'Rainy Day Gumboot', price: 900, img: 'https://i.imgur.com/hHdX8Od.jpg' },
+    { id: 'gum3', name: 'Colorful Rain Boot', price: 800, img: 'https://i.imgur.com/JGn1RtC.jpg' },
+    { id: 'gum4', name: 'Simple Farmer Boot', price: 990, img: 'https://i.imgur.com/jQkDKmQ.jpg' },
+    { id: 'gum5', name: 'Basic Waterproof Boot', price: 850, img: 'https://i.imgur.com/oEzoLqx.jpg' }
+  ];
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  const product = gumboots.find(p => p.id === id);
+
+  const productDetail = document.getElementById('product-detail');
+  const notification = document.getElementById('notification');
+
+  if (!product) {
+    productDetail.innerHTML = '<p>Product not found.</p>';
+  } else {
+    productDetail.innerHTML = `
+      <img src="${product.img}" alt="${product.name}" />
+      <h2>${product.name}</h2>
+      <p>Price: NPR ${product.price}</p>
+      
+      <label for="size-select">Select Size:</label>
+      <select id="size-select">
+        <option value="">--Choose size--</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+      </select>
+
+      <label for="color-select">Select Color:</label>
+      <select id="color-select">
+        <option value="">--Choose color--</option>
+        <option value="Black">Black</option>
+        <option value="Red">Red</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Blue">Blue</option>
+      </select>
+
+      <button id="add-to-cart-btn">Add to Cart</button>
+    `;
+
+    document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+      const size = document.getElementById('size-select').value;
+      const color = document.getElementById('color-select').value;
+
+      if (!size || !color) {
+        alert('Please select both size and color.');
+        return;
+      }
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingIndex = cart.findIndex(item => item.id === product.id && item.size === size && item.color === color);
+
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          size: size,
+          color: color,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      notification.innerText = 'Added to cart successfully!';
+      notification.style.display = 'block';
+      setTimeout(() => notification.style.display = 'none', 2500);
+
+      setTimeout(() => {
+        window.location.href = 'cart.html';
+      }, 2600);
+    });
+  }
+</script>
+
+</body>
+</html>
