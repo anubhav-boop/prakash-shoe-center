@@ -37,11 +37,12 @@
 
 <script>
   const slippers = [
-    { id: 'slipper1', name: 'Kitto Comfortable Slippers', price: 1200, img: 'https://i.imgur.com/7HLzVyI.jpg' },
-    { id: 'slipper2', name: 'Nike Casual Slippers', price: 1400, img: 'https://i.imgur.com/4r5eDaf.jpg' },
-    { id: 'slipper3', name: 'Urban Walk Slippers', price: 1100, img: 'https://i.imgur.com/O9R6Rgx.jpg' },
-    { id: 'slipper4', name: 'Comfy Step Slippers', price: 1300, img: 'https://i.imgur.com/eNj4gG8.jpg' },
-    { id: 'slipper5', name: 'Sporty Lite Slippers', price: 1000, img: 'https://i.imgur.com/qQ0xtsB.jpg' }
+    { id: 'slipper1', name: 'Kitto Comfortable Slippers org thailand ', price: 1500, img: 'https://static-01.daraz.com.np/p/d06f4dd744d22af737cdc76db29474b5.jpg' },
+    { id: 'slipper2', name: 'Gambol Slippers', price: 1020, img: 'https://alnasser.net/cdn/shop/files/1000524967_01.jpg?v=1715172383&width=1214' },
+    { id: 'slipper3', name: 'Nike Walk Slippers', price: 400, img: 'https://i.ebayimg.com/images/g/ERcAAOSwcaFenRME/s-l1200.jpg' },
+    { id: 'slipper4', name: 'kitto  Slippers org thailand', price: 1600, img: 'https://static-01.daraz.com.np/p/f3285516ec496f524e997b647f70212a.jpg' },
+    { id: 'slipper5', name: 'Nikico slipper', price: 530, img: 'https://static-01.daraz.com.np/p/6bba9005df33f4d0e2809e1f8df3882f.jpg' },
+     { id: 'slipper6', name: 'waterproff men slipper', price: 1000, img: 'https://5.imimg.com/data5/SELLER/Default/2021/3/GP/PJ/VJ/52373364/lancer-mens-slipper.jpg' }
   ];
 
   const container = document.getElementById('slippers-container');
@@ -58,6 +59,29 @@
     container.appendChild(div);
   });
 </script>
+<style>
+  .floating-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4757;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: bounceIn 1s ease-out;
+  z-index: 999;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+</style>
+<div class="floating-notice">🚀 More products will be added soon!</div>
+
 
 </body>
 </html>

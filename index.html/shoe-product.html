@@ -3,34 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shoe Details - Prakash Shoe Center</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Shoe Product - Prakash Shoe Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-    header { background: #007bff; color: white; padding: 10px 20px; }
-    nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    main { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 20px auto; box-shadow: 0 2px 10px rgb(0 0 0 / 0.1); }
-    img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
-    h2 { margin-top: 15px; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
-    button { margin-top: 20px; padding: 12px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-    button:hover { background: #0056b3; }
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    header {
+      width: 100%;
+      background-color: #007bff;
+      padding: 15px 25px;
+      color: white;
+      box-shadow: 0 4px 8px rgb(0 123 255 / 0.3);
+      margin-bottom: 30px;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+    nav ul {
+      margin-top: 8px;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 24px;
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover,
+    nav a:focus {
+      color: #a8d0ff;
+      outline: none;
+    }
+
+    main {
+      background-color: white;
+      padding: 30px 40px;
+      max-width: 620px;
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgb(0 0 0 / 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #product-image {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgb(0 0 0 / 0.1);
+      margin-bottom: 26px;
+      transition: opacity 0.4s ease;
+    }
+
+    h2 {
+      margin: 0 0 14px 0;
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: #007bff;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    /* Size dropdown */
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+      margin-bottom: 32px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      background-color: #fff;
+    }
+    select:hover,
+    select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    /* Color swatches container */
+    .color-swatches {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    /* Color swatch circle */
+    .color-swatch {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgb(0 0 0 / 0.12);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .color-swatch:hover {
+      box-shadow: 0 0 12px #007bffaa;
+    }
+    .color-swatch.selected {
+      border-color: #007bff;
+      box-shadow: 0 0 14px #007bffcc;
+    }
+
+    /* Add to cart button */
+    #add-to-cart-btn {
+      width: 100%;
+      padding: 15px 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 5px 14px rgb(0 123 255 / 0.5);
+      transition: background-color 0.3s ease;
+    }
+    #add-to-cart-btn:hover,
+    #add-to-cart-btn:focus {
+      background-color: #0056b3;
+      outline: none;
+    }
+
+    /* Notification */
     #notification {
       position: fixed;
-      top: 20px; right: 20px;
-      background: #28a745; color: white; padding: 15px 25px; border-radius: 8px;
-      display: none; font-weight: bold;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
-      z-index: 1000;
+      top: 22px;
+      right: 22px;
+      background-color: #28a745;
+      color: white;
+      padding: 18px 36px;
+      border-radius: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgb(0 0 0 / 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease;
+      user-select: none;
+      z-index: 9999;
+    }
+    #notification.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Responsive */
+    @media (max-width: 650px) {
+      main {
+        padding: 25px 20px;
+      }
+      header {
+        padding: 15px 20px;
+      }
+      nav ul {
+        gap: 14px;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Prakash Shoe Center - Shoe Details</h1>
+  <h1>Prakash Shoe Center - Shoe Product</h1>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -40,95 +210,215 @@
   </nav>
 </header>
 
-<main id="product-detail">
-  <!-- Product info will load here -->
+<main>
+  <img
+    id="product-image"
+    src=""
+    alt="Product Image"
+    aria-live="polite"
+  />
+
+  <h2 id="product-name"></h2>
+  <p class="price" id="product-price"></p>
+
+  <label for="size-select">Select Size:</label>
+  <select id="size-select" aria-label="Select shoe size">
+    <option value="">-- Select size --</option>
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+  </select>
+
+  <label>Select Color:</label>
+  <div class="color-swatches" role="list" aria-label="Shoe color options"></div>
+
+  <button id="add-to-cart-btn" aria-live="polite">Add to Cart</button>
 </main>
 
-<div id="notification"></div>
+<div id="notification" role="alert" aria-atomic="true"></div>
 
 <script>
+  // Shoe data with images and colors (original URLs preserved)
   const shoes = [
-    { id: 'shoe1', name: 'Nike Air Running Shoes', price: 2800, img: 'https://i.imgur.com/WvWohH9.jpg' },
-    { id: 'shoe2', name: 'Adidas Sport Sneakers', price: 2500, img: 'https://i.imgur.com/FYcM4DL.jpg' },
-    { id: 'shoe3', name: 'Reebok Classic Shoes', price: 2300, img: 'https://i.imgur.com/H6W5MDC.jpg' },
-    { id: 'shoe4', name: 'Bata Leather Shoes', price: 2700, img: 'https://i.imgur.com/lwYz2k4.jpg' },
-    { id: 'shoe5', name: 'Sparx Casual Shoes', price: 2000, img: 'https://i.imgur.com/tLxY0x0.jpg' }
+    {
+      id: 'shoe1',
+      name: 'Nike Air Running Shoes',
+      price: 1800,
+      images: {
+        Black: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYP-QjZD3bhHipHPNkVAmOg8MDOi3nIkGDsZazbFub7HjLyioMyH2dZRPwxZ4Vdv91kZM&usqp=CAU',
+        White: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/7269120e-b3e4-4290-a727-ac9bc2baef54/W+NIKE+AIR+ZOOM+STRUCTURE+25.png',
+        Blue: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/aba50427-2d8d-48dc-aa82-5ec9cd9aed6d/NIKE+REVOLUTION+7+%28GS%29.png',
+        Red: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/671d610b-9e74-4a28-9449-5acd331afe8f/NIKE+REVOLUTION+7+%28GS%29.png',
+      },
+      availableColors: ['Black', 'White', 'Blue', 'Red']
+    },
+    {
+      id: 'shoe2',
+      name: 'Converse Leather',
+      price: 2500,
+      images: {
+        Black: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-5anqWIJslmWvy6fZ8U05zosUWVDZwVyM21SPJzcLP3zHZ6d4ughA0wNR2WHpVjWOYEM&usqp=CAU',
+        White: 'https://www.meroshopping.com/images/leather-full-converse-design-shoes.jpg',
+      },
+      availableColors: ['Black', 'White']
+    },
+    {
+      id: 'shoe3',
+      name: 'Jordan 1',
+      price: 2300,
+      images: {
+        Black: 'https://area51store.co.nz/cdn/shop/products/1_55ce827a-2b63-4b1d-aa55-2c2b6dc6c96e.png?v=1674701213',
+        Red: 'https://m.media-amazon.com/images/I/71n-Dh2kDXL._AC_UY900_.jpg',
+        blue: 'https://i5.walmartimages.com/seo/Air-Jordan-1-Retro-High-Og-University-Blue-555088-134-Size-7-5-Mens_16d31395-f0e3-4b55-8bb3-1cde42565a09.55412c405711a58407542e87b45eb12b.jpeg'
+      },
+      availableColors: ['Black', 'Red', 'blue']
+    },
+    {
+      id: 'shoe4',
+      name: 'Jordan 4',
+      price: 2700,
+      images: {
+        Purple: 'https://merchsweden.se/cdn/shop/products/jordan4metallicpurple.jpg?v=1710250364&width=1000',
+        Black: 'https://tenisi.co/cdn/shop/files/28E1ADF7-441A-4E17-A481-F6B6B913563A_a75e7e64-af6e-4441-9cf0-710fed1c4c07.jpg?v=1708378322',
+        red: 'https://merchsweden.se/cdn/shop/products/jordan4metallicred.jpg?v=1710250367&width=1000'
+      },
+      availableColors: ['Purple', 'Black', 'red']
+    },
+    {
+      id: 'shoe5',
+      name: 'Jordan 3',
+      price: 2800,
+      images: {
+        White: 'https://cdn.shopify.com/s/files/1/0066/3570/8567/products/CT8532-100_1000x.png?v=1685042323',
+        Red: 'https://media.cnn.com/api/v1/images/stellar/prod/210324195517-jordan-3-fire-red.jpg?q=w_3000,h_1688,x_0,y_0,c_fill',
+      },
+      availableColors: ['White', 'Red']
+    }
   ];
 
+  // Extract product id from URL query param e.g. ?id=shoe1
   const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
-  const product = shoes.find(p => p.id === id);
+  const productId = urlParams.get('id') || 'shoe1';
 
-  const productDetail = document.getElementById('product-detail');
-  const notification = document.getElementById('notification');
+  // Find product by id or default to first shoe
+  const product = shoes.find(shoe => shoe.id === productId) || shoes[0];
 
-  if (!product) {
-    productDetail.innerHTML = '<p>Product not found.</p>';
-  } else {
-    productDetail.innerHTML = `
-      <img src="${product.img}" alt="${product.name}" />
-      <h2>${product.name}</h2>
-      <p>Price: NPR ${product.price}</p>
-      
-      <label for="size-select">Select Size:</label>
-      <select id="size-select">
-        <option value="">--Choose size--</option>
-        <option value="38">38</option>
-        <option value="39">39</option>
-        <option value="40">40</option>
-        <option value="41">41</option>
-        <option value="42">42</option>
-        <option value="43">43</option>
-      </select>
+  const productNameEl = document.getElementById('product-name');
+  const productPriceEl = document.getElementById('product-price');
+  const productImageEl = document.getElementById('product-image');
+  const colorSwatchesEl = document.querySelector('.color-swatches');
+  const notificationEl = document.getElementById('notification');
+  const addToCartBtn = document.getElementById('add-to-cart-btn');
+  const sizeSelect = document.getElementById('size-select');
 
-      <label for="color-select">Select Color:</label>
-      <select id="color-select">
-        <option value="">--Choose color--</option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-      </select>
+  // Selected state
+  let selectedColor = product.availableColors[0];
 
-      <button id="add-to-cart-btn">Add to Cart</button>
-    `;
+  // Render product details and swatches
+  function renderProduct() {
+    productNameEl.textContent = product.name;
+    productPriceEl.textContent = `Rs ${product.price}`;
+    productImageEl.src = product.images[selectedColor] || Object.values(product.images)[0];
+    productImageEl.alt = `${product.name} in ${selectedColor}`;
 
-    document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-      const size = document.getElementById('size-select').value;
-      const color = document.getElementById('color-select').value;
+    // Clear swatches
+    colorSwatchesEl.innerHTML = '';
 
-      if (!size || !color) {
-        alert('Please select both size and color.');
-        return;
+    product.availableColors.forEach(color => {
+      const swatch = document.createElement('div');
+      swatch.classList.add('color-swatch');
+      swatch.style.backgroundColor = getColorCode(color);
+      swatch.setAttribute('data-color', color);
+      swatch.setAttribute('role', 'button');
+      swatch.setAttribute('tabindex', '0');
+      swatch.setAttribute('aria-pressed', color === selectedColor);
+      swatch.title = color;
+
+      if (color === selectedColor) {
+        swatch.classList.add('selected');
       }
-
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingIndex = cart.findIndex(item => item.id === product.id && item.size === size && item.color === color);
-
-      if (existingIndex > -1) {
-        cart[existingIndex].quantity += 1;
-      } else {
-        cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          size: size,
-          color: color,
-          quantity: 1
-        });
-      }
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-
-      notification.innerText = 'Added to cart successfully!';
-      notification.style.display = 'block';
-      setTimeout(() => notification.style.display = 'none', 2500);
-
-      setTimeout(() => {
-        window.location.href = 'cart.html';
-      }, 2600);
+      colorSwatchesEl.appendChild(swatch);
     });
   }
+
+  // Map color names to hex for swatch backgrounds
+  function getColorCode(color) {
+    const map = {
+      Black: '#000000',
+      White: '#ffffff',
+      Blue: '#007bff',
+      Red: '#dc3545',
+      Purple: '#6f42c1',
+      red: '#dc3545',
+      blue: '#007bff',
+      grey: '#6c757d',
+    };
+    return map[color] || '#999999';
+  }
+
+  // Handle color swatch click or keyboard activation
+  colorSwatchesEl.addEventListener('click', e => {
+    if (e.target.classList.contains('color-swatch')) {
+      selectedColor = e.target.getAttribute('data-color');
+      renderProduct();
+    }
+  });
+  colorSwatchesEl.addEventListener('keydown', e => {
+    if (
+      e.target.classList.contains('color-swatch') &&
+      (e.key === 'Enter' || e.key === ' ')
+    ) {
+      e.preventDefault();
+      selectedColor = e.target.getAttribute('data-color');
+      renderProduct();
+    }
+  });
+
+  // Add to cart
+  addToCartBtn.addEventListener('click', () => {
+    const selectedSize = sizeSelect.value;
+    if (!selectedSize) {
+      alert('Please select a size before adding to cart.');
+      sizeSelect.focus();
+      return;
+    }
+
+    addToCart(product.id, selectedColor, selectedSize);
+  });
+
+  // Add to cart function
+  function addToCart(id, color, size) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ id, color, size, quantity: 1 });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`Added ${product.name} (${color}, Size ${size}) to cart.`);
+    updateCartCount();
+  }
+
+  // Update cart count in nav link (if present)
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const count = cart.length;
+    document.querySelectorAll('nav a[href="cart.html"]').forEach(link => {
+      link.textContent = `Cart 🛒 (${count})`;
+    });
+  }
+
+  // Show notification
+  function showNotification(message) {
+    notificationEl.textContent = message;
+    notificationEl.classList.add('show');
+    setTimeout(() => {
+      notificationEl.classList.remove('show');
+    }, 3000);
+  }
+
+  // Initial render
+  renderProduct();
+  updateCartCount();
 </script>
 
 </body>

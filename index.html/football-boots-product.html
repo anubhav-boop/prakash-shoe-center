@@ -6,23 +6,105 @@
   <title>Football Boot Details - Prakash Shoe Center</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    body { font-family: Arial, sans-serif; background: #f8faff; margin: 0; padding: 20px; }
-    header { background: #007bff; color: white; padding: 10px 20px; }
-    nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    main { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 20px auto; box-shadow: 0 2px 10px rgb(0 0 0 / 0.1); }
-    img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
-    h2 { margin-top: 15px; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
-    button { margin-top: 20px; padding: 12px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-    button:hover { background: #0056b3; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8faff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 700px;
+      margin: 20px auto;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    h2 {
+      margin-top: 15px;
+    }
+
+    .color-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .color-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      cursor: pointer;
+    }
+
+    .color-circle.selected {
+      border: 3px solid #000;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
     #notification {
       position: fixed;
-      top: 20px; right: 20px;
-      background: #28a745; color: white; padding: 15px 25px; border-radius: 8px;
-      display: none; font-weight: bold;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+      top: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      display: none;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       z-index: 1000;
     }
   </style>
@@ -45,29 +127,80 @@
 
 <script>
   const footballBoots = [
-    { id: 'fb1', name: 'Speedster Football Boot', price: 1450, img: 'https://i.imgur.com/0F4A3ZZ.jpg' },
-    { id: 'fb2', name: 'ProKick Football Boot', price: 1350, img: 'https://i.imgur.com/FZUNo0P.jpg' },
-    { id: 'fb3', name: 'Youth Striker Boot', price: 1200, img: 'https://i.imgur.com/QlfS1kj.jpg' },
-    { id: 'fb4', name: 'Rapid Goal Boot', price: 1400, img: 'https://i.imgur.com/ZyJ1Z0y.jpg' },
-    { id: 'fb5', name: 'Champion Kick Boot', price: 1300, img: 'https://i.imgur.com/4ydkPqF.jpg' }
+    {
+      id: 'fb1',
+      name: 'Speedster Football Boot',
+      price: 1450,
+      colors: {
+        green: 'https://m.media-amazon.com/images/I/61qEGmUAnoL._AC_UY1000_.jpg',
+        Red: 'https://m.media-amazon.com/images/I/51mOFIIF8aL._AC_UY1000_.jpg',
+        Blue: 'https://m.media-amazon.com/images/I/618Xb47+PLL._AC_UY1000_.jpg',
+        black:'https://m.media-amazon.com/images/I/71-NHP7O+nL._AC_UY1000_DpWeblab_.jpg'
+      }
+    },
+    {
+      id: 'fb2',
+      name: 'ProKick Football Boot',
+      price: 1350,
+      colors: {
+        Black: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXdZ7o6JL0aXoEUCqM3SaE0IVwhK9jckSLxQ&s',
+        Blue: 'https://images-eu.ssl-images-amazon.com/images/I/71BUPwh-AML._AC_SR462,693_.jpg'
+      }
+    },
+    {
+      id: 'fb3',
+      name: 'Youth Striker Boot',
+      price: 1200,
+      colors: {
+        Black: 'https://m.media-amazon.com/images/I/31t7hv6sMCL._AC_.jpg',
+        Yellow: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQFSU3BW-cfRRlYYX-sOzjoHsAX2RYJv51Vg&s',
+        Red: 'https://media2.sport-bittl.com/images/product_images/original_images/81010026794a_adidas_X_Crazyfast_League_FG_Football_Shoes_HE_solar_red.jpg'
+      }
+    },
+    {
+      id: 'fb4',
+      name: 'Rapid Goal Boot',
+      price: 1400,
+      colors: {
+        Blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-pEDNme0wqIUAlm91dXbWyOrRKR19OMoDdQ&s',
+        white: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9qcE3LXER5DAgZG4Z0Gg6_ZqShU_CUps40w&s',
+        Red: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLLkHcJr5lYhBxt7FehyslD8WhTPEt7wSKcg&s'
+      }
+    },
+    {
+      id: 'fb5',
+      name: 'Champion Kick Boot',
+      price: 1300,
+      colors: {
+        Black: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl-ajMtnOKtgezkuCL7zFfoxzPvea8iVwOCQ&s',
+        Blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2cA5D3KNSVgR1kCtxIFiE1B3i-rUAR8IiSA&s',
+      }
+    }
   ];
 
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
   const product = footballBoots.find(p => p.id === id);
-
   const productDetail = document.getElementById('product-detail');
   const notification = document.getElementById('notification');
 
   if (!product) {
     productDetail.innerHTML = '<p>Product not found.</p>';
   } else {
+    const firstColor = Object.keys(product.colors)[0];
+    const firstImg = product.colors[firstColor];
+
+    let colorOptions = '';
+    for (let color in product.colors) {
+      colorOptions += `<div class="color-circle" data-color="${color}" style="background:${color.toLowerCase()}"></div>`;
+    }
+
     productDetail.innerHTML = `
-      <img src="${product.img}" alt="${product.name}" />
+      <img id="main-image" class="product-image" src="${firstImg}" alt="${product.name}" />
       <h2>${product.name}</h2>
       <p>Price: NPR ${product.price}</p>
-      
-      <label for="size-select">Select Size:</label>
+
+      <label>Select Size:</label>
       <select id="size-select">
         <option value="">--Choose size--</option>
         <option value="38">38</option>
@@ -79,29 +212,41 @@
         <option value="44">44</option>
       </select>
 
-      <label for="color-select">Select Color:</label>
-      <select id="color-select">
-        <option value="">--Choose color--</option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-      </select>
+      <label>Select Color:</label>
+      <div class="color-options" id="color-options">${colorOptions}</div>
 
       <button id="add-to-cart-btn">Add to Cart</button>
     `;
 
+    // Color Switching
+    const circles = document.querySelectorAll('.color-circle');
+    const image = document.getElementById('main-image');
+    let selectedColor = firstColor;
+
+    circles.forEach(circle => {
+      if (circle.getAttribute('data-color') === firstColor) {
+        circle.classList.add('selected');
+      }
+
+      circle.addEventListener('click', () => {
+        circles.forEach(c => c.classList.remove('selected'));
+        circle.classList.add('selected');
+        selectedColor = circle.getAttribute('data-color');
+        image.src = product.colors[selectedColor];
+      });
+    });
+
+    // Add to Cart
     document.getElementById('add-to-cart-btn').addEventListener('click', () => {
       const size = document.getElementById('size-select').value;
-      const color = document.getElementById('color-select').value;
 
-      if (!size || !color) {
+      if (!size || !selectedColor) {
         alert('Please select both size and color.');
         return;
       }
 
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingIndex = cart.findIndex(item => item.id === product.id && item.size === size && item.color === color);
+      const existingIndex = cart.findIndex(item => item.id === product.id && item.size === size && item.color === selectedColor);
 
       if (existingIndex > -1) {
         cart[existingIndex].quantity += 1;
@@ -111,7 +256,7 @@
           name: product.name,
           price: product.price,
           size: size,
-          color: color,
+          color: selectedColor,
           quantity: 1
         });
       }

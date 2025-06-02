@@ -1,29 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Slipper Details - Prakash Shoe Center</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-    header { background: #007bff; color: white; padding: 10px 20px; }
-    nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    main { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 20px auto; box-shadow: 0 2px 10px rgb(0 0 0 / 0.1); }
-    img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
-    h2 { margin-top: 15px; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
-    button { margin-top: 20px; padding: 12px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-    button:hover { background: #0056b3; }
+    /* ===== Base Reset ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fbfd;
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Header & Nav ===== */
+    header {
+      background-color: #0069d9;
+      color: white;
+      padding: 1.2rem 2rem;
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.15);
+      text-align: center;
+      user-select: none;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.75rem;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #f1f1f1;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.25s ease;
+    }
+    nav a:hover,
+    nav a:focus-visible {
+      color: #cce4ff;
+      outline: none;
+    }
+
+    /* ===== Main content ===== */
+    main#product-detail {
+      flex-grow: 1;
+      max-width: 720px;
+      margin: 2.5rem auto 3rem;
+      background-color: white;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgb(0 0 0 / 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Mobile fallback */
+    @media (max-width: 650px) {
+      main#product-detail {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1.75rem;
+        margin: 1.5rem 1rem 2rem;
+      }
+    }
+
+    /* Product image */
+    #product-img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgb(0 0 0 / 0.12);
+      object-fit: contain;
+      max-height: 360px;
+      transition: opacity 0.5s ease;
+      cursor: default;
+      user-select: none;
+    }
+
+    /* Product details side */
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Product title & price */
+    .product-info h2 {
+      margin: 0;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #004085;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007bff;
+      margin: 0 0 0.4rem;
+      user-select: text;
+    }
+
+    /* Labels */
+    label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    /* Size select */
+    #size-select {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #fafafa;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      outline-offset: 2px;
+      outline-color: transparent;
+    }
+    #size-select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+      outline-color: #007bff;
+    }
+
+    /* Color swatches container */
+    .color-options {
+      display: flex;
+      gap: 14px;
+      margin-top: 6px;
+      user-select: none;
+    }
+
+    /* Individual color swatches */
+    .color-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 1.8px 4.2px rgba(0, 0, 0, 0.12);
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .color-swatch:hover,
+    .color-swatch:focus-visible {
+      border-color: #0056b3;
+      outline: none;
+      box-shadow:
+        0 0 8px 2px rgba(0, 123, 255, 0.45);
+      z-index: 1;
+    }
+    .color-swatch.selected {
+      border-color: #007bff;
+      box-shadow:
+        0 0 14px 3px rgba(0, 123, 255, 0.7);
+      position: relative;
+      z-index: 2;
+    }
+    /* Keyboard focus visible */
+    .color-swatch:focus-visible {
+      outline-offset: 3px;
+    }
+
+    /* Add to Cart button */
+    #add-to-cart-btn {
+      margin-top: 2rem;
+      padding: 15px 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 123, 255, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    #add-to-cart-btn:hover,
+    #add-to-cart-btn:focus-visible {
+      background-color: #0056b3;
+      box-shadow: 0 8px 25px rgba(0, 86, 179, 0.6);
+      outline: none;
+    }
+
+    /* Cart icon SVG */
+    #add-to-cart-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* Notification popup */
     #notification {
       position: fixed;
-      top: 20px; right: 20px;
-      background: #28a745; color: white; padding: 15px 25px; border-radius: 8px;
-      display: none; font-weight: bold;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
-      z-index: 1000;
+      top: 25px;
+      right: 25px;
+      background-color: #28a745;
+      color: white;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(40, 167, 69, 0.75);
+      user-select: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(50px);
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+      z-index: 9999;
+      font-size: 1.1rem;
+      max-width: 280px;
+    }
+    #notification.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    /* Accessibility helper */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
     }
   </style>
 </head>
@@ -40,21 +277,79 @@
   </nav>
 </header>
 
-<main id="product-detail">
-  <!-- Product info will load here -->
+<main id="product-detail" role="main" aria-label="Slipper product details">
+  <!-- Content dynamically injected by JS -->
 </main>
 
-<div id="notification"></div>
+<div id="notification" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
 <script>
+  // Slippers data with color images
   const slippers = [
-    { id: 'slipper1', name: 'Kitto Comfortable Slippers', price: 1200, img: 'https://i.imgur.com/7HLzVyI.jpg' },
-    { id: 'slipper2', name: 'Nike Casual Slippers', price: 1400, img: 'https://i.imgur.com/4r5eDaf.jpg' },
-    { id: 'slipper3', name: 'Urban Walk Slippers', price: 1100, img: 'https://i.imgur.com/O9R6Rgx.jpg' },
-    { id: 'slipper4', name: 'Comfy Step Slippers', price: 1300, img: 'https://i.imgur.com/eNj4gG8.jpg' },
-    { id: 'slipper5', name: 'Sporty Lite Slippers', price: 1000, img: 'https://i.imgur.com/qQ0xtsB.jpg' }
+    {
+      id: 'slipper1',
+      name: 'Kitto Comfortable Slippers',
+      price: 1200,
+      images: {
+        Black: 'https://static-01.daraz.com.np/p/d06f4dd744d22af737cdc76db29474b5.jpg',
+        Blue: 'https://cdn.blanxer.com/uploads/63ec94b46e6264b740cc4207/product_image-men-kito-ah50-best-seller-slippers-blue-0712.png',
+        Red: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4O993h9Q_soRCnERu1tTPJjVl04SZoaosyg&s',
+       green: 'https://cdn.blanxer.com/uploads/63ec94b46e6264b740cc4207/product_image-men-kito-ah50-best-seller-slippers-green-1-7251.png'
+      }
+    },
+    {
+      id: 'slipper2',
+      name: 'Nike Casual Slippers',
+      price: 1400,
+      images: {
+        Black: 'https://alnasser.net/cdn/shop/files/1000524964_01_1.jpg?v=1715168670&width=160',
+        brown: 'https://alnasser.net/cdn/shop/files/1000524966_01_1.jpg?v=1715168668',
+        Blue: 'https://alnasser.net/cdn/shop/files/1000524965_01.jpg?v=1715168669&width=1214'
+      }
+    },
+    {
+      id: 'slipper3',
+      name: 'Urban Walk Slippers',
+      price: 1100,
+      images: {
+        Black: 'https://images-cdn.ubuy.com/640f26b1eb3d3c27545471b3-nike-victori-one-slide-sandals-slippers.jpg',
+        White: 'https://i5.walmartimages.com/seo/Nike-Men-s-Victori-One-Slide-Sandal_043672c6-53be-4965-afa7-599a512bf1c7.e0a6c433dbecee07193273b8b600136d.jpeg',
+        Blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTDqN0kwTtXcGzslle43klFCa7YnC0NWpaGw&s',
+        grey: 'https://5.imimg.com/data5/SELLER/Default/2023/3/293809950/OP/WJ/OZ/185476700/whatsapp-image-2021-12-02-at-8-18-14-pm-500x500.jpeg'
+      }
+    },
+    {
+      id: 'slipper4',
+      name: 'Comfy Step Slippers',
+      price: 1300,
+      images: {
+        Black: 'https://static-01.daraz.com.np/p/dec067fcd9f8d8f3290b9a21a94c448a.jpg',
+        Blue: 'https://cdn.blanxer.com/uploads/63ec94b46e6264b740cc4207/product_image-kito-slippers-for-men-ab17-slides-navy-1-8655.png',
+        Red: 'https://cdn.blanxer.com/uploads/63ec94b46e6264b740cc4207/product_image-kito-slippers-for-men-ab17-slides-red-1-9759.png',
+         White: 'https://cdn.blanxer.com/uploads/63ec94b46e6264b740cc4207/product_image-kito-slippers-for-men-ab17-slides-white-1-1659.png',
+      }
+    },
+    {
+      id: 'slipper5',
+      name: 'Sporty Lite Slippers',
+      price: 1000,
+      images: {
+        White: 'https://static-01.daraz.com.np/p/6bba9005df33f4d0e2809e1f8df3882f.jpg',
+      }
+    },
+    {
+      id: 'slipper6',
+      name: 'waterproff men slipper',
+      price: 1000,
+      images: {
+        Black: 'https://5.imimg.com/data5/SELLER/Default/2021/3/GP/PJ/VJ/52373364/lancer-mens-slipper-125x125.jpg',
+        Red: 'https://5.imimg.com/data5/SELLER/Default/2021/3/GT/HR/YW/52373364/lancer-mens-slipper-500x500.jpg',
+      }
+    },
+
   ];
 
+  // Get product ID from URL query string
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
   const product = slippers.find(p => p.id === id);
@@ -63,76 +358,150 @@
   const notification = document.getElementById('notification');
 
   if (!product) {
-    productDetail.innerHTML = '<p>Product not found.</p>';
+    productDetail.innerHTML = `<p style="text-align:center; font-size:1.25rem; color:#666; padding: 4rem 1rem;">Sorry, the product was not found.</p>`;
   } else {
     productDetail.innerHTML = `
-      <img src="${product.img}" alt="${product.name}" />
-      <h2>${product.name}</h2>
-      <p>Price: NPR ${product.price}</p>
-      
-      <label for="size-select">Select Size:</label>
-      <select id="size-select">
-        <option value="">--Choose size--</option>
-        <option value="38">38</option>
-        <option value="39">39</option>
-        <option value="40">40</option>
-        <option value="41">41</option>
-        <option value="42">42</option>
-        <option value="43">43</option>
-      </select>
+      <img
+        src="${product.images.Black}"
+        alt="${product.name} - Black color"
+        id="product-img"
+        class="product-image"
+        aria-live="polite"
+        aria-atomic="true"
+      />
 
-      <label for="color-select">Select Color:</label>
-      <select id="color-select">
-        <option value="">--Choose color--</option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-      </select>
+      <div class="product-info">
+        <h2 id="product-name">${product.name}</h2>
+        <p class="price" id="product-price">Price: NPR ${product.price}</p>
 
-      <button id="add-to-cart-btn">Add to Cart</button>
+        <div>
+          <label id="color-label" for="color-options">Select Color:</label>
+          <div id="color-options" class="color-options" role="radiogroup" aria-labelledby="color-label">
+            ${Object.keys(product.images).map(
+              (color, i) =>
+                `<button
+                  type="button"
+                  class="color-swatch ${i === 0 ? 'selected' : ''}"
+                  style="background-color: ${color.toLowerCase()};"
+                  aria-checked="${i === 0 ? 'true' : 'false'}"
+                  role="radio"
+                  tabindex="${i === 0 ? '0' : '-1'}"
+                  data-color="${color}"
+                  aria-label="${color} color option"
+                ></button>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div>
+          <label for="size-select">Select Size:</label>
+          <select id="size-select" aria-describedby="size-description" required>
+            <option value="" disabled selected>Select a size</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+          </select>
+          <div id="size-description" class="sr-only">Sizes available: 38 to 42</div>
+        </div>
+
+        <button id="add-to-cart-btn" aria-describedby="cart-feedback" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 18c-1.104 0-1.99.896-1.99 2S5.896 22 7 22s2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-1.99.896-1.99 2S15.896 22 17 22s2-.896 2-2-.896-2-2-2zm-12.83-4l1.47-7H19v2H7.56l-.89 4.29c-.105.5.18 1.01.69 1.13.13.03.26.05.4.05h8v-2H9.75l-.83-4H19v-2H6.17l-1.07 5.05z"/></svg>
+          Add to Cart
+        </button>
+        <div id="cart-feedback" class="sr-only" aria-live="polite"></div>
+      </div>
     `;
 
-    document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-      const size = document.getElementById('size-select').value;
-      const color = document.getElementById('color-select').value;
+    // Elements after rendering
+    const productImg = document.getElementById('product-img');
+    const colorButtons = document.querySelectorAll('.color-swatch');
+    const sizeSelect = document.getElementById('size-select');
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const cartFeedback = document.getElementById('cart-feedback');
 
-      if (!size || !color) {
-        alert('Please select both size and color.');
+    // Handle color change with keyboard and mouse
+    colorButtons.forEach((btn, i) => {
+      btn.addEventListener('click', () => selectColor(i));
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectColor((i + 1) % colorButtons.length);
+          colorButtons[(i + 1) % colorButtons.length].focus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prevIndex = (i - 1 + colorButtons.length) % colorButtons.length;
+          selectColor(prevIndex);
+          colorButtons[prevIndex].focus();
+        }
+      });
+    });
+
+    function selectColor(index) {
+      colorButtons.forEach((btn, i) => {
+        const isSelected = i === index;
+        btn.classList.toggle('selected', isSelected);
+        btn.setAttribute('aria-checked', isSelected);
+        btn.tabIndex = isSelected ? 0 : -1;
+      });
+      const color = colorButtons[index].dataset.color;
+      // Animate image opacity for smooth transition
+      productImg.style.opacity = '0';
+      setTimeout(() => {
+        productImg.src = product.images[color];
+        productImg.alt = `${product.name} - ${color} color`;
+        productImg.style.opacity = '1';
+      }, 300);
+    }
+
+    // Cart logic
+    addToCartBtn.addEventListener('click', () => {
+      const selectedSize = sizeSelect.value;
+      const selectedColorBtn = document.querySelector('.color-swatch.selected');
+      const selectedColor = selectedColorBtn ? selectedColorBtn.dataset.color : null;
+
+      if (!selectedSize) {
+        alert('Please select a size before adding to cart.');
+        sizeSelect.focus();
+        return;
+      }
+      if (!selectedColor) {
+        alert('Please select a color before adding to cart.');
+        selectedColorBtn.focus();
         return;
       }
 
-      // Get existing cart from localStorage
+      // Save to localStorage cart (simple example)
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-      // Check if same product with size & color already in cart
-      const existingIndex = cart.findIndex(item => item.id === product.id && item.size === size && item.color === color);
-
-      if (existingIndex > -1) {
-        cart[existingIndex].quantity += 1;
-      } else {
-        cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          size: size,
-          color: color,
-          quantity: 1
-        });
-      }
-
+      cart.push({
+        productId: product.id,
+        name: product.name,
+        price: product.price,
+        size: selectedSize,
+        color: selectedColor,
+        quantity: 1
+      });
       localStorage.setItem('cart', JSON.stringify(cart));
 
-      // Show notification
-      notification.innerText = 'Added to cart successfully!';
-      notification.style.display = 'block';
-      setTimeout(() => notification.style.display = 'none', 2500);
+      // Update aria-live for screen readers
+      cartFeedback.textContent = `Added ${product.name}, color ${selectedColor}, size ${selectedSize} to cart.`;
 
-      // Redirect after short delay so user sees notification
-      setTimeout(() => {
-        window.location.href = 'cart.html';
-      }, 2600);
+      // Show notification popup
+      showNotification(`Added ${product.name} (${selectedColor}, size ${selectedSize}) to cart!`);
     });
+
+    // Notification logic
+    let notificationTimeout;
+    function showNotification(message) {
+      notification.textContent = message;
+      notification.classList.add('show');
+
+      clearTimeout(notificationTimeout);
+      notificationTimeout = setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3500);
+    }
   }
 </script>
 

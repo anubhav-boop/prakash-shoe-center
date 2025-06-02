@@ -37,11 +37,11 @@
 
 <script>
   const sandals = [
-    { id: 'sand1', name: 'Kids Sandal Blue Strap', price: 1200, img: 'https://i.imgur.com/mXRcxq6.jpg' },
-    { id: 'sand2', name: 'Velcro Boys Sandals', price: 1350, img: 'https://i.imgur.com/2WoCdcP.jpg' },
-    { id: 'sand3', name: 'Sporty Kids Sandal', price: 1100, img: 'https://i.imgur.com/g1E7o0W.jpg' },
-    { id: 'sand4', name: 'Cartoon Grip Sandal', price: 1250, img: 'https://i.imgur.com/vNWti0T.jpg' },
-    { id: 'sand5', name: 'Flexi Kids Brown Sandal', price: 1000, img: 'https://i.imgur.com/wTzW5Pg.jpg' }
+    { id: 'sand1', name: 'mens sandal', price: 1200, img: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/0920763/1.jpg?5507' },
+    { id: 'sand2', name: ' stylish Sandals', price: 1700, img: 'https://m.media-amazon.com/images/I/51ito0pLbAL._AC_UY1000_.jpg' },
+    { id: 'sand3', name: 'comfortable Sandal', price: 1900, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_opvBZm1ELKP0FM4yO7GL55ZkqbqnW4F88wxhtjxnaqp6iuEFgpqXrIpGsfc0JN_m5M&usqp=CAU' },
+    { id: 'sand4', name: ' Grip Sandal', price: 500, img: 'https://static-01.daraz.com.np/p/68145a8622c51dd2bd23adbaacb15066.jpg' },
+    { id: 'sand5', name: 'Flexi Kids Brown Sandal', price: 1400, img: 'https://p.globalsources.com/IMAGES/PDT/B1181816407/children-sandals.jpg' }
   ];
 
   const container = document.getElementById('sandals-container');
@@ -58,6 +58,29 @@
     container.appendChild(div);
   });
 </script>
+<style>
+  .floating-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4757;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: bounceIn 1s ease-out;
+  z-index: 999;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+</style>
+<div class="floating-notice">🚀 More products will be added soon!</div>
+
 
 </body>
 </html>

@@ -37,11 +37,13 @@
 
 <script>
   const gumboots = [
-    { id: 'gum1', name: 'Black Kids Gumboot', price: 950, img: 'https://i.imgur.com/qnLa2F2.jpg' },
-    { id: 'gum2', name: 'Rainy Day Gumboot', price: 900, img: 'https://i.imgur.com/hHdX8Od.jpg' },
-    { id: 'gum3', name: 'Colorful Rain Boot', price: 800, img: 'https://i.imgur.com/JGn1RtC.jpg' },
-    { id: 'gum4', name: 'Simple Farmer Boot', price: 990, img: 'https://i.imgur.com/jQkDKmQ.jpg' },
-    { id: 'gum5', name: 'Basic Waterproof Boot', price: 850, img: 'https://i.imgur.com/oEzoLqx.jpg' }
+    { id: 'gum1', name: 'Dolphin  Gumboot', price: 875, img: 'https://agarson.in/wp-content/uploads/2024/09/Dreamer-Black.jpg' },
+    { id: 'gum2', name: 'Army color Gumboot', price: 625, img: 'https://img.drz.lazcdn.com/static/np/p/9fc241951073b42f2d5524de87f025c2.jpg_720x720q80.jpg' },
+    { id: 'gum3', name: 'Black GumBoot', price: 525, img: 'https://hardwarepasal.com/src/img/product/2019-11-17-09-51-57_orD77rdYWUproduct.jpg' },
+    { id: 'gum4', name: 'Ladies GumBoot', price: 625, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjVt0bAc_y8CNvw-XlqEFSv9EelIgFg6Yxb3r-dOZxLxyDYb9JlzRVpCs53aZfOWonTeM&usqp=CAU' },
+    { id: 'gum5', name: 'Goldstar GumBoot', price: 525, img: 'https://protectorfiresafety.com/30483-thickbox_default/gumboot-full-size-32-cm-welcome.jpg' },
+     { id: 'gum6', name: 'kids gumboot', price: 460, img: 'https://img.drz.lazcdn.com/static/np/p/b7eb173958619e7fa5d41bd3dae1b69b.jpg_720x720q80.jpg' }
+    
   ];
 
   const container = document.getElementById('gumboots-container');
@@ -58,6 +60,28 @@
     container.appendChild(div);
   });
 </script>
+<style>
+  .floating-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4757;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: bounceIn 1s ease-out;
+  z-index: 999;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+</style>
+<div class="floating-notice">🚀 More products will be added soon!</div>
 
 </body>
 </html>

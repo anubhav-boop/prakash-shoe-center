@@ -6,23 +6,127 @@
   <title>Sandal Details - Prakash Shoe Center</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
-    header { background: #007bff; color: white; padding: 10px 20px; }
-    nav ul { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    main { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: 20px auto; box-shadow: 0 2px 10px rgb(0 0 0 / 0.1); }
-    img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 8px; }
-    h2 { margin-top: 15px; }
-    label { display: block; margin-top: 15px; font-weight: bold; }
-    select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc; }
-    button { margin-top: 20px; padding: 12px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
-    button:hover { background: #0056b3; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 15px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      background: white;
+      padding: 25px;
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 18px;
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 20px;
+      display: block;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .color-swatch.selected {
+      border-color: #000;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
     #notification {
       position: fixed;
-      top: 20px; right: 20px;
-      background: #28a745; color: white; padding: 15px 25px; border-radius: 8px;
-      display: none; font-weight: bold;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+      top: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      display: none;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       z-index: 1000;
     }
   </style>
@@ -40,92 +144,159 @@
   </nav>
 </header>
 
-<main id="product-detail"></main>
+<main>
+  <img id="product-image" src="" alt="Sandal Image">
+  <h2 id="product-name">Loading...</h2>
+  <p class="price" id="product-price">Rs 0</p>
+
+  <label for="size-select">Select Size:</label>
+  <select id="size-select">
+    <option value="">-- Choose size --</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+  </select>
+
+  <label>Select Color:</label>
+  <div class="color-swatches" id="color-swatches"></div>
+
+  <button id="add-to-cart-btn">Add to Cart</button>
+</main>
+
 <div id="notification"></div>
 
 <script>
   const sandals = [
-    { id: 'sand1', name: 'Kids Sandal Blue Strap', price: 1200, img: 'https://i.imgur.com/mXRcxq6.jpg' },
-    { id: 'sand2', name: 'Velcro Boys Sandals', price: 1350, img: 'https://i.imgur.com/2WoCdcP.jpg' },
-    { id: 'sand3', name: 'Sporty Kids Sandal', price: 1100, img: 'https://i.imgur.com/g1E7o0W.jpg' },
-    { id: 'sand4', name: 'Cartoon Grip Sandal', price: 1250, img: 'https://i.imgur.com/vNWti0T.jpg' },
-    { id: 'sand5', name: 'Flexi Kids Brown Sandal', price: 1000, img: 'https://i.imgur.com/wTzW5Pg.jpg' }
+    {
+      id: 'sand1',
+      name: 'Kids Sandal Blue Strap',
+      price: 1200,
+      images: {
+        Black: 'https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/0920763/1.jpg?5507'
+          
+      },
+      availableColors: [ 'Black']
+    },
+    {
+      id: 'sand2',
+      name: 'Velcro Boys Sandals',
+      price: 1350,
+      images: {
+        Black: 'https://m.media-amazon.com/images/I/51ito0pLbAL._AC_UY1000_.jpg',
+        Brown: 'https://static-01.daraz.com.np/p/37dc608f8e53c2996228da681e2dcd2c.jpg'
+      },
+      availableColors: ['Black', 'Brown']
+    },
+    {
+      id: 'sand3',
+      name: 'Sporty Kids Sandal',
+      price: 1100,
+      images: {
+        Blue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY_opvBZm1ELKP0FM4yO7GL55ZkqbqnW4F88wxhtjxnaqp6iuEFgpqXrIpGsfc0JN_m5M&usqp=CAU',
+        Black: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3t7pLtk8iU-CzCIjlGiXuD3pJkDxI2t6Fn6okURJCUzXd3OyVnUq8-VNd47BsgeJ2gnQ&usqp=CAU'
+      },
+      availableColors: ['Blue', 'Black']
+    },
+    {
+      id: 'sand4',
+      name: 'Cartoon Grip Sandal',
+      price: 1250,
+      images: {
+        black: 'https://static-01.daraz.com.np/p/68145a8622c51dd2bd23adbaacb15066.jpg',
+      },
+      availableColors: ['black']
+    },
+    {
+      id: 'sand5',
+      name: 'Flexi Kids Brown Sandal',
+      price: 1000,
+      images: {
+        Blue: 'https://kideeland.com/cdn/shop/files/blue-superman-shoe-sport-sandal-light-led-kasut-kideeland.jpg?v=1719280903',
+        Black: 'https://p.globalsources.com/IMAGES/PDT/B1181816407/children-sandals.jpg'
+      },
+      availableColors: ['Blue', 'Black']
+    }
   ];
 
   const urlParams = new URLSearchParams(window.location.search);
-  const id = urlParams.get('id');
-  const product = sandals.find(p => p.id === id);
+  const productId = urlParams.get('id') || 'sand1';
+  const product = sandals.find(p => p.id === productId) || sandals[0];
 
-  const productDetail = document.getElementById('product-detail');
-  const notification = document.getElementById('notification');
+  const productNameEl = document.getElementById('product-name');
+  const productPriceEl = document.getElementById('product-price');
+  const productImageEl = document.getElementById('product-image');
+  const colorSwatchesEl = document.getElementById('color-swatches');
+  const sizeSelect = document.getElementById('size-select');
+  const notificationEl = document.getElementById('notification');
+  const addToCartBtn = document.getElementById('add-to-cart-btn');
 
-  if (!product) {
-    productDetail.innerHTML = '<p>Product not found.</p>';
-  } else {
-    productDetail.innerHTML = `
-      <img src="${product.img}" alt="${product.name}" />
-      <h2>${product.name}</h2>
-      <p>Price: NPR ${product.price}</p>
-      
-      <label for="size-select">Select Size:</label>
-      <select id="size-select">
-        <option value="">--Choose size--</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-      </select>
+  let selectedColor = product.availableColors[0];
 
-      <label for="color-select">Select Color:</label>
-      <select id="color-select">
-        <option value="">--Choose color--</option>
-        <option value="Black">Black</option>
-        <option value="Blue">Blue</option>
-        <option value="Brown">Brown</option>
-        <option value="Grey">Grey</option>
-      </select>
+  function getColorCode(color) {
+    const codes = {
+      Black: '#000000',
+      Blue: '#007bff',
+      Brown: '#8B4513',
+      Grey: '#6c757d'
+    };
+    return codes[color] || '#999';
+  }
 
-      <button id="add-to-cart-btn">Add to Cart</button>
-    `;
+  function renderProduct() {
+    productNameEl.textContent = product.name;
+    productPriceEl.textContent = `Rs ${product.price}`;
+    productImageEl.src = product.images[selectedColor];
+    productImageEl.alt = `${product.name} in ${selectedColor}`;
+    colorSwatchesEl.innerHTML = '';
 
-    document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-      const size = document.getElementById('size-select').value;
-      const color = document.getElementById('color-select').value;
-
-      if (!size || !color) {
-        alert('Please select both size and color.');
-        return;
-      }
-
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingIndex = cart.findIndex(item => item.id === product.id && item.size === size && item.color === color);
-
-      if (existingIndex > -1) {
-        cart[existingIndex].quantity += 1;
-      } else {
-        cart.push({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          size: size,
-          color: color,
-          quantity: 1
-        });
-      }
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-
-      notification.innerText = 'Added to cart successfully!';
-      notification.style.display = 'block';
-      setTimeout(() => notification.style.display = 'none', 2500);
-
-      setTimeout(() => {
-        window.location.href = 'cart.html';
-      }, 2600);
+    product.availableColors.forEach(color => {
+      const swatch = document.createElement('div');
+      swatch.classList.add('color-swatch');
+      if (color === selectedColor) swatch.classList.add('selected');
+      swatch.style.backgroundColor = getColorCode(color);
+      swatch.setAttribute('data-color', color);
+      swatch.title = color;
+      colorSwatchesEl.appendChild(swatch);
     });
   }
+
+  colorSwatchesEl.addEventListener('click', e => {
+    if (e.target.classList.contains('color-swatch')) {
+      selectedColor = e.target.getAttribute('data-color');
+      renderProduct();
+    }
+  });
+
+  function showNotification(msg) {
+    notificationEl.textContent = msg;
+    notificationEl.style.display = 'block';
+    setTimeout(() => notificationEl.style.display = 'none', 3000);
+  }
+
+  addToCartBtn.addEventListener('click', () => {
+    const selectedSize = sizeSelect.value;
+    if (!selectedSize) {
+      alert('Please select a size.');
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      color: selectedColor,
+      size: selectedSize,
+      quantity: 1
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    showNotification(`Added ${product.name} (${selectedColor}, Size ${selectedSize}) to cart.`);
+  });
+
+  renderProduct();
 </script>
 
 </body>

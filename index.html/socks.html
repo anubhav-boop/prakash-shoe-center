@@ -37,11 +37,11 @@
 
 <script>
   const socks = [
-    { id: 'sock1', name: 'Cotton Ankle Socks', price: 150, img: 'https://i.imgur.com/3Rb6t3J.jpg' },
-    { id: 'sock2', name: 'Sports Crew Socks', price: 220, img: 'https://i.imgur.com/xLlhzLf.jpg' },
-    { id: 'sock3', name: 'Everyday Socks Pack', price: 200, img: 'https://i.imgur.com/Od6hXky.jpg' },
-    { id: 'sock4', name: 'Kids Colorful Socks', price: 130, img: 'https://i.imgur.com/y7oTCVs.jpg' },
-    { id: 'sock5', name: 'Warm Wool Socks', price: 240, img: 'https://i.imgur.com/LZTPe8M.jpg' }
+    { id: 'sock1', name: 'Cotton Ankle Socks', price: 150, img: 'https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/68c250f2-451a-47d4-a5be-de7cc13dd82a/U+NK+EVERYDAY+CSH+ANKL+3PR+132.png' },
+    { id: 'sock2', name: 'Sports Crew Socks', price: 220, img: 'https://m.media-amazon.com/images/I/51ex61Y3ILL._AC_UY1100_.jpg' },
+    { id: 'sock3', name: 'Everyday Socks Pack', price: 200, img: 'https://img.drz.lazcdn.com/static/np/p/03bbc264524f45eb324bcbfb2856f783.png_720x720q80.png' },
+    { id: 'sock4', name: 'Socks', price: 130, img: 'https://m.media-amazon.com/images/I/61XEeT54RpL._AC_UY1100_.jpg' },
+    { id: 'sock5', name: 'school Socks', price: 240, img: 'https://i.ebayimg.com/images/g/ogYAAOSwOghirIOV/s-l1200.jpg' }
   ];
 
   const container = document.getElementById('socks-container');
@@ -58,6 +58,29 @@
     container.appendChild(div);
   });
 </script>
+<style>
+  .center-notice {
+  background: #fcd34d;
+  color: #1f2937;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: flash 3s infinite;
+}
+
+@keyframes flash {
+  0%, 100% { background-color: #fcd34d; }
+  50% { background-color: #fbbf24; }
+}
+
+</style>
+<div class="center-notice">
+  🚧 More varieties are coming soon. Keep checking back!
+</div>
 
 </body>
 </html>

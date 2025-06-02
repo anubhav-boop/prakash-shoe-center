@@ -37,11 +37,11 @@
 
 <script>
   const footballBoots = [
-    { id: 'fb1', name: 'Speedster Football Boot', price: 1450, img: 'https://i.imgur.com/0F4A3ZZ.jpg' },
-    { id: 'fb2', name: 'ProKick Football Boot', price: 1350, img: 'https://i.imgur.com/FZUNo0P.jpg' },
-    { id: 'fb3', name: 'Youth Striker Boot', price: 1200, img: 'https://i.imgur.com/QlfS1kj.jpg' },
-    { id: 'fb4', name: 'Rapid Goal Boot', price: 1400, img: 'https://i.imgur.com/ZyJ1Z0y.jpg' },
-    { id: 'fb5', name: 'Champion Kick Boot', price: 1300, img: 'https://i.imgur.com/4ydkPqF.jpg' }
+    { id: 'fb1', name: 'Sega Football Boot', price: 1100, img: 'https://m.media-amazon.com/images/I/61qEGmUAnoL._AC_UY1000_.jpg' },
+    { id: 'fb2', name: 'turnado 2.0 Football Boot', price: 1350, img: 'https://images-eu.ssl-images-amazon.com/images/I/71BUPwh-AML._AC_SR462,693_.jpg' },
+    { id: 'fb3', name: 'Youth Striker Boot', price: 1800, img: 'https://m.media-amazon.com/images/I/31t7hv6sMCL._AC_.jpg' },
+    { id: 'fb4', name: 'Rapid Goal Boot', price: 1780, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-pEDNme0wqIUAlm91dXbWyOrRKR19OMoDdQ&s' },
+    { id: 'fb5', name: 'Champion Kick Boot', price: 2200, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl-ajMtnOKtgezkuCL7zFfoxzPvea8iVwOCQ&s' }
   ];
 
   const container = document.getElementById('boots-container');
@@ -58,6 +58,29 @@
     container.appendChild(div);
   });
 </script>
+<style>
+  .floating-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4757;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: bounceIn 1s ease-out;
+  z-index: 999;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+</style>
+<div class="floating-notice">🚀 More products will be added soon!</div>
+
 
 </body>
 </html>

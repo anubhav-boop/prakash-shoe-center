@@ -37,11 +37,11 @@
 
 <script>
   const shoes = [
-    { id: 'shoe1', name: 'Nike Air Running Shoes', price: 2800, img: 'https://i.imgur.com/WvWohH9.jpg' },
-    { id: 'shoe2', name: 'Adidas Sport Sneakers', price: 2500, img: 'https://i.imgur.com/FYcM4DL.jpg' },
-    { id: 'shoe3', name: 'Reebok Classic Shoes', price: 2300, img: 'https://i.imgur.com/H6W5MDC.jpg' },
-    { id: 'shoe4', name: 'Bata Leather Shoes', price: 2700, img: 'https://i.imgur.com/lwYz2k4.jpg' },
-    { id: 'shoe5', name: 'Sparx Casual Shoes', price: 2000, img: 'https://i.imgur.com/tLxY0x0.jpg' }
+    { id: 'shoe1', name: 'Nike Air Running Shoes', price: 1800, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYP-QjZD3bhHipHPNkVAmOg8MDOi3nIkGDsZazbFub7HjLyioMyH2dZRPwxZ4Vdv91kZM&usqp=CAU' },
+    { id: 'shoe2', name: 'converse leather', price: 2500, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-5anqWIJslmWvy6fZ8U05zosUWVDZwVyM21SPJzcLP3zHZ6d4ughA0wNR2WHpVjWOYEM&usqp=CAU' },
+    { id: 'shoe3', name: 'jordan 1', price: 2300, img: 'https://area51store.co.nz/cdn/shop/products/1_55ce827a-2b63-4b1d-aa55-2c2b6dc6c96e.png?v=1674701213' },
+    { id: 'shoe4', name: 'Jordan 4', price: 2700, img: 'https://merchsweden.se/cdn/shop/products/jordan4metallicpurple.jpg?v=1710250364&width=1000' },
+    { id: 'shoe5', name: '7 line men ', price: 2000, img: 'https://np-live-21.slatic.net/kf/Sb56e675640b5488b8e9709980f652186I.jpg' }
   ];
 
   const container = document.getElementById('shoes-container');
@@ -58,6 +58,29 @@
     container.appendChild(div);
   });
 </script>
+<style>
+  .floating-notice {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4757;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  animation: bounceIn 1s ease-out;
+  z-index: 999;
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+</style>
+<div class="floating-notice">🚀 More products will be added soon!</div>
+
 
 </body>
 </html>
