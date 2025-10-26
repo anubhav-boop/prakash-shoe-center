@@ -184,7 +184,13 @@
     <div class="cart-total">
       <strong>Total:</strong> NPR <span id="total-price">0</span>
     </div>
-    <input type="text" id="contact-number" placeholder="Enter your contact number" style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #ccc;" />
+
+    <input type="text" id="contact-number" placeholder="Enter your contact number" 
+      style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #ccc;" />
+
+    <textarea id="address" placeholder="Enter your delivery address" 
+      style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #ccc;height:80px;"></textarea>
+
     <button id="checkout-btn" disabled>Place Order (Cash on Delivery)</button>
   </section>
 </main>
@@ -291,13 +297,14 @@
     updateCartCount();
   }
 
-  // === EmailJS: Send Notification ===
-  function sendOrderEmail(cart, contactNumber, total) {
+  // === EmailJS: Send Order ===
+  function sendOrderEmail(cart, contactNumber, address, total) {
     const productDetails = cart.map(item => `${item.name} (x${item.quantity}) - NPR ${item.price}`).join(', ');
     const templateParams = {
       product_name: productDetails,
       contact_number: contactNumber || "Not provided",
-      message: `Order placed successfully. Total NPR ${total}`
+      address: address || "Not provided",
+      message: `New order received. Total NPR ${total}`
     };
 
     emailjs.send("service_zf3pwqo", "template_lq8n8b3", templateParams)
@@ -312,8 +319,10 @@
   // === Checkout ===
   checkoutBtn.addEventListener('click', () => {
     const contactNumber = document.getElementById('contact-number').value.trim();
-    if (!contactNumber) {
-      showNotification('⚠️ Please enter your contact number.');
+    const address = document.getElementById('address').value.trim();
+
+    if (!contactNumber || !address) {
+      showNotification('⚠️ Please enter both contact number and address.');
       return;
     }
 
@@ -321,7 +330,7 @@
     const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
     alert('✅ Thank you for your order! Payment will be collected on delivery.');
-    sendOrderEmail(cart, contactNumber, total);
+    sendOrderEmail(cart, contactNumber, address, total);
     localStorage.removeItem('cart');
     renderCart();
     showNotification('Order placed successfully!');
@@ -354,4 +363,3 @@
 </script>
 </body>
 </html>
-
