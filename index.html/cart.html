@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+    emailjs.init("Zsj5PqasAnS6hddBQ"); // Replace with your EmailJS Public Key
   })();
 
   function notifyAddToCart(productName, contactNumber) {
@@ -34,7 +34,7 @@
       message: "A customer added this product to their cart."
     };
 
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+    emailjs.send("service_zf3pwqo", "template_lq8n8b3", templateParams)
       .then(response => {
         console.log("✅ Email sent successfully!", response.status, response.text);
       })
@@ -228,4 +228,5 @@
 
 </body>
 </html>
+
 
