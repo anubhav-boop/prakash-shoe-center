@@ -21,6 +21,36 @@
 </style>
 </head>
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS Public Key
+  })();
+
+  function notifyAddToCart(productName, contactNumber) {
+    const templateParams = {
+      product_name: productName,
+      contact_number: contactNumber,
+      message: "A customer added this product to their cart."
+    };
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+      .then(response => {
+        console.log("✅ Email sent successfully!", response.status, response.text);
+      })
+      .catch(error => {
+        console.error("❌ Email failed to send:", error);
+      });
+  }
+
+  // Example button setup:
+  document.querySelector("#add-to-cart").addEventListener("click", function() {
+    const productName = "Jordan Shoes"; // later, replace this dynamically
+    const contactNumber = document.querySelector("#contact-number").value; // input field value
+    notifyAddToCart(productName, contactNumber);
+  });
+</script>
+
 
 <header>
   <div class="logo">Prakash Shoe Center</div>
@@ -198,3 +228,4 @@
 
 </body>
 </html>
+
