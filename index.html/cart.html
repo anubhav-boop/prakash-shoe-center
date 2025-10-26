@@ -4,9 +4,126 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cart - Prakash Shoe Center</title>
+
 <link rel="stylesheet" href="styles.css" />
+
 <style>
-  /* Simple notification style */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f8f8f8;
+  }
+
+  header {
+    background: #222;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-links li {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #333;
+    padding: 10px;
+    list-style: none;
+    top: 30px;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  input#search-input {
+    padding: 5px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .cart-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: 20px auto;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+
+  .cart-total {
+    margin-top: 15px;
+    font-size: 1.2em;
+  }
+
+  button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #0056b3;
+  }
+
+  .remove-btn {
+    background: #e74c3c;
+  }
+
+  .remove-btn:hover {
+    background: #c0392b;
+  }
+
+  #checkout-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 1em;
+  }
+
+  /* Simple notification */
   .notification {
     position: fixed;
     top: 10px;
@@ -18,39 +135,25 @@
     display: none;
     z-index: 1000;
   }
+
+  @media (max-width: 600px) {
+    .cart-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 </style>
 </head>
+
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<!-- ✅ EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("Zsj5PqasAnS6hddBQ"); // Replace with your EmailJS Public Key
+    emailjs.init("Zsj5PqasAnS6hddBQ"); // Your EmailJS Public Key
   })();
-
-  function notifyAddToCart(productName, contactNumber) {
-    const templateParams = {
-      product_name: productName,
-      contact_number: contactNumber,
-      message: "A customer added this product to their cart."
-    };
-
-    emailjs.send("service_zf3pwqo", "template_lq8n8b3", templateParams)
-      .then(response => {
-        console.log("✅ Email sent successfully!", response.status, response.text);
-      })
-      .catch(error => {
-        console.error("❌ Email failed to send:", error);
-      });
-  }
-
-  // Example button setup:
-  document.querySelector("#add-to-cart").addEventListener("click", function() {
-    const productName = "Jordan Shoes"; // later, replace this dynamically
-    const contactNumber = document.querySelector("#contact-number").value; // input field value
-    notifyAddToCart(productName, contactNumber);
-  });
 </script>
-
 
 <header>
   <div class="logo">Prakash Shoe Center</div>
@@ -81,16 +184,16 @@
     <div class="cart-total">
       <strong>Total:</strong> NPR <span id="total-price">0</span>
     </div>
+    <input type="text" id="contact-number" placeholder="Enter your contact number" style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #ccc;" />
     <button id="checkout-btn" disabled>Place Order (Cash on Delivery)</button>
   </section>
 </main>
 
-<!-- Notification box -->
+<!-- Notification -->
 <div id="notification" class="notification"></div>
 
 <script>
-    
-  // Utility to show notifications
+  // === Utility: Notification ===
   function showNotification(message, duration = 3000) {
     const notification = document.getElementById('notification');
     notification.textContent = message;
@@ -100,7 +203,7 @@
     }, duration);
   }
 
-  // Load cart from localStorage
+  // === Local Storage Handling ===
   function loadCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
   }
@@ -110,7 +213,6 @@
     updateCartCount();
   }
 
-  // Update cart count in nav
   function updateCartCount() {
     const cart = loadCart();
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -121,6 +223,7 @@
   const totalPriceEl = document.getElementById('total-price');
   const checkoutBtn = document.getElementById('checkout-btn');
 
+  // === Render Cart ===
   function renderCart() {
     const cart = loadCart();
     cartItemsContainer.innerHTML = '';
@@ -134,7 +237,6 @@
     }
 
     checkoutBtn.disabled = false;
-
     let total = 0;
 
     cart.forEach((item, index) => {
@@ -144,10 +246,10 @@
       itemDiv.className = 'cart-item';
       itemDiv.innerHTML = `
         <div>
-          <strong>${item.name}</strong> <br />
-          Size: ${item.size} | Color: ${item.color} <br />
-          Price: NPR ${item.price} <br />
-          Quantity: 
+          <strong>${item.name}</strong><br />
+          Size: ${item.size} | Color: ${item.color}<br />
+          Price: NPR ${item.price}<br />
+          Quantity:
           <button class="qty-btn" data-index="${index}" data-action="decrease">-</button>
           <span class="qty-value">${item.quantity}</span>
           <button class="qty-btn" data-index="${index}" data-action="increase">+</button>
@@ -159,25 +261,22 @@
 
     totalPriceEl.textContent = total.toFixed(2);
 
-    // Attach quantity button events
+    // === Quantity Buttons ===
     document.querySelectorAll('.qty-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         const idx = e.target.dataset.index;
         const action = e.target.dataset.action;
         const cart = loadCart();
 
-        if (action === 'increase') {
-          cart[idx].quantity++;
-        } else if (action === 'decrease' && cart[idx].quantity > 1) {
-          cart[idx].quantity--;
-        }
+        if (action === 'increase') cart[idx].quantity++;
+        else if (action === 'decrease' && cart[idx].quantity > 1) cart[idx].quantity--;
 
         saveCart(cart);
         renderCart();
       });
     });
 
-    // Attach remove button events
+    // === Remove Buttons ===
     document.querySelectorAll('.remove-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         const idx = e.target.dataset.index;
@@ -192,41 +291,67 @@
     updateCartCount();
   }
 
-  // Checkout button action
+  // === EmailJS: Send Notification ===
+  function sendOrderEmail(cart, contactNumber, total) {
+    const productDetails = cart.map(item => `${item.name} (x${item.quantity}) - NPR ${item.price}`).join(', ');
+    const templateParams = {
+      product_name: productDetails,
+      contact_number: contactNumber || "Not provided",
+      message: `Order placed successfully. Total NPR ${total}`
+    };
+
+    emailjs.send("service_zf3pwqo", "template_lq8n8b3", templateParams)
+      .then(response => {
+        console.log("✅ Email sent successfully!", response.status, response.text);
+      })
+      .catch(error => {
+        console.error("❌ Email failed to send:", error);
+      });
+  }
+
+  // === Checkout ===
   checkoutBtn.addEventListener('click', () => {
-    alert('Thank you for your order! Payment will be collected on delivery.');
+    const contactNumber = document.getElementById('contact-number').value.trim();
+    if (!contactNumber) {
+      showNotification('⚠️ Please enter your contact number.');
+      return;
+    }
+
+    const cart = loadCart();
+    const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+    alert('✅ Thank you for your order! Payment will be collected on delivery.');
+    sendOrderEmail(cart, contactNumber, total);
     localStorage.removeItem('cart');
     renderCart();
     showNotification('Order placed successfully!');
   });
 
-  // Search bar functionality
+  // === Search Bar ===
   const allProducts = [
-    { id: 'shoe1', name: 'Men Classic Leather Shoes', price: 2800, category: 'shoes', img: 'https://i.imgur.com/1Q9Z1Zl.jpg' },
-    { id: 'shoe2', name: 'Women Elegant Sandals', price: 2400, category: 'sandals', img: 'https://i.imgur.com/dxUecxM.jpg' },
-    { id: 'shoe3', name: 'Kids Sporty Sneakers', price: 2100, category: 'shoes', img: 'https://i.imgur.com/NkKxO2M.jpg' },
-    { id: 'slipper1', name: 'Men Comfortable Slippers', price: 1200, category: 'slippers', img: 'https://i.imgur.com/7HLzVyI.jpg' },
-    { id: 'gumboot1', name: 'Durable Gumboots for Rain', price: 2900, category: 'gumboots', img: 'https://i.imgur.com/2UuVBO5.jpg' },
-    { id: 'sock1', name: 'Pack of Cotton Socks', price: 600, category: 'socks', img: 'https://i.imgur.com/FtPtVvQ.jpg' }
+    { id: 'shoe1', name: 'Men Classic Leather Shoes', price: 2800 },
+    { id: 'shoe2', name: 'Women Elegant Sandals', price: 2400 },
+    { id: 'shoe3', name: 'Kids Sporty Sneakers', price: 2100 },
+    { id: 'slipper1', name: 'Men Comfortable Slippers', price: 1200 },
+    { id: 'gumboot1', name: 'Durable Gumboots for Rain', price: 2900 },
+    { id: 'sock1', name: 'Pack of Cotton Socks', price: 600 }
   ];
 
   const searchInput = document.getElementById('search-input');
-  searchInput.addEventListener('input', e => {
-    const query = e.target.value.toLowerCase();
-    const filtered = allProducts.filter(p => p.name.toLowerCase().includes(query));
-    if (filtered.length > 0) {
-      window.location.href = `product.html?id=${filtered[0].id}`;
+  searchInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+      const query = e.target.value.toLowerCase();
+      const match = allProducts.find(p => p.name.toLowerCase().includes(query));
+      if (match) window.location.href = `product.html?id=${match.id}`;
     }
   });
 
-  // Initialize cart and cart count on page load
+  // === Init ===
   document.addEventListener('DOMContentLoaded', () => {
     renderCart();
     updateCartCount();
   });
 </script>
-
 </body>
 </html>
-
 
