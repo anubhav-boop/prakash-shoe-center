@@ -1,311 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart - Prakash Shoe Center</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cart - Prakash Shoe Center</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      background: #f5f7fa;
-    }
-
-    header {
-      background: #004aad;
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-    }
-
-    .cart-container {
-      max-width: 800px;
-      background: white;
-      margin: 40px auto;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #004aad;
-    }
-
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #ddd;
-      padding: 15px 0;
-    }
-
-    .cart-item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .cart-details {
-      flex: 1;
-      margin-left: 15px;
-    }
-
-    .cart-details h4 {
-      margin: 0 0 5px;
-      color: #333;
-    }
-
-    .quantity-controls button {
-      background: #004aad;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      margin: 0 5px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .remove-btn {
-      background: #dc3545;
-      border: none;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .total {
-      text-align: right;
-      margin-top: 20px;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button.order-btn {
-      width: 100%;
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button.order-btn:hover {
-      background: #0056b3;
-    }
-
-    .pending-orders {
-      margin-top: 40px;
-    }
-
-    .pending-orders h3 {
-      text-align: center;
-      color: #004aad;
-    }
-
-    .pending-item {
-      background: #f9f9f9;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-
-    .cancel-btn {
-      background: #ff4444;
-      border: none;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-  </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Prakash Shoe Center</div>
+  <header class="header">
+    <div class="left"><div class="logo">Prakash Shoe Center</div></div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="product.html">Products</a>
-      <a href="cart.html">Cart 🛒</a>
+      <a href="shoe.html">Shoes</a>
+      <a href="cart.html" class="cart-badge">Cart 🛒 (<span data-cart-count>0</span>)</a>
     </nav>
   </header>
 
-  <div class="cart-container">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <div class="total" id="cart-total">Total: NPR 0</div>
+  <main class="container">
+    <div class="card">
+      <h2>Your Cart</h2>
+      <div id="cart-area"></div>
+      <div id="cart-summary"></div>
 
-    <input type="text" id="contact" placeholder="Enter your contact number" />
-    <textarea id="address" placeholder="Enter your delivery address"></textarea>
+      <div style="margin-top:16px">
+        <label>Contact number</label>
+        <input id="contact" type="text" placeholder="e.g. +977 98XXXXXXXX" style="width:100%; padding:10px; border-radius:8px; border:1px solid #e6e9ef" />
+        <label style="margin-top:8px">Delivery address</label>
+        <textarea id="address" rows="3" style="width:100%; padding:10px; border-radius:8px; border:1px solid #e6e9ef"></textarea>
 
-    <button class="order-btn" id="place-order-btn">Place Order (Cash on Delivery)</button>
+        <div class="checkout-row">
+          <div class="text-muted">Payment: Cash on delivery</div>
+          <div style="flex:0 0 260px">
+            <button id="place-order" class="btn btn-primary" style="width:100%">Place Order (COD)</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="pending-orders">
+    <div class="card" style="margin-top:18px">
       <h3>Pending Orders</h3>
       <div id="pending-list"></div>
     </div>
-  </div>
+  </main>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="store-data.js"></script>
   <script>
-    const cartContainer = document.getElementById("cart-items");
-    const totalEl = document.getElementById("cart-total");
-    const contactInput = document.getElementById("contact");
-    const addressInput = document.getElementById("address");
-    const pendingList = document.getElementById("pending-list");
+    // Minimal safe Firestore integration if firebase app exists
+    const hasFirebase = typeof firebase !== 'undefined' || false;
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let pendingOrders = JSON.parse(localStorage.getItem("pendingOrders")) || [];
+    function getCart(){ return JSON.parse(localStorage.getItem('cart')) || []; }
+    function saveCart(c){ localStorage.setItem('cart', JSON.stringify(c)); updateCartCount(); renderCart(); }
+    function updateCartCount(){
+      const cart = getCart(); const count = cart.reduce((s,i)=> s + (i.quantity||0), 0);
+      document.querySelectorAll('[data-cart-count]').forEach(el=> el.textContent = count);
+    }
 
-    function renderCart() {
-      cartContainer.innerHTML = "";
+    function currency(n){ return Number(n).toFixed(0); }
+
+    function renderCart(){
+      const cart = getCart();
+      const area = document.getElementById('cart-area');
+      if(!cart.length){ area.innerHTML = '<p class="text-muted">Your cart is empty.</p>'; document.getElementById('cart-summary').innerHTML=''; return; }
+
+      let html = '<table class="cart-table"><thead><tr><th>Item</th><th>Details</th><th>Qty</th><th>Subtotal</th><th></th></tr></thead><tbody>';
       let total = 0;
-
-      if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>Your cart is empty 🛒</p>";
-      }
-
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-
-        const div = document.createElement("div");
-        div.classList.add("cart-item");
-        div.innerHTML = `
-          <img src="${item.image}" alt="${item.name}">
-          <div class="cart-details">
-            <h4>${item.name}</h4>
-            <p>Size: ${item.size} | Color: ${item.color}</p>
-            <p>Price: NPR ${item.price}</p>
-            <div class="quantity-controls">
-              <button onclick="changeQty(${index}, -1)">-</button>
-              <span>${item.quantity}</span>
-              <button onclick="changeQty(${index}, 1)">+</button>
+      cart.forEach((it, idx) => {
+        const subtotal = (it.price || 0) * (it.quantity || 1);
+        total += subtotal;
+        html += `<tr>
+          <td><img src="${it.image || window.__STORE_FALLBACK_IMAGE}" alt="${it.name}"></td>
+          <td><strong>${it.name}</strong><br/><span class="text-muted">${it.size ? 'Size: '+it.size+' ' : ''}${it.color? ' | '+it.color : ''}</span><br/>NPR ${currency(it.price)}</td>
+          <td>
+            <div class="qty">
+              <button onclick="changeQty(${idx}, -1)">-</button>
+              <span class="qty-value">${it.quantity}</span>
+              <button onclick="changeQty(${idx}, 1)">+</button>
             </div>
-          </div>
-          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
-        `;
-        cartContainer.appendChild(div);
+          </td>
+          <td>NPR ${currency(subtotal)}</td>
+          <td><button class="btn-danger" onclick="removeItem(${idx})">Remove</button></td>
+        </tr>`;
       });
+      html += '</tbody></table>';
+      area.innerHTML = html;
 
-      totalEl.textContent = `Total: NPR ${total.toFixed(2)}`;
+      document.getElementById('cart-summary').innerHTML = `<div class="card" style="margin-top:12px"><div style="display:flex;justify-content:space-between"><div class="text-muted">Total</div><div style="font-weight:800">NPR ${currency(total)}</div></div></div>`;
     }
 
-    function changeQty(index, delta) {
-      cart[index].quantity += delta;
-      if (cart[index].quantity <= 0) cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
+    window.changeQty = function(idx,delta){
+      const cart = getCart();
+      if(!cart[idx]) return;
+      cart[idx].quantity += delta;
+      if(cart[idx].quantity <= 0) cart.splice(idx,1);
+      saveCart(cart);
+    };
+
+    window.removeItem = function(idx){
+      const cart = getCart();
+      if(!cart[idx]) return;
+      cart.splice(idx,1);
+      saveCart(cart);
+      showToast('Item removed');
+    };
+
+    // Pending orders stored locally
+    function getPending(){ return JSON.parse(localStorage.getItem('pendingOrders')) || []; }
+    function savePending(p){ localStorage.setItem('pendingOrders', JSON.stringify(p)); renderPending(); }
+
+    function renderPending(){
+      const list = getPending();
+      const el = document.getElementById('pending-list');
+      if(!list.length){ el.innerHTML = '<p class="text-muted">No pending orders.</p>'; return; }
+      el.innerHTML = '';
+      list.forEach(o=>{
+        const div = document.createElement('div');
+        div.className = 'pending-item';
+        div.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div>
+            <div><strong>Order ID:</strong> ${o.id}</div>
+            <div class="text-muted">Placed: ${o.date}</div>
+            <div><strong>Contact:</strong> ${o.contact}</div>
+            <div><strong>Address:</strong> ${o.address}</div>
+          </div>
+          <div>
+            <div style="text-align:right"><strong>Status:</strong> ${o.status}</div>
+            <div style="margin-top:10px"><button class="btn btn-ghost" onclick="viewOrder('${o.id}')">View</button> <button class="btn-danger" onclick="cancelOrder('${o.id}')">Cancel</button></div>
+          </div>
+        </div>`;
+        const ul = document.createElement('ul');
+        ul.style.marginTop='8px';
+        o.items.forEach(i=>{
+          const li=document.createElement('li');
+          li.innerHTML = `${i.name} (${i.size||'N/A'}, ${i.color||'N/A'}) - x${i.quantity} - NPR ${currency(i.price)}`;
+          ul.appendChild(li);
+        });
+        div.appendChild(ul);
+        el.appendChild(div);
+      });
     }
 
-    function removeItem(index) {
-      cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
+    window.viewOrder = function(id){ const o=getPending().find(p=>p.id==id); if(!o) return alert('Order not found'); alert('Order '+id+'\\nStatus: '+o.status); }
+
+    window.cancelOrder = function(id){
+      if(!confirm('Cancel this order?')) return;
+      let pending = getPending();
+      pending = pending.filter(p=>p.id!==id);
+      savePending(pending);
+      showToast('Order cancelled');
+      // Optionally update Firestore status if configured...
+    };
+
+    function showToast(msg){
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      setTimeout(()=> t.classList.remove('show'), 2600);
     }
 
-    function placeOrder() {
-      const contact = contactInput.value.trim();
-      const address = addressInput.value.trim();
+    // Place order
+    document.getElementById('place-order').addEventListener('click', async ()=>{
+      const contact = document.getElementById('contact').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const cart = getCart();
+      if(!contact || !address){ alert('Please enter contact and address'); return; }
+      if(!cart.length){ alert('Cart is empty'); return; }
 
-      if (!contact || !address) {
-        alert("⚠️ Please enter contact number and address!");
-        return;
-      }
-
-      if (cart.length === 0) {
-        alert("Your cart is empty!");
-        return;
-      }
-
-      const newOrder = {
-        id: Date.now(),
+      const order = {
+        id: 'ORD-'+Date.now(),
         items: cart,
-        contact,
-        address,
-        status: "Pending",
-        date: new Date().toLocaleString(),
+        contact, address,
+        status: 'Pending',
+        date: new Date().toLocaleString()
       };
 
-      pendingOrders.push(newOrder);
-      localStorage.setItem("pendingOrders", JSON.stringify(pendingOrders));
+      // Save pending locally
+      const pending = getPending();
+      pending.push(order);
+      savePending(pending);
 
-      cart = [];
-      localStorage.removeItem("cart");
-      renderCart();
-      renderPending();
-      contactInput.value = "";
-      addressInput.value = "";
-      alert("✅ Order placed successfully! Status: Pending");
-    }
-
-    function renderPending() {
-      pendingList.innerHTML = "";
-      if (pendingOrders.length === 0) {
-        pendingList.innerHTML = "<p>No pending orders.</p>";
+      // Optionally: save to Firestore (if you configured firebase & firestore)
+      try {
+        if(window.firebaseApp && window.firebaseFirestoreAdd){
+          await window.firebaseFirestoreAdd(order); // implemented optionally in firebase helper
+        }
+      } catch(e){
+        console.warn('Firestore save failed:', e);
       }
 
-      pendingOrders.forEach((order) => {
-        const div = document.createElement("div");
-        div.classList.add("pending-item");
-        div.innerHTML = `
-          <p><strong>Order ID:</strong> ${order.id}</p>
-          <p><strong>Date:</strong> ${order.date}</p>
-          <p><strong>Status:</strong> ${order.status}</p>
-          <p><strong>Contact:</strong> ${order.contact}</p>
-          <p><strong>Address:</strong> ${order.address}</p>
-          <p><strong>Items:</strong></p>
-          <ul>
-            ${order.items
-              .map(
-                (i) =>
-                  `<li>${i.name} (${i.size}, ${i.color}) - ${i.quantity}x NPR ${i.price}</li>`
-              )
-              .join("")}
-          </ul>
-          <button class="cancel-btn" onclick="cancelOrder(${order.id})">Cancel Order</button>
-        `;
-        pendingList.appendChild(div);
-      });
-    }
+      // clear cart
+      localStorage.removeItem('cart');
+      renderCart();
+      updateCartCount();
+      document.getElementById('contact').value=''; document.getElementById('address').value='';
+      showToast('Order placed — status: Pending');
+    });
 
-    function cancelOrder(orderId) {
-      const confirmCancel = confirm("Are you sure you want to cancel this order?");
-      if (!confirmCancel) return;
-
-      pendingOrders = pendingOrders.filter((o) => o.id !== orderId);
-      localStorage.setItem("pendingOrders", JSON.stringify(pendingOrders));
-      renderPending();
-      alert("❌ Order cancelled successfully.");
-    }
-
-    document.getElementById("place-order-btn").addEventListener("click", placeOrder);
-
-    renderCart();
-    renderPending();
+    // init
+    renderCart(); renderPending(); updateCartCount();
   </script>
 </body>
 </html>
