@@ -1,28 +1,39 @@
-import app from './firebase-config.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+// login.js - Google login (works if firebase-config.js + firebase libs are included)
+// If Firebase is not available, a local-storage fallback can be used (simple demo)
 
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+(async function(){
+  function saveUserToLocal(user){
+    localStorage.setItem('user', JSON.stringify({ uid:user.uid||user.email, name:user.displayName||user.name, email:user.email||user.email }));
+  }
 
-const loginBtn = document.getElementById("google-login-btn");
-const loginStatus = document.getElementById("login-status");
+  const loginBtn = document.getElementById('google-login-btn');
+  const loginStatus = document.getElementById('login-status');
 
-loginBtn.addEventListener("click", () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
-      loginStatus.innerText = `Welcome, ${user.displayName}`;
-      // Save user info to localStorage (or sessionStorage)
-      localStorage.setItem("user", JSON.stringify({
-        uid: user.uid,
-        name: user.displayName,
-        email: user.email,
-      }));
-      // Redirect to delivery info page
-      window.location.href = "delivery.html";
-    })
-    .catch((error) => {
-      console.error(error);
-      loginStatus.innerText = "Login failed. Please try again.";
+  if(loginBtn){
+    loginBtn.addEventListener('click', async ()=>{
+      // If firebase auth available, use it
+      if(window.firebase && window.firebase.auth){
+        try {
+          const provider = new firebase.auth.GoogleAuthProvider();
+          const res = await firebase.auth().signInWithPopup(provider);
+          const user = res.user;
+          saveUserToLocal(user);
+          loginStatus && (loginStatus.innerText = `Welcome, ${user.displayName}`);
+          // redirect or continue
+          setTimeout(()=> window.location.href = 'delivery.html', 700);
+        } catch(err){
+          console.error(err);
+          alert('Login failed: '+(err.message||err));
+        }
+      } else {
+        // fallback demo (not real auth)
+        const name = prompt('Enter your name (demo)') || 'Guest';
+        const email = prompt('Enter your email (demo)') || `guest@demo.local`;
+        const user = { uid: 'demo-'+Date.now(), displayName: name, email };
+        saveUserToLocal(user);
+        loginStatus && (loginStatus.innerText = `Welcome, ${name}`);
+        setTimeout(()=> window.location.href = 'delivery.html', 700);
+      }
     });
-});
+  }
+})();
