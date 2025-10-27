@@ -1,14 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Login - Prakash Shoe Center</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Login & Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    a {
+      color: #007bff;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Login or Sign Up</h1>
-  <button id="google-login-btn">Sign in / Sign up with Google</button>
-  <div id="login-status"></div>
 
-  <script type="module" src="login.js"></script>
+  <div class="box" id="signupBox">
+    <h2>Sign Up</h2>
+    <input type="text" id="signupName" placeholder="Name" />
+    <input type="email" id="signupEmail" placeholder="Email" />
+    <input type="password" id="signupPassword" placeholder="Password" />
+    <button onclick="signup()">Sign Up</button>
+    <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+  </div>
+
+  <div class="box" id="loginBox" style="display:none;">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p>Don’t have an account? <a onclick="showSignup()">Sign Up</a></p>
+  </div>
+
+  <script>
+    // Show/hide forms
+    function showLogin() {
+      document.getElementById("signupBox").style.display = "none";
+      document.getElementById("loginBox").style.display = "block";
+    }
+    function showSignup() {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("signupBox").style.display = "block";
+    }
+
+    // Sign Up
+    function signup() {
+      const name = document.getElementById("signupName").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      if (!name || !email || !password) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      const user = { name, email, password };
+      localStorage.setItem(email, JSON.stringify(user));
+      alert("Account created successfully!");
+      showLogin();
+    }
+
+    // Login
+    function login() {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const user = JSON.parse(localStorage.getItem(email));
+
+      if (!user) {
+        alert("User not found. Please sign up first.");
+        return;
+      }
+
+      if (user.password !== password) {
+        alert("Incorrect password!");
+        return;
+      }
+
+      alert("Login successful! Welcome, " + user.name);
+    }
+  </script>
+
 </body>
 </html>
+
