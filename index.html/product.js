@@ -1,187 +1,88 @@
-const products = [
-  {
-    id: 'shoe1',
-    name: 'Men Classic Leather Shoes',
-    price: 2800,
-    img: 'https://i.imgur.com/1Q9Z1Zl.jpg',
+// 🛍 Example product list (you can expand this)
+const products = {
+  shoe1: {
+    name: "Men Classic Leather Shoes",
+    price: 4500,
+    image: "images/shoe1.jpg",
   },
-  {
-    id: 'shoe2',
-    name: 'Women Elegant Sandals',
-    price: 2400,
-    img: 'https://i.imgur.com/dxUecxM.jpg',
+  shoe2: {
+    name: "Jordan Air Sneakers",
+    price: 5500,
+    image: "images/shoe2.jpg",
   },
-  {
-    id: 'shoe3',
-    name: 'Kids Sporty Sneakers',
-    price: 2100,
-    img: 'https://i.imgur.com/NkKxO2M.jpg',
-  }
-];
+  shoe3: {
+    name: "Adidas Sports Runner",
+    price: 6000,
+    image: "images/shoe3.jpg",
+  },
+};
 
-// Get product ID from URL
-const params = new URLSearchParams(window.location.search);
-const productId = params.get("id");
-const product = products.find(p => p.id === productId);
+// 🧭 Get product ID from URL
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+const product = products[productId];
 
-if (!product) {
-  document.body.innerHTML = '<h2 style="text-align:center;color:red;">Product Not Found</h2>';
-  throw new Error("Product not found");
-}
-
-// Display product info
-document.getElementById("product-image").src = product.img;
-document.getElementById("product-name").textContent = product.name;
-document.getElementById("product-price").textContent = `Price: NPR ${product.price}`;
-
-// Handle size & color select
+// 🧾 Elements
+const nameEl = document.getElementById("product-name");
+const priceEl = document.getElementById("product-price");
+const imageEl = document.getElementById("product-image");
+const addBtn = document.getElementById("add-to-cart-btn");
 const sizeSelect = document.getElementById("size-select");
 const colorSelect = document.getElementById("color-select");
-const addToCartBtn = document.getElementById("add-to-cart-btn");
+const cartCountEl = document.getElementById("cart-count");
 
-function updateAddToCartState() {
-  addToCartBtn.disabled = !(sizeSelect.value && colorSelect.value);
+// 🧠 Display product details
+if (product) {
+  nameEl.textContent = product.name;
+  priceEl.textContent = `Price: NPR ${product.price}`;
+  imageEl.src = product.image;
+} else {
+  document.querySelector(".product-detail").innerHTML = "<p>Product not found.</p>";
 }
 
-sizeSelect.addEventListener("change", updateAddToCartState);
-colorSelect.addEventListener("change", updateAddToCartState);
+// 🛒 Enable button when size & color selected
+function updateButtonState() {
+  addBtn.disabled = !sizeSelect.value || !colorSelect.value;
+}
+sizeSelect.addEventListener("change", updateButtonState);
+colorSelect.addEventListener("change", updateButtonState);
 
-addToCartBtn.addEventListener("click", () => {
+// 📦 Add to Cart
+addBtn.addEventListener("click", () => {
+  if (!product) return;
+
   const size = sizeSelect.value;
   const color = colorSelect.value;
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  // check if already in cart (same name, size, color)
+  const existing = cart.find(
+    (item) => item.name === product.name && item.size === size && item.color === color
+  );
 
-  cart.push({
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    size: size,
-    color: color,
-    quantity: 1
-  });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Go to cart page
-  window.location.href = "cart.html";
-  // product.js
-const products = [
-  // Shoes (for reference)
-  {
-    id: 'shoe1',
-    name: 'Men Classic Leather Shoes',
-    price: 2800,
-    colors: ['Black', 'Brown'],
-    sizes: [39, 40, 41, 42, 43],
-    img: 'https://i.imgur.com/1Q9Z1Zl.jpg',
-    category: 'shoes',
-  },
-  // Slippers
-  {
-    id: 'slipper1',
-    name: 'Kitto Black Slipper',
-    price: 1200,
-    colors: ['Black', 'Grey'],
-    sizes: [38, 39, 40, 41],
-    img: 'https://i.imgur.com/7HLzVyI.jpg',
-    category: 'slippers',
-  },
-  {
-    id: 'slipper2',
-    name: 'Nike Blue Slipper',
-    price: 1300,
-    colors: ['Blue', 'White'],
-    sizes: [39, 40, 41, 42],
-    img: 'https://i.imgur.com/q5JjKcE.jpg',
-    category: 'slippers',
-  },
-  // Add other slippers similarly...
-];
-
-function getProductIdFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('id');
-}
-
-function showNotification(message) {
-  alert(message); // simple alert for notification, you can improve with custom div
-}
-
-function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function loadCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-function renderProductDetails(product) {
-  const container = document.getElementById('product-details');
-  if (!product) {
-    container.innerHTML = '<h2>Product not found!</h2>';
-    return;
-  }
-
-  container.innerHTML = `
-    <h2>${product.name}</h2>
-    <img src="${product.img}" alt="${product.name}" style="max-width:300px; display:block; margin-bottom:1rem;" />
-    <p><strong>Price:</strong> NPR ${product.price}</p>
-    <label for="size-select">Select Size:</label>
-    <select id="size-select">
-      <option value="">--Select Size--</option>
-      ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
-    </select>
-    <br /><br />
-    <label for="color-select">Select Color:</label>
-    <select id="color-select">
-      <option value="">--Select Color--</option>
-      ${product.colors.map(color => `<option value="${color}">${color}</option>`).join('')}
-    </select>
-    <br /><br />
-    <button id="add-to-cart-btn" disabled>Add to Cart</button>
-  `;
-
-  const sizeSelect = document.getElementById('size-select');
-  const colorSelect = document.getElementById('color-select');
-  const addToCartBtn = document.getElementById('add-to-cart-btn');
-
-  function checkEnableButton() {
-    addToCartBtn.disabled = !(sizeSelect.value && colorSelect.value);
-  }
-
-  sizeSelect.addEventListener('change', checkEnableButton);
-  colorSelect.addEventListener('change', checkEnableButton);
-
-  addToCartBtn.addEventListener('click', () => {
-    const cart = loadCart();
-    const item = {
-      id: product.id,
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
       name: product.name,
       price: product.price,
-      size: sizeSelect.value,
-      color: colorSelect.value,
+      image: product.image,
+      size,
+      color,
       quantity: 1,
-    };
+    });
+  }
 
-    // Check if same product+size+color exists; increment quantity
-    const existingIndex = cart.findIndex(c => c.id === item.id && c.size === item.size && c.color === item.color);
-    if (existingIndex >= 0) {
-      cart[existingIndex].quantity++;
-    } else {
-      cart.push(item);
-    }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert("✅ Added to cart successfully!");
+});
 
-    saveCart(cart);
-    showNotification('Item added to cart!');
-    // Redirect to cart page
-    window.location.href = 'cart.html';
-  });
+// 🔢 Update cart count (top right)
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCountEl.textContent = count;
 }
 
-// Initialize
-const productId = getProductIdFromURL();
-const product = products.find(p => p.id === productId);
-document.addEventListener('DOMContentLoaded', () => renderProductDetails(product));
-
-});
+updateCartCount();
