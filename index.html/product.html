@@ -1,52 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Detail - Prakash Shoe Center</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Product - Prakash Shoe Center</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">Prakash Shoe Center</div>
+  <header class="header">
+    <div class="left"><a class="logo" href="index.html">Prakash Shoe Center</a></div>
     <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
-      </ul>
+      <a href="shoe.html">Shoes</a>
+      <a href="sandals.html">Sandals</a>
+      <a href="gumboot.html">Gumboots</a>
+      <a href="slippers.html">Slippers</a>
+      <a href="socks.html">Socks</a>
+      <a href="cart.html" class="cart-badge">Cart 🛒 (<span data-cart-count>0</span>)</a>
     </nav>
   </header>
 
-  <main>
-    <div class="product-detail">
-      <img id="product-image" src="" alt="Product Image" style="max-width: 300px;" />
-      <h2 id="product-name"></h2>
-      <p id="product-price"></p>
-
-      <label for="size-select">Select Size:</label>
-      <select id="size-select">
-        <option value="">Choose size</option>
-        <option value="38">38</option>
-        <option value="39">39</option>
-        <option value="40">40</option>
-        <option value="41">41</option>
-        <option value="42">42</option>
-        <option value="43">43</option>
-      </select>
-
-      <label for="color-select">Select Color:</label>
-      <select id="color-select">
-        <option value="">Choose color</option>
-        <option value="Black">Black</option>
-        <option value="Brown">Brown</option>
-        <option value="White">White</option>
-        <option value="Red">Red</option>
-      </select>
-
-      <button id="add-to-cart-btn" disabled>Add to Cart</button>
-    </div>
+  <main class="container">
+    <div id="product-detail" class="product-detail-container card"></div>
   </main>
 
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <!-- data + renderer -->
+  <script src="store-data.js"></script>
   <script src="product.js"></script>
 </body>
 </html>
