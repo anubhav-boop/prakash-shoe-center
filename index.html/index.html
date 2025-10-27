@@ -1,71 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Prakash Shoe Center</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prakash Shoe Center | Quality Footwear for Everyone</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Home page hero and layout enhancements */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
+                  url("images/hero-bg.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      color: #f1f1f1;
+    }
+
+    .hero button {
+      background-color: #ff7b00;
+      padding: 12px 22px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: #ff5500;
+    }
+
+    /* Featured section */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #004d99;
+      margin: 40px 0 20px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 0 20px 40px;
+    }
+
+    .featured-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .featured-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .featured-card h3 {
+      color: #004d99;
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .featured-card p {
+      color: #e63946;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .featured-card a {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 16px;
+      background: #0073e6;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .featured-card a:hover {
+      background: #004d99;
+    }
+
+    /* Footer */
+    footer {
+      background: #004d99;
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .login-btn {
+      background: #ff7b00;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: #ff5500;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header (unified) -->
-  <header class="header">
-    <div class="left">
-      <a class="logo" href="index.html">Prakash Shoe Center</a>
-    </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">👟 Prakash Shoe Center</div>
     <nav>
-      <a href="shoe.html">Shoes</a>
-      <a href="sandals.html">Sandals</a>
-      <a href="gumboot.html">Gumboots</a>
-      <a href="slippers.html">Slippers</a>
-      <a href="socks.html">Socks</a>
-      <a href="cart.html" class="cart-badge">Cart 🛒 (<span data-cart-count>0</span>)</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Categories</a>
+          <ul class="dropdown-menu">
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="kids.html">Kids</a></li>
+            <li><a href="socks.html">Socks</a></li>
+            <li><a href="slipper.html">Slippers</a></li>
+            <li><a href="gumboot.html">Gumboots</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html">🛒 Cart</a></li>
+      </ul>
     </nav>
+    <button class="login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
   </header>
 
-  <main class="container">
-    <section class="card">
-      <h1 style="margin-bottom:12px">Welcome to Prakash Shoe Center</h1>
-      <p class="text-muted">Quality footwear at great prices — browse the categories below.</p>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Step into Comfort and Style</h1>
+    <p>Find the perfect pair for every occasion — durable, stylish, and affordable.</p>
+    <button onclick="window.location.href='men.html'">Shop Now</button>
+  </section>
 
-    <section style="margin-top:20px" class="container">
-      <div class="card">
-        <h2>Featured Products</h2>
-        <div id="featured-grid" class="products-grid" style="margin-top:14px;"></div>
-      </div>
-    </section>
-  </main>
+  <!-- Featured Products -->
+  <h2 class="section-title">🔥 Featured Products</h2>
+  <div class="featured-grid">
+    <div class="featured-card">
+      <img src="images/shoe1.jpg" alt="Leather Shoes">
+      <h3>Men Classic Leather Shoes</h3>
+      <p>NPR 2800</p>
+      <a href="product.html?id=shoe1">View Details</a>
+    </div>
 
-  <footer style="text-align:center;padding:18px 6px;color:#6b7280;">
-    © <span id="year"></span> Prakash Shoe Center — Contact: prakashshoecenter767@gmail.com
+    <div class="featured-card">
+      <img src="images/shoe2.jpg" alt="Sandals">
+      <h3>Women Elegant Sandals</h3>
+      <p>NPR 2400</p>
+      <a href="product.html?id=shoe2">View Details</a>
+    </div>
+
+    <div class="featured-card">
+      <img src="images/gumboot1.jpg" alt="Gumboots">
+      <h3>Durable Gumboots for Rain</h3>
+      <p>NPR 2900</p>
+      <a href="product.html?id=gumboot1">View Details</a>
+    </div>
+
+    <div class="featured-card">
+      <img src="images/sock1.jpg" alt="Socks">
+      <h3>Cotton Socks Pack</h3>
+      <p>NPR 600</p>
+      <a href="socks-product.html?id=sock1">View Details</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Prakash Shoe Center. All Rights Reserved.</p>
+    <p>
+      Visit us on 
+      <a href="https://facebook.com" target="_blank">Facebook</a> |
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </p>
   </footer>
 
-  <div id="toast" class="toast" aria-live="polite"></div>
-
-  <script src="store-data.js"></script>
-  <script>
-    // render featured product grid from store-data
-    (function(){
-      const target = document.getElementById('featured-grid');
-      const products = window.__STORE_PRODUCTS || [];
-      // show first 6
-      products.slice(0,6).forEach(p => {
-        const card = document.createElement('a');
-        card.className = 'product-card';
-        card.href = `product.html?id=${p.id}`;
-        card.innerHTML = `
-          <img src="${p.image || window.__STORE_FALLBACK_IMAGE}" alt="${p.name}" onerror="this.onerror=null;this.src='${window.__STORE_FALLBACK_IMAGE}'">
-          <h3>${p.name}</h3>
-          <p class="price">NPR ${Number(p.price).toFixed(0)}</p>
-        `;
-        target.appendChild(card);
-      });
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // update nav cart count
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      document.querySelectorAll('[data-cart-count]').forEach(e => e.textContent = cart.reduce((s,i)=>s+(i.quantity||0),0));
-    })();
-  </script>
 </body>
 </html>
