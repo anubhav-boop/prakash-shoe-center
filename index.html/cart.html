@@ -1,366 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cart - Prakash Shoe Center</title>
-
-<link rel="stylesheet" href="styles.css" />
-
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f8f8f8;
-  }
-
-  header {
-    background: #222;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    font-size: 1.4em;
-    font-weight: bold;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-  }
-
-  nav a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    background: #333;
-    padding: 10px;
-    list-style: none;
-    top: 30px;
-  }
-
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-
-  input#search-input {
-    padding: 6px;
-    margin-left: 20px;
-    border-radius: 5px;
-    border: none;
-  }
-
-  main {
-    padding: 20px;
-  }
-
-  .cart-section {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    max-width: 700px;
-    margin: 20px auto;
-  }
-
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-
-  .cart-item:last-child {
-    border-bottom: none;
-  }
-
-  .cart-total {
-    margin-top: 15px;
-    font-size: 1.2em;
-  }
-
-  button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #0056b3;
-  }
-
-  .remove-btn {
-    background: #e74c3c;
-  }
-
-  .remove-btn:hover {
-    background: #c0392b;
-  }
-
-  #checkout-btn {
-    width: 100%;
-    margin-top: 15px;
-    padding: 10px;
-    font-size: 1em;
-  }
-
-  .notification {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    display: none;
-    z-index: 1000;
-  }
-
-  @media (max-width: 600px) {
-    .cart-item {
-      flex-direction: column;
-      align-items: flex-start;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart - Prakash Shoe Center</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background: #f5f7fa;
     }
-  }
-</style>
+
+    header {
+      background: #004aad;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .cart-container {
+      max-width: 800px;
+      background: white;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #004aad;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .cart-details {
+      flex: 1;
+      margin-left: 15px;
+    }
+
+    .cart-details h4 {
+      margin: 0 0 5px;
+      color: #333;
+    }
+
+    .quantity-controls button {
+      background: #004aad;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn {
+      background: #dc3545;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button.order-btn {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.order-btn:hover {
+      background: #0056b3;
+    }
+
+    .pending-orders {
+      margin-top: 40px;
+    }
+
+    .pending-orders h3 {
+      text-align: center;
+      color: #004aad;
+    }
+
+    .pending-item {
+      background: #f9f9f9;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .cancel-btn {
+      background: #ff4444;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product.html">Products</a>
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
 
-<!-- ✅ EmailJS Library -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function() {
-    emailjs.init("Zsj5PqasAnS6hddBQ"); // ⚠️ Replace with your EmailJS Public Key
-  })();
-</script>
-
-<header>
-  <div class="logo">Prakash Shoe Center</div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li class="dropdown">
-        <a href="#">Categories ▼</a>
-        <ul class="dropdown-menu">
-          <li><a href="shoes.html">Shoes</a></li>
-          <li><a href="slippers.html">Slippers</a></li>
-          <li><a href="sandals.html">Sandals</a></li>
-          <li><a href="gumboots.html">Gumboots</a></li>
-          <li><a href="football-boots.html">Football Boots</a></li>
-          <li><a href="socks.html">Socks</a></li>
-        </ul>
-      </li>
-      <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
-    </ul>
-    <input type="text" id="search-input" placeholder="Search shoes..." />
-  </nav>
-</header>
-
-<main>
-  <section class="cart-section">
+  <div class="cart-container">
     <h2>Your Cart</h2>
     <div id="cart-items"></div>
-    <div class="cart-total">
-      <strong>Total:</strong> NPR <span id="total-price">0</span>
+    <div class="total" id="cart-total">Total: NPR 0</div>
+
+    <input type="text" id="contact" placeholder="Enter your contact number" />
+    <textarea id="address" placeholder="Enter your delivery address"></textarea>
+
+    <button class="order-btn" id="place-order-btn">Place Order (Cash on Delivery)</button>
+
+    <div class="pending-orders">
+      <h3>Pending Orders</h3>
+      <div id="pending-list"></div>
     </div>
+  </div>
 
-    <input type="text" id="contact-number" placeholder="Enter your contact number" 
-      style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #ccc;" />
+  <script>
+    const cartContainer = document.getElementById("cart-items");
+    const totalEl = document.getElementById("cart-total");
+    const contactInput = document.getElementById("contact");
+    const addressInput = document.getElementById("address");
+    const pendingList = document.getElementById("pending-list");
 
-    <textarea id="address" placeholder="Enter your delivery address" 
-      style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #ccc;height:80px;"></textarea>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let pendingOrders = JSON.parse(localStorage.getItem("pendingOrders")) || [];
 
-    <button id="checkout-btn" disabled>Place Order (Cash on Delivery)</button>
-  </section>
-</main>
+    function renderCart() {
+      cartContainer.innerHTML = "";
+      let total = 0;
 
-<div id="notification" class="notification"></div>
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty 🛒</p>";
+      }
 
-<script>
-  // === Notification ===
-  function showNotification(message, duration = 3000) {
-    const notification = document.getElementById('notification');
-    notification.textContent = message;
-    notification.style.display = 'block';
-    setTimeout(() => notification.style.display = 'none', duration);
-  }
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
 
-  // === Cart Storage ===
-  function loadCart() {
-    try {
-      return JSON.parse(localStorage.getItem('cart')) || [];
-    } catch {
-      return [];
-    }
-  }
-
-  function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-  }
-
-  function updateCartCount() {
-    const cart = loadCart();
-    const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
-    document.getElementById('cart-count').textContent = count;
-  }
-
-  const cartItemsContainer = document.getElementById('cart-items');
-  const totalPriceEl = document.getElementById('total-price');
-  const checkoutBtn = document.getElementById('checkout-btn');
-
-  // === Render Cart ===
-  function renderCart() {
-    const cart = loadCart();
-    cartItemsContainer.innerHTML = '';
-
-    if (cart.length === 0) {
-      cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-      checkoutBtn.disabled = true;
-      totalPriceEl.textContent = '0';
-      updateCartCount();
-      return;
-    }
-
-    checkoutBtn.disabled = false;
-    let total = 0;
-
-    cart.forEach((item, index) => {
-      total += (item.price || 0) * (item.quantity || 1);
-
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'cart-item';
-      itemDiv.innerHTML = `
-        <div>
-          <strong>${item.name}</strong><br />
-          ${item.size ? `Size: ${item.size} | ` : ''}${item.color ? `Color: ${item.color}` : ''}<br />
-          Price: NPR ${item.price}<br />
-          Quantity:
-          <button class="qty-btn" data-index="${index}" data-action="decrease">-</button>
-          <span class="qty-value">${item.quantity}</span>
-          <button class="qty-btn" data-index="${index}" data-action="increase">+</button>
-        </div>
-        <button class="remove-btn" data-index="${index}">Remove</button>
-      `;
-      cartItemsContainer.appendChild(itemDiv);
-    });
-
-    totalPriceEl.textContent = total.toFixed(2);
-
-    // Quantity update
-    document.querySelectorAll('.qty-btn').forEach(btn => {
-      btn.onclick = () => {
-        const idx = btn.dataset.index;
-        const action = btn.dataset.action;
-        const cart = loadCart();
-
-        if (action === 'increase') cart[idx].quantity++;
-        else if (action === 'decrease' && cart[idx].quantity > 1) cart[idx].quantity--;
-
-        saveCart(cart);
-        renderCart();
-      };
-    });
-
-    // Remove item
-    document.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.onclick = () => {
-        const idx = btn.dataset.index;
-        const cart = loadCart();
-        cart.splice(idx, 1);
-        saveCart(cart);
-        renderCart();
-        showNotification('Item removed from cart.');
-      };
-    });
-
-    updateCartCount();
-  }
-
-  // === EmailJS Order Send ===
-  function sendOrderEmail(cart, contactNumber, address, total) {
-    const productDetails = cart.map(item => `${item.name} (x${item.quantity}) - NPR ${item.price}`).join(', ');
-    const templateParams = {
-      product_name: productDetails,
-      contact_number: contactNumber,
-      address: address,
-      total_amount: total
-    };
-
-    emailjs.send("service_zf3pwqo", "template_lq8n8b3", templateParams)
-      .then(() => {
-        showNotification('✅ Order email sent successfully!');
-      })
-      .catch(() => {
-        showNotification('❌ Failed to send order email.');
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-details">
+            <h4>${item.name}</h4>
+            <p>Size: ${item.size} | Color: ${item.color}</p>
+            <p>Price: NPR ${item.price}</p>
+            <div class="quantity-controls">
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span>${item.quantity}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </div>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(div);
       });
-  }
 
-  // === Checkout ===
-  checkoutBtn.onclick = () => {
-    const contactNumber = document.getElementById('contact-number').value.trim();
-    const address = document.getElementById('address').value.trim();
-
-    if (!contactNumber || !address) {
-      showNotification('⚠️ Please enter both contact number and address.');
-      return;
+      totalEl.textContent = `Total: NPR ${total.toFixed(2)}`;
     }
 
-    const cart = loadCart();
-    if (cart.length === 0) {
-      showNotification('🛒 Your cart is empty.');
-      return;
+    function changeQty(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
     }
 
-    const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
 
-    sendOrderEmail(cart, contactNumber, address, total);
-    alert('✅ Thank you for your order! Payment will be collected on delivery.');
-    localStorage.removeItem('cart');
+    function placeOrder() {
+      const contact = contactInput.value.trim();
+      const address = addressInput.value.trim();
+
+      if (!contact || !address) {
+        alert("⚠️ Please enter contact number and address!");
+        return;
+      }
+
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      const newOrder = {
+        id: Date.now(),
+        items: cart,
+        contact,
+        address,
+        status: "Pending",
+        date: new Date().toLocaleString(),
+      };
+
+      pendingOrders.push(newOrder);
+      localStorage.setItem("pendingOrders", JSON.stringify(pendingOrders));
+
+      cart = [];
+      localStorage.removeItem("cart");
+      renderCart();
+      renderPending();
+      contactInput.value = "";
+      addressInput.value = "";
+      alert("✅ Order placed successfully! Status: Pending");
+    }
+
+    function renderPending() {
+      pendingList.innerHTML = "";
+      if (pendingOrders.length === 0) {
+        pendingList.innerHTML = "<p>No pending orders.</p>";
+      }
+
+      pendingOrders.forEach((order) => {
+        const div = document.createElement("div");
+        div.classList.add("pending-item");
+        div.innerHTML = `
+          <p><strong>Order ID:</strong> ${order.id}</p>
+          <p><strong>Date:</strong> ${order.date}</p>
+          <p><strong>Status:</strong> ${order.status}</p>
+          <p><strong>Contact:</strong> ${order.contact}</p>
+          <p><strong>Address:</strong> ${order.address}</p>
+          <p><strong>Items:</strong></p>
+          <ul>
+            ${order.items
+              .map(
+                (i) =>
+                  `<li>${i.name} (${i.size}, ${i.color}) - ${i.quantity}x NPR ${i.price}</li>`
+              )
+              .join("")}
+          </ul>
+          <button class="cancel-btn" onclick="cancelOrder(${order.id})">Cancel Order</button>
+        `;
+        pendingList.appendChild(div);
+      });
+    }
+
+    function cancelOrder(orderId) {
+      const confirmCancel = confirm("Are you sure you want to cancel this order?");
+      if (!confirmCancel) return;
+
+      pendingOrders = pendingOrders.filter((o) => o.id !== orderId);
+      localStorage.setItem("pendingOrders", JSON.stringify(pendingOrders));
+      renderPending();
+      alert("❌ Order cancelled successfully.");
+    }
+
+    document.getElementById("place-order-btn").addEventListener("click", placeOrder);
+
     renderCart();
-  };
-
-  // === Search Bar ===
-  const allProducts = [
-    { id: 'shoe1', name: 'Men Classic Leather Shoes', price: 2800 },
-    { id: 'shoe2', name: 'Women Elegant Sandals', price: 2400 },
-    { id: 'shoe3', name: 'Kids Sporty Sneakers', price: 2100 },
-    { id: 'slipper1', name: 'Men Comfortable Slippers', price: 1200 },
-    { id: 'gumboot1', name: 'Durable Gumboots for Rain', price: 2900 },
-    { id: 'sock1', name: 'Pack of Cotton Socks', price: 600 }
-  ];
-
-  document.getElementById('search-input').addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-      const query = e.target.value.toLowerCase();
-      const match = allProducts.find(p => p.name.toLowerCase().includes(query));
-      if (match) window.location.href = `product.html?id=${match.id}`;
-      else showNotification('No product found.');
-    }
-  });
-
-  // === Init ===
-  document.addEventListener('DOMContentLoaded', () => {
-    renderCart();
-    updateCartCount();
-  });
-</script>
+    renderPending();
+  </script>
 </body>
 </html>
