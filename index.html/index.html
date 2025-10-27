@@ -1,283 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prakash Shoe Center - Home</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background-color: #f7f7f7;
-      color: #333;
-    }
-    header {
-      background-color: #222;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      padding: 0;
-      margin: 0;
-      align-items: center;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #ffcc00;
-    }
-    #auth-buttons button {
-      background-color: #4285F4;
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      margin-left: 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-    #auth-buttons button:hover {
-      background-color: #357ae8;
-    }
-    #user-info {
-      color: #ffcc00;
-      font-weight: 600;
-    }
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(to right, #ffa726, #ff7043);
-      color: white;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    .category-section {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-    .category-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      text-decoration: none;
-      color: #333;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-align: center;
-    }
-    .category-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
-    .category-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-bottom: 1px solid #eee;
-    }
-    .category-card h3 {
-      margin: 15px;
-      font-size: 1.2rem;
-      color: #111;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #222;
-      color: white;
-      margin-top: 2rem;
-    }
-  </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Prakash Shoe Center</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <header>
-    <div class="logo">Prakash Shoe Center</div>
+  <!-- Header (unified) -->
+  <header class="header">
+    <div class="left">
+      <a class="logo" href="index.html">Prakash Shoe Center</a>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-          <a href="shoes.html">Shoes</a>
-        </li>
-        <li>
-          <a href="slippers.html">Slippers</a>
-        </li>
-        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
-        <li id="auth-buttons">
-         <a href="login.html">Login / Sign Up</a>
-
-          <button id="logout-btn" style="display:none;">Logout</button>
-        </li>
-      </ul>
+      <a href="shoe.html">Shoes</a>
+      <a href="sandals.html">Sandals</a>
+      <a href="gumboot.html">Gumboots</a>
+      <a href="slippers.html">Slippers</a>
+      <a href="socks.html">Socks</a>
+      <a href="cart.html" class="cart-badge">Cart 🛒 (<span data-cart-count>0</span>)</a>
     </nav>
   </header>
-  <div class="maintenance-notice">
-  🚧 Our website is currently under maintenance. Some features may not work properly. Thank you for your patience!
-</div>
-<style>
-  .maintenance-notice {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
-  color: white;
-  text-align: center;
-  padding: 12px 20px;
-  font-weight: 600;
-  font-size: 16px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  z-index: 9999;
-  animation: slideDown 0.6s ease forwards;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
-/* Push body content down so notice doesn't hide it */
-body {
-  padding-top: 50px; /* adjust if needed */
-}
-
-/* Slide down animation */
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-</style>
-
-  <main>
-    <section class="hero">
-      <h1>Welcome to Prakash Shoe Center</h1>
-      <p>Your one-stop destination for stylish, comfortable, and affordable footwear.</p>
-      <p id="user-info"></p>
+  <main class="container">
+    <section class="card">
+      <h1 style="margin-bottom:12px">Welcome to Prakash Shoe Center</h1>
+      <p class="text-muted">Quality footwear at great prices — browse the categories below.</p>
     </section>
 
-    <section class="category-section">
-      <a href="shoes.html" class="category-card">
-        <img src="https://www.dtlr.com/cdn/shop/articles/FQ8138-002-D_1200x1200.jpg?v=1730929173" alt="Shoes" />
-        <h3>Shoes</h3>
-      </a>
-      <a href="slippers.html" class="category-card">
-        <img src="https://static-01.daraz.com.np/p/1b4784fad397bc9da6558542991d9cd3.jpg" alt="Slippers" />
-        <h3>Slippers</h3>
-      </a>
-      <a href="sandals.html" class="category-card">
-        <img src="https://ng.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/88/0920763/1.jpg?5507" alt="Sandals" />
-        <h3>Sandals</h3>
-      </a>
-      <a href="gumboots.html" class="category-card">
-        <img src="https://aaasafedubai.com/wp-content/uploads/2024/03/gumboots-4-600x600.jpg" alt="Gumboots" />
-        <h3>Gumboots</h3>
-      </a>
-      <a href="football-boots.html" class="category-card">
-        <img src="https://m.media-amazon.com/images/I/71K9Ok8mKmL._AC_UY900_DpWeblab_.jpg" alt="Football Boots" />
-        <h3>Football Boots</h3>
-      </a>
-      <a href="socks.html" class="category-card">
-        <img src="https://havanasocks.net/cdn/shop/files/1F097FB4-32CD-42C2-88FC-E2C76D05FD3B.jpg?v=1692930587" alt="Socks" />
-        <h3>Socks</h3>
-      </a>
+    <section style="margin-top:20px" class="container">
+      <div class="card">
+        <h2>Featured Products</h2>
+        <div id="featured-grid" class="products-grid" style="margin-top:14px;"></div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Prakash Shoe Center. All rights reserved.</p>
+  <footer style="text-align:center;padding:18px 6px;color:#6b7280;">
+    © <span id="year"></span> Prakash Shoe Center — Contact: prakashshoecenter767@gmail.com
   </footer>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+  <div id="toast" class="toast" aria-live="polite"></div>
 
+  <script src="store-data.js"></script>
   <script>
-    // Your Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyD7BEAZauRmDhiOcTuIwbpikBo10xlKoEc",
-      authDomain: "prakash-shoe-center.firebaseapp.com",
-      projectId: "prakash-shoe-center",
-      storageBucket: "prakash-shoe-center.appspot.com",
-      messagingSenderId: "265395152148",
-      appId: "1:265395152148:web:26143fbaf3f0bb082cce01"
-    };
-
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-
-    const loginBtn = document.getElementById('login-btn');
-    const logoutBtn = document.getElementById('logout-btn');
-    const userInfo = document.getElementById('user-info');
-    const cartCountSpan = document.getElementById('cart-count');
-
-    // Update cart count on load
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cartCountSpan.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-    // Login handler
-    loginBtn.addEventListener('click', () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          const user = result.user;
-          userInfo.textContent = `Logged in as ${user.displayName} (${user.email})`;
-          loginBtn.style.display = 'none';
-          logoutBtn.style.display = 'inline-block';
-        })
-        .catch((error) => {
-          alert('Login failed: ' + error.message);
-        });
-    });
-
-    // Logout handler
-    logoutBtn.addEventListener('click', () => {
-      auth.signOut().then(() => {
-        userInfo.textContent = '';
-        loginBtn.style.display = 'inline-block';
-        logoutBtn.style.display = 'none';
+    // render featured product grid from store-data
+    (function(){
+      const target = document.getElementById('featured-grid');
+      const products = window.__STORE_PRODUCTS || [];
+      // show first 6
+      products.slice(0,6).forEach(p => {
+        const card = document.createElement('a');
+        card.className = 'product-card';
+        card.href = `product.html?id=${p.id}`;
+        card.innerHTML = `
+          <img src="${p.image || window.__STORE_FALLBACK_IMAGE}" alt="${p.name}" onerror="this.onerror=null;this.src='${window.__STORE_FALLBACK_IMAGE}'">
+          <h3>${p.name}</h3>
+          <p class="price">NPR ${Number(p.price).toFixed(0)}</p>
+        `;
+        target.appendChild(card);
       });
-    });
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-    // On auth state change (persist login)
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        userInfo.textContent = `Logged in as ${user.displayName} (${user.email})`;
-        loginBtn.style.display = 'none';
-        logoutBtn.style.display = 'inline-block';
-      } else {
-        userInfo.textContent = '';
-        loginBtn.style.display = 'inline-block';
-        logoutBtn.style.display = 'none';
-      }
-    });
+      // update nav cart count
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      document.querySelectorAll('[data-cart-count]').forEach(e => e.textContent = cart.reduce((s,i)=>s+(i.quantity||0),0));
+    })();
   </script>
-
-
 </body>
 </html>
-
