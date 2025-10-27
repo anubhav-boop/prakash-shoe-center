@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prakash Shoe Center | Quality Footwear for Everyone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prakash Shoe Center - Home</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Home page hero and layout enhancements */
+    /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
-                  url("images/hero-bg.jpg") center/cover no-repeat;
+      position: relative;
+      background: linear-gradient(to right, #003366, #004d99);
       color: white;
+      padding: 80px 20px;
       text-align: center;
-      padding: 100px 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
     .hero h1 {
@@ -24,85 +26,100 @@
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 25px;
-      color: #f1f1f1;
     }
 
     .hero button {
-      background-color: #ff7b00;
-      padding: 12px 22px;
-      font-size: 1rem;
-      border-radius: 6px;
+      background: #ffcc00;
+      color: #003366;
+      font-weight: bold;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1.1rem;
       border: none;
-      color: white;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
 
     .hero button:hover {
-      background-color: #ff5500;
+      background: #ffaa00;
     }
 
-    /* Featured section */
+    /* Section Titles */
     .section-title {
       text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
+      margin: 50px 0 20px;
+      font-size: 2rem;
       color: #004d99;
-      margin: 40px 0 20px;
+      font-weight: bold;
+      position: relative;
     }
 
-    .featured-grid {
+    .section-title::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: #0073e6;
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 5px;
+    }
+
+    /* Product Section */
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
-      padding: 0 20px 40px;
+      padding: 0 20px;
     }
 
-    .featured-card {
+    .product-card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
-    .featured-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    .product-card:hover {
+      transform: translateY(-5px);
     }
 
-    .featured-card img {
+    .product-card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
     }
 
-    .featured-card h3 {
-      color: #004d99;
-      margin: 10px 0 5px;
+    .product-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-info h3 {
       font-size: 1.1rem;
+      color: #003366;
+      margin-bottom: 8px;
     }
 
-    .featured-card p {
+    .product-info p {
       color: #e63946;
-      font-weight: 700;
-      margin-bottom: 10px;
+      font-weight: 600;
     }
 
-    .featured-card a {
-      display: inline-block;
-      margin-bottom: 15px;
-      padding: 8px 16px;
-      background: #0073e6;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .featured-card a:hover {
+    .view-btn {
       background: #004d99;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .view-btn:hover {
+      background: #0073e6;
     }
 
     /* Footer */
@@ -110,110 +127,97 @@
       background: #004d99;
       color: white;
       text-align: center;
-      padding: 25px 10px;
-      font-size: 0.95rem;
-    }
-
-    footer a {
-      color: #ffcc00;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .login-btn {
-      background: #ff7b00;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .login-btn:hover {
-      background: #ff5500;
+      padding: 20px;
+      margin-top: 60px;
+      border-radius: 20px 20px 0 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="logo">👟 Prakash Shoe Center</div>
     <nav>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Categories</a>
-          <ul class="dropdown-menu">
-            <li><a href="men.html">Men</a></li>
-            <li><a href="women.html">Women</a></li>
-            <li><a href="kids.html">Kids</a></li>
-            <li><a href="socks.html">Socks</a></li>
-            <li><a href="slipper.html">Slippers</a></li>
-            <li><a href="gumboot.html">Gumboots</a></li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="cart.html">🛒 Cart</a></li>
+        <li><a href="socks.html">Socks</a></li>
+        <li><a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a></li>
       </ul>
     </nav>
-    <button class="login-btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Banner -->
   <section class="hero">
-    <h1>Step into Comfort and Style</h1>
-    <p>Find the perfect pair for every occasion — durable, stylish, and affordable.</p>
-    <button onclick="window.location.href='men.html'">Shop Now</button>
+    <h1>🔥 New Drop Just Arrived!</h1>
+    <p>Step up your style with our latest footwear collection. Special discounts up to 30% off 🎉</p>
+    <button onclick="window.location.href='product.html'">Shop Now</button>
   </section>
 
   <!-- Featured Products -->
-  <h2 class="section-title">🔥 Featured Products</h2>
-  <div class="featured-grid">
-    <div class="featured-card">
-      <img src="images/shoe1.jpg" alt="Leather Shoes">
-      <h3>Men Classic Leather Shoes</h3>
-      <p>NPR 2800</p>
-      <a href="product.html?id=shoe1">View Details</a>
-    </div>
+  <section>
+    <h2 class="section-title">Best Sellers</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71eUwDk8z+L._AC_UY1000_.jpg" alt="Jordan Shoes">
+        <div class="product-info">
+          <h3>Air Jordan Retro</h3>
+          <p>NPR 6,500</p>
+          <button class="view-btn" onclick="window.location.href='product.html'">View Details</button>
+        </div>
+      </div>
 
-    <div class="featured-card">
-      <img src="images/shoe2.jpg" alt="Sandals">
-      <h3>Women Elegant Sandals</h3>
-      <p>NPR 2400</p>
-      <a href="product.html?id=shoe2">View Details</a>
-    </div>
+      <div class="product-card">
+        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/764fd6c2-f9d2-49e4-b40e-2cc4691a806e/air-force-1-07-shoes-WrLlWX.png" alt="Nike Air">
+        <div class="product-info">
+          <h3>Nike Air Force 1</h3>
+          <p>NPR 7,200</p>
+          <button class="view-btn" onclick="window.location.href='product.html'">View Details</button>
+        </div>
+      </div>
 
-    <div class="featured-card">
-      <img src="images/gumboot1.jpg" alt="Gumboots">
-      <h3>Durable Gumboots for Rain</h3>
-      <p>NPR 2900</p>
-      <a href="product.html?id=gumboot1">View Details</a>
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2023/4/301979808/TS/HD/MI/22095294/gents-casual-shoes.jpg" alt="Casual Shoes">
+        <div class="product-info">
+          <h3>Casual Everyday</h3>
+          <p>NPR 3,800</p>
+          <button class="view-btn" onclick="window.location.href='product.html'">View Details</button>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="featured-card">
-      <img src="images/sock1.jpg" alt="Socks">
-      <h3>Cotton Socks Pack</h3>
-      <p>NPR 600</p>
-      <a href="socks-product.html?id=sock1">View Details</a>
+  <!-- Discount Section -->
+  <section>
+    <h2 class="section-title">🎉 Special Discount Week!</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/81t6ra0BRsL._AC_UL1500_.jpg" alt="Formal Shoes">
+        <div class="product-info">
+          <h3>Formal Leather Shoes</h3>
+          <p><del>NPR 4,500</del> <span style="color:green;">NPR 3,800</span></p>
+          <button class="view-btn" onclick="window.location.href='product.html'">Buy Now</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71pDSF+v4AL._AC_UL1500_.jpg" alt="Gumboots">
+        <div class="product-info">
+          <h3>Heavy Duty Gumboots</h3>
+          <p><del>NPR 3,000</del> <span style="color:green;">NPR 2,300</span></p>
+          <button class="view-btn" onclick="window.location.href='gumboot-product.html'">Buy Now</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 Prakash Shoe Center. All Rights Reserved.</p>
-    <p>
-      Visit us on 
-      <a href="https://facebook.com" target="_blank">Facebook</a> |
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-    </p>
+    © 2025 Prakash Shoe Center | All Rights Reserved
   </footer>
+
+  <script>
+    // Simple cart count display
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').innerText = cart.length;
+  </script>
 
 </body>
 </html>
