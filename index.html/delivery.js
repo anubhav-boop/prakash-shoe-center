@@ -1,57 +1,52 @@
-import app from './firebase-config.js';
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+// delivery.js - places order into firestore if configured, else only local pending
+(async function(){
+  // helper for optional Firestore integration if you implemented helper addOrderToFirestore
+  const addOrderToFirestore = window.addOrderToFirestore || null;
 
-const db = getFirestore(app);
+  const form = document.getElementById('delivery-form');
+  const orderStatus = document.getElementById('order-status');
 
-const form = document.getElementById('delivery-form');
-const orderStatus = document.getElementById('order-status');
+  if(!form) return;
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('phone').value.trim();
+    const address = document.getElementById('address').value.trim();
+    if(!phone || !address){ orderStatus.innerText = 'Please fill all fields.'; return; }
 
-  // Get phone and address input
-  const phone = document.getElementById('phone').value.trim();
-  const address = document.getElementById('address').value.trim();
+    const user = JSON.parse(localStorage.getItem('user')) || { uid:'guest', name:'Guest', email:'' };
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if(!cart.length){ orderStatus.innerText = 'Your cart is empty.'; return; }
 
-  if (!phone || !address) {
-    orderStatus.innerText = "Please fill all fields.";
-    return;
-  }
-
-  // Get user info from localStorage
-  const user = JSON.parse(localStorage.getItem('user'));
-  if (!user) {
-    orderStatus.innerText = "User not logged in. Please login first.";
-    return;
-  }
-
-  // Get cart from localStorage
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  if (cart.length === 0) {
-    orderStatus.innerText = "Your cart is empty.";
-    return;
-  }
-
-  // Save order to Firestore
-  try {
-    await addDoc(collection(db, "orders"), {
+    const order = {
+      id: 'ORD-'+Date.now(),
       userId: user.uid,
       userName: user.name,
-      userEmail: user.email,
-      phone: phone,
-      address: address,
+      userEmail: user.email || '',
+      phone, address,
       cartItems: cart,
-      status: "pending",
+      status: 'pending',
       orderDate: new Date().toISOString()
-    });
+    };
 
-    // Clear cart
-    localStorage.removeItem('cart');
+    try {
+      // Save to local pending orders
+      const pending = JSON.parse(localStorage.getItem('pendingOrders')) || [];
+      pending.push(order);
+      localStorage.setItem('pendingOrders', JSON.stringify(pending));
 
-    orderStatus.innerText = "Order placed successfully! We will contact you soon.";
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    orderStatus.innerText = "Failed to place order. Please try again.";
-  }
-});
+      // If you provided an addOrderToFirestore helper, call it
+      if(typeof addOrderToFirestore === 'function'){
+        await addOrderToFirestore(order);
+      }
+
+      // Clear cart
+      localStorage.removeItem('cart');
+      orderStatus.innerText = 'Order placed successfully! We will contact you soon.';
+      form.reset();
+    } catch(err){
+      console.error(err);
+      orderStatus.innerText = 'Failed to place order. Please try again.';
+    }
+  });
+})();
