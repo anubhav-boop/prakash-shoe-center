@@ -1,69 +1,86 @@
-// 🛍 Example product list (you can expand this)
-const products = {
-  shoe1: {
+// 🛍 Example product list (you can expand this)// product.js
+const products = [
+  {
+    id: "shoe1",
     name: "Men Classic Leather Shoes",
-    price: 4500,
+    price: 2800,
     image: "images/shoe1.jpg",
   },
-  shoe2: {
-    name: "Jordan Air Sneakers",
-    price: 5500,
+  {
+    id: "shoe2",
+    name: "Women Elegant Sandals",
+    price: 2400,
     image: "images/shoe2.jpg",
   },
-  shoe3: {
-    name: "Adidas Sports Runner",
-    price: 6000,
+  {
+    id: "shoe3",
+    name: "Kids Sporty Sneakers",
+    price: 2100,
     image: "images/shoe3.jpg",
   },
-};
+  {
+    id: "slipper1",
+    name: "Men Comfortable Slippers",
+    price: 1200,
+    image: "images/slipper1.jpg",
+  },
+  {
+    id: "gumboot1",
+    name: "Durable Gumboots for Rain",
+    price: 2900,
+    image: "images/gumboot1.jpg",
+  },
+  {
+    id: "sock1",
+    name: "Pack of Cotton Socks",
+    price: 600,
+    image: "images/sock1.jpg",
+  },
+];
 
-// 🧭 Get product ID from URL
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get("id");
-const product = products[productId];
+// Get product ID from URL
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
 
-// 🧾 Elements
-const nameEl = document.getElementById("product-name");
-const priceEl = document.getElementById("product-price");
-const imageEl = document.getElementById("product-image");
-const addBtn = document.getElementById("add-to-cart-btn");
+// Find product by ID
+const product = products.find((p) => p.id === productId);
+
+// Display product info
+if (product) {
+  document.getElementById("product-image").src = product.image;
+  document.getElementById("product-name").textContent = product.name;
+  document.getElementById("product-price").textContent = `NPR ${product.price}`;
+}
+
+// Enable add button when size & color selected
 const sizeSelect = document.getElementById("size-select");
 const colorSelect = document.getElementById("color-select");
-const cartCountEl = document.getElementById("cart-count");
+const addBtn = document.getElementById("add-to-cart-btn");
 
-// 🧠 Display product details
-if (product) {
-  nameEl.textContent = product.name;
-  priceEl.textContent = `Price: NPR ${product.price}`;
-  imageEl.src = product.image;
-} else {
-  document.querySelector(".product-detail").innerHTML = "<p>Product not found.</p>";
+function checkForm() {
+  addBtn.disabled = !(sizeSelect.value && colorSelect.value);
 }
 
-// 🛒 Enable button when size & color selected
-function updateButtonState() {
-  addBtn.disabled = !sizeSelect.value || !colorSelect.value;
-}
-sizeSelect.addEventListener("change", updateButtonState);
-colorSelect.addEventListener("change", updateButtonState);
+sizeSelect.addEventListener("change", checkForm);
+colorSelect.addEventListener("change", checkForm);
 
-// 📦 Add to Cart
+// Add to cart
 addBtn.addEventListener("click", () => {
-  if (!product) return;
-
   const size = sizeSelect.value;
   const color = colorSelect.value;
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // check if already in cart (same name, size, color)
+  // Check if same product with same size/color already exists
   const existing = cart.find(
-    (item) => item.name === product.name && item.size === size && item.color === color
+    (item) => item.id === product.id && item.size === size && item.color === color
   );
 
   if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({
+      id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
@@ -74,15 +91,5 @@ addBtn.addEventListener("click", () => {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  alert("✅ Added to cart successfully!");
+  alert(`${product.name} added to cart!`);
 });
-
-// 🔢 Update cart count (top right)
-function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCountEl.textContent = count;
-}
-
-updateCartCount();
