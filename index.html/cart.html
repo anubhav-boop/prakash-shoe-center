@@ -21,6 +21,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .logo {
@@ -41,10 +42,6 @@
     text-decoration: none;
   }
 
-  .nav-links li {
-    position: relative;
-  }
-
   .dropdown-menu {
     display: none;
     position: absolute;
@@ -59,7 +56,7 @@
   }
 
   input#search-input {
-    padding: 5px;
+    padding: 6px;
     margin-left: 20px;
     border-radius: 5px;
     border: none;
@@ -123,7 +120,6 @@
     font-size: 1em;
   }
 
-  /* Simple notification */
   .notification {
     position: fixed;
     top: 10px;
@@ -151,7 +147,7 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
   (function() {
-    emailjs.init("Zsj5PqasAnS6hddBQ"); // Your EmailJS Public Key
+    emailjs.init("Zsj5PqasAnS6hddBQ"); // ⚠️ Replace with your EmailJS Public Key
   })();
 </script>
 
@@ -195,23 +191,24 @@
   </section>
 </main>
 
-<!-- Notification -->
 <div id="notification" class="notification"></div>
 
 <script>
-  // === Utility: Notification ===
+  // === Notification ===
   function showNotification(message, duration = 3000) {
     const notification = document.getElementById('notification');
     notification.textContent = message;
     notification.style.display = 'block';
-    setTimeout(() => {
-      notification.style.display = 'none';
-    }, duration);
+    setTimeout(() => notification.style.display = 'none', duration);
   }
 
-  // === Local Storage Handling ===
+  // === Cart Storage ===
   function loadCart() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
+    try {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    } catch {
+      return [];
+    }
   }
 
   function saveCart(cart) {
@@ -221,7 +218,7 @@
 
   function updateCartCount() {
     const cart = loadCart();
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
     document.getElementById('cart-count').textContent = count;
   }
 
@@ -246,14 +243,14 @@
     let total = 0;
 
     cart.forEach((item, index) => {
-      total += item.price * item.quantity;
+      total += (item.price || 0) * (item.quantity || 1);
 
       const itemDiv = document.createElement('div');
       itemDiv.className = 'cart-item';
       itemDiv.innerHTML = `
         <div>
           <strong>${item.name}</strong><br />
-          Size: ${item.size} | Color: ${item.color}<br />
+          ${item.size ? `Size: ${item.size} | ` : ''}${item.color ? `Color: ${item.color}` : ''}<br />
           Price: NPR ${item.price}<br />
           Quantity:
           <button class="qty-btn" data-index="${index}" data-action="decrease">-</button>
@@ -267,11 +264,11 @@
 
     totalPriceEl.textContent = total.toFixed(2);
 
-    // === Quantity Buttons ===
+    // Quantity update
     document.querySelectorAll('.qty-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const idx = e.target.dataset.index;
-        const action = e.target.dataset.action;
+      btn.onclick = () => {
+        const idx = btn.dataset.index;
+        const action = btn.dataset.action;
         const cart = loadCart();
 
         if (action === 'increase') cart[idx].quantity++;
@@ -279,45 +276,45 @@
 
         saveCart(cart);
         renderCart();
-      });
+      };
     });
 
-    // === Remove Buttons ===
+    // Remove item
     document.querySelectorAll('.remove-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const idx = e.target.dataset.index;
-        let cart = loadCart();
+      btn.onclick = () => {
+        const idx = btn.dataset.index;
+        const cart = loadCart();
         cart.splice(idx, 1);
         saveCart(cart);
         renderCart();
         showNotification('Item removed from cart.');
-      });
+      };
     });
 
     updateCartCount();
   }
 
-  // === EmailJS: Send Order ===
+  // === EmailJS Order Send ===
   function sendOrderEmail(cart, contactNumber, address, total) {
     const productDetails = cart.map(item => `${item.name} (x${item.quantity}) - NPR ${item.price}`).join(', ');
     const templateParams = {
       product_name: productDetails,
-      contact_number: contactNumber || "Not provided",
-      address: address || "Not provided",
-      message: `New order received. Total NPR ${total}`
+      contact_number: contactNumber,
+      address: address,
+      total_amount: total
     };
 
     emailjs.send("service_zf3pwqo", "template_lq8n8b3", templateParams)
-      .then(response => {
-        console.log("✅ Email sent successfully!", response.status, response.text);
+      .then(() => {
+        showNotification('✅ Order email sent successfully!');
       })
-      .catch(error => {
-        console.error("❌ Email failed to send:", error);
+      .catch(() => {
+        showNotification('❌ Failed to send order email.');
       });
   }
 
   // === Checkout ===
-  checkoutBtn.addEventListener('click', () => {
+  checkoutBtn.onclick = () => {
     const contactNumber = document.getElementById('contact-number').value.trim();
     const address = document.getElementById('address').value.trim();
 
@@ -327,14 +324,18 @@
     }
 
     const cart = loadCart();
+    if (cart.length === 0) {
+      showNotification('🛒 Your cart is empty.');
+      return;
+    }
+
     const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
-    alert('✅ Thank you for your order! Payment will be collected on delivery.');
     sendOrderEmail(cart, contactNumber, address, total);
+    alert('✅ Thank you for your order! Payment will be collected on delivery.');
     localStorage.removeItem('cart');
     renderCart();
-    showNotification('Order placed successfully!');
-  });
+  };
 
   // === Search Bar ===
   const allProducts = [
@@ -346,12 +347,12 @@
     { id: 'sock1', name: 'Pack of Cotton Socks', price: 600 }
   ];
 
-  const searchInput = document.getElementById('search-input');
-  searchInput.addEventListener('keypress', e => {
+  document.getElementById('search-input').addEventListener('keypress', e => {
     if (e.key === 'Enter') {
       const query = e.target.value.toLowerCase();
       const match = allProducts.find(p => p.name.toLowerCase().includes(query));
       if (match) window.location.href = `product.html?id=${match.id}`;
+      else showNotification('No product found.');
     }
   });
 
