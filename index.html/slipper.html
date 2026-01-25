@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slippers | Prakash Shoe Center</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f5f5f5}
+header{background:#000;color:#fff;padding:15px;text-align:center}
+.container{text-align:center;padding:50px 20px}
+.brands{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;max-width:800px;margin:auto
+}
+.brand{
+  background:#fff;padding:30px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  opacity:0;animation:fadeUp .8s forwards
+}
+.brand:nth-child(1){animation-delay:.1s}
+.brand:nth-child(2){animation-delay:.2s}
+.brand:nth-child(3){animation-delay:.3s}
+.brand:nth-child(4){animation-delay:.4s}
+
+@keyframes fadeUp{
+  from{transform:translateY(30px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<header><h1>Slippers Brands</h1></header>
+
+<div class="container">
+  <h2>Select Brand</h2>
+  <div class="brands">
+    <div class="brand">Kittoo</div>
+    <div class="brand">Nike</div>
+    <div class="brand">Crocs</div>
+    <div class="brand">Easy Slide</div>
+  </div>
+</div>
+
+</body>
+</html>
