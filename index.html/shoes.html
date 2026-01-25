@@ -16,11 +16,18 @@ header{background:#000;color:#fff;padding:15px;text-align:center}
   gap:20px;max-width:800px;margin:auto
 }
 .brand{
-  background:#fff;padding:30px;
+  background:#fff;
+  padding:30px;
   border-radius:15px;
   box-shadow:0 5px 15px rgba(0,0,0,.1);
-  opacity:0;animation:fadeUp .8s forwards
+  text-decoration:none;
+  color:#222;
+  opacity:0;
+  animation:fadeUp .8s forwards;
+  transition:.3s;
 }
+.brand:hover{transform:translateY(-5px)}
+
 .brand:nth-child(1){animation-delay:.1s}
 .brand:nth-child(2){animation-delay:.2s}
 .brand:nth-child(3){animation-delay:.3s}
@@ -35,15 +42,18 @@ header{background:#000;color:#fff;padding:15px;text-align:center}
 
 <body>
 
-<header><h1>Shoes Brands</h1></header>
+<header>
+  <h1>Shoes Brands</h1>
+</header>
 
 <div class="container">
   <h2>Select Brand</h2>
+
   <div class="brands">
-    <div class="brand">Nike</div>
-    <div class="brand">Adidas</div>
-    <div class="brand">Converse</div>
-    <div class="brand">Jordan</div>
+    <a class="brand" href="shoes-product.html?brand=Nike">Nike</a>
+    <a class="brand" href="shoes-product.html?brand=Adidas">Adidas</a>
+    <a class="brand" href="shoes-product.html?brand=Converse">Converse</a>
+    <a class="brand" href="shoes-product.html?brand=Jordan">Jordan</a>
   </div>
 </div>
 
