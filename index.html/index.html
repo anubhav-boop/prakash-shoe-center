@@ -4,56 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prakash Shoe Center</title>
-<style>
-/* --- Reset & Base --- */
-* {margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif;}
-body {background: #f5f5f5; color: #222;}
-a {text-decoration: none; color: inherit;}
-img {max-width: 100%; display: block;}
-
-/* --- Header --- */
-header {background:#000; color:#fff; padding:15px 20px; display:flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index:100;}
-header h1 {font-size:1.5rem;}
-nav a {color:#fff; margin-left:15px; font-weight: bold; transition:0.3s;}
-nav a:hover {color:#ffb703;}
-
-/* --- Hero Section --- */
-.hero {min-height:80vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:40px 20px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77") center/cover no-repeat; color:#fff;}
-.hero h2 {font-size:2.5rem; margin-bottom:15px;}
-.hero p {font-size:1.1rem; margin-bottom:25px; line-height:1.5;}
-.hero a {background:#ffb703; color:#000; padding:12px 28px; border-radius:25px; font-weight:bold; display:inline-block; transition:0.3s;}
-.hero a:hover {background:#e6a700;}
-
-/* --- Categories Section --- */
-section {padding:60px 20px; text-align:center;}
-section h3 {font-size:2rem; margin-bottom:40px;}
-.categories {display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:25px; max-width:1100px; margin:auto;}
-.card {background:#fff; padding:25px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; cursor:pointer;}
-.card:hover {transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
-.card img {border-radius:10px; margin-bottom:15px;}
-.card h4 {margin-bottom:10px; font-size:1.2rem;}
-
-/* --- Features Section --- */
-.features {display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; max-width:1000px; margin:50px auto;}
-.feature-card {background:#fff; padding:25px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-.feature-card h4 {margin-bottom:10px; font-size:1.2rem;}
-
-/* --- Contact Section --- */
-#contact p {margin:8px 0; font-size:1rem;}
-
-/* --- Footer --- */
-footer {background:#000; color:#fff; text-align:center; padding:20px; font-size:.85rem;}
-
-/* --- Responsive --- */
-@media(max-width:768px){
-    .hero h2 {font-size:2rem;}
-    nav a {margin-left:10px; font-size:0.9rem;}
-}
-@media(max-width:480px){
-    .hero h2 {font-size:1.6rem;}
-    .hero p {font-size:1rem;}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -69,13 +21,13 @@ footer {background:#000; color:#fff; text-align:center; padding:20px; font-size:
 </header>
 
 <!-- Hero Section -->
-<div class="hero">
-  <div>
-    <h2>Quality Shoes for Every Step</h2>
-    <p>Stylish, Comfortable, Affordable Shoes for Men, Women, Kids & Party Wear</p>
-    <a href="#categories">Shop Now</a>
+<section class="hero">
+  <div class="hero-content">
+    <h2>Step Into Style</h2>
+    <p>Stylish, Comfortable, and Trendy Shoes for Men, Women, and Kids</p>
+    <a class="cta-btn" href="#categories">Shop Now</a>
   </div>
-</div>
+</section>
 
 <!-- Categories Section -->
 <section id="categories">
@@ -84,43 +36,43 @@ footer {background:#000; color:#fff; text-align:center; padding:20px; font-size:
     <a class="card" href="menshoe-product.html">
       <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519" alt="Men Shoes">
       <h4>Men Shoes</h4>
-      <p>Sports, Casual, Running Shoes</p>
+      <p>Sports, Casual, Running</p>
     </a>
     <a class="card" href="womenshoe-product.html">
       <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Women Shoes">
       <h4>Women Shoes</h4>
-      <p>Heels, Party Wear, Casual Shoes</p>
+      <p>Heels, Party, Casual</p>
     </a>
     <a class="card" href="kidshoe-product.html">
       <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" alt="Kids Shoes">
       <h4>Kids Shoes</h4>
-      <p>School Shoes, Sports Shoes</p>
+      <p>School & Sports</p>
     </a>
     <a class="card" href="partywear-product.html">
-      <img src="https://images.unsplash.com/photo-1585386959984-a41552299c05" alt="Party Wear Shoes">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552299c05" alt="Party Shoes">
       <h4>Party Wear Shoes</h4>
-      <p>Fancy, Stylish, Trendy</p>
+      <p>Fancy & Trendy</p>
     </a>
     <a class="card" href="gumboot-product.html">
       <img src="https://images.unsplash.com/photo-1606813901546-6b943d0ffcbf" alt="Gumboots">
       <h4>Gumboots</h4>
-      <p>Army, Rain, Dolphin & Magic</p>
+      <p>Rain, Army, Dolphin</p>
     </a>
     <a class="card" href="slipper-product.html">
       <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7" alt="Slippers">
       <h4>Slippers</h4>
-      <p>Kittoo, Nike, Crocs, Easy Slide</p>
+      <p>Kittoo, Nike, Crocs</p>
     </a>
   </div>
 </section>
 
-<!-- Features / Why Choose Us -->
-<section>
+<!-- Features Section -->
+<section class="features">
   <h3>Why Choose Us</h3>
-  <div class="features">
+  <div class="features-grid">
     <div class="feature-card">
       <h4>Premium Quality</h4>
-      <p>Durable, Comfortable Shoes for Daily Use</p>
+      <p>Durable and Comfortable Shoes for Daily Use</p>
     </div>
     <div class="feature-card">
       <h4>Affordable Prices</h4>
@@ -148,3 +100,4 @@ footer {background:#000; color:#fff; text-align:center; padding:20px; font-size:
 
 </body>
 </html>
+
