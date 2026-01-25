@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoe Products | Prakash Shoe Center</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5f5;
+  color:#222;
+}
+header{
+  background:#000;
+  color:#fff;
+  padding:15px;
+  text-align:center;
+}
+.container{
+  padding:50px 20px;
+  text-align:center;
+}
+.brand-title{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  max-width:900px;
+  margin:30px auto;
+}
+.product{
+  background:#fff;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+.product img{
+  width:100%;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+.back{
+  display:inline-block;
+  margin-top:20px;
+  text-decoration:none;
+  color:#000;
+  font-weight:bold;
+}
+.whatsapp{
+  display:inline-block;
+  margin-top:15px;
+  background:#25d366;
+  color:#fff;
+  padding:12px 25px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Prakash Shoe Center</h1>
+</header>
+
+<div class="container">
+  <div class="brand-title" id="brandName"></div>
+  <p>Available shoe models</p>
+
+  <div class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200" alt="Shoe">
+      <p>Sports Shoe</p>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200" alt="Shoe">
+      <p>Casual Shoe</p>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200" alt="Shoe">
+      <p>Running Shoe</p>
+    </div>
+  </div>
+
+  <a class="whatsapp" id="whatsappLink" target="_blank">
+    Order on WhatsApp
+  </a>
+  <br>
+  <a class="back" href="shoes.html">← Back to Brands</a>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const brand = params.get("brand") || "Shoes";
+
+document.getElementById("brandName").innerText =
+  "Showing products for: " + brand;
+
+document.getElementById("whatsappLink").href =
+  "https://wa.me/9779811252359?text=I%20want%20to%20buy%20" + brand + "%20shoes";
+</script>
+
+</body>
+</html>
 
