@@ -1,6 +1,4 @@
-/* ===============================
-   GENERAL STYLES
-================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -134,9 +132,11 @@ body {
 
 .category-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+  gap: 15px;
+  padding: 20px;
 }
+
 
 .category-card {
   background: #ffffff;
@@ -154,9 +154,28 @@ body {
 
 .category-card img {
   width: 100%;
-  border-radius: 16px;
-  margin-bottom: 15px;
+  height: 140px;        /* MOBILE size */
+  object-fit: contain; /* no crop, no stretch */
 }
+
+.category-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card h3 {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
 
 .category-card h3 {
   font-size: 20px;
@@ -256,4 +275,67 @@ footer {
   .hero-image-container {
     max-width: 400px;
   }
+  .site-footer {
+  background: #fff;
+  padding: 50px 20px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ff4fa3;
+}
+
+.footer-column a,
+.footer-column p {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  color: #ffcc00;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  font-size: 13px;
+  color: #666;
+}
+/* Tablets */
+@media (min-width: 768px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-card img {
+    height: 180px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .category-card img {
+    height: 220px;
+  }
+}
+
 }
