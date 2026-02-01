@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Shoes | Prakash Shoe Center</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fb;
+    }
+
+    .shop-wrapper {
+      padding: 30px 16px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .shop-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: #1f2a44;
+      margin-bottom: 6px;
+    }
+
+    .shop-subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* CARD */
+    .product-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      background: #f2f2f2;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+   .price {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #e53935;
+  font-weight: 600;
+}
+
+    .view-btn {
+      display: block;
+      text-align: center;
+      padding: 9px;
+      border-radius: 10px;
+      background: #1f2a44;
+      color: #ffffff;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .view-btn:hover {
+      background: #ffd54f;
+      color: #111;
+    }
+
+    /* TABLET */
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-card img {
+        height: 190px;
+      }
+    }
+
+    /* DESKTOP */
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .product-card img {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart</a>
+    </nav>
+  </header>
+
+  <!-- PRODUCTS -->
+  <section class="shop-wrapper">
+    <h1 class="shop-title">School Shoes</h1>
+    <p class="shop-subtitle">Comfort • Durability • Daily School Wear</p>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card">
+        <img src="https://imgs.search.brave.com/KGmvU7xZRvcTHQBD6l8-SwOQ2tYh3AAXtXoDMkbNV5o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYWls/b21hYS5jb20vYmFj/a2VuZC5kYWlsb21h/YS5jb20vQXNzZXQv/VXBsb2Fkcy9Qcm9k/dWN0cy82NzQ4NGU5/MWQ5NDA3LTUwMHg1/MDAuanBn" alt="School Shoe">
+        <div class="product-name">Playboy school shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 1,199</span>
+          <span class="new-price">Rs 999</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/8a385513ef3f6845ff777f036d95c98b.jpg" alt="School Shoe">
+        <div class="product-name">Playgirl School shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 1,100 </span>
+          <span class="new-price">Rs 950</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+        <img src="https://www.alnasser.pk/cdn/shop/files/S24-OS-SB350-BLACK_3_Copy_720x.jpg?v=1718433673" alt="School Shoe">
+        <div class="product-name">Leather School Shoe</div>
+        <p class="price">
+        </p><span class="old-price">Rs 599,799</span><br>
+          <span class="new-price">Size[6-13]=Rs 500</span><br>
+            <span class="new-price">Size[31-38]=Rs 700</span><br>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2024/4/411105709/II/UK/VA/108676670/ss-plain-black-500x500.jpg" alt="School Shoe">
+        <div class="product-name">Rexine school shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 499,599</span>
+          <span class="new-price">Small size=400 , medium size=500</span><br>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/ANDROID/Default/2024/2/386907293/FU/XP/OU/31745294/product-jpeg-250x250.jpg" alt="School Shoe">
+        <div class="product-name">Rexine school shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 499,599</span><br>
+          <span class="new-price">Small size=400,<br> medium size=500</span><br>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+       <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/e91e6111107c8caf7d9605fd81bec425.jpg" alt="School Shoe">
+        <div class="product-name">Goldstar school shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 450,500,550</span><br>
+          <span class="new-price">[6-13]small size=400,<br>
+            [1-5] medium size=450,<br>[5-10] large size=500</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+    </div>
+
+  </section>
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-column">
+      <h4>Prakash Shoe Center</h4>
+      <a href="aboutus.html">About Us</a>
+      <a href="brands.html">Brands</a>
+      <a href="location.html">Our Location</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Customer Service</h4>
+      <a href="contactus.html">Contact Us</a>
+      <a href="support.html">Customer Support</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Policies</h4>
+      <a href="refundpolicy.html">Refund Policy</a>
+      <a href="termsandcondition.html">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <p>📞 +977-9811252359</p>
+      <p>📧 prakashshoecenter767@gmail.com</p>
+      <p>📍 Hetauda 1, Rapti Road</p>
+      <a href="https://www.instagram.com/prakashshoecenter/" target="_blank">Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Prakash Shoe Center | Nepal
+  </div>
+</footer>
+
+</body>
+</html>
+  
+</body>
+</html>
+
+
