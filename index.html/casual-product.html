@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casual Shoes | Prakash Shoe Center</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* PAGE WRAPPER */
+    .shop-wrapper {
+      padding: 30px 16px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .shop-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2a44;
+    }
+
+    .shop-subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* PRODUCT CARD */
+    .product-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* IMAGE */
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      background: #f7f7f7;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+     .price {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #e53935;
+  font-weight: 600;
+}
+
+    .view-btn {
+      display: block;
+      text-align: center;
+      background: #1f2a44;
+      color: #fff;
+      padding: 8px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .view-btn:hover {
+      background: #ffd54f;
+      color: #111;
+    }
+
+    /* TABLET */
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+    }
+
+    /* DESKTOP */
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .product-card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart</a>
+    </nav>
+  </header>
+
+  <!-- SHOP SECTION -->
+  <section class="shop-wrapper">
+    <h1 class="shop-title">Casual Shoes</h1>
+    <p class="shop-subtitle">Daily Wear • Comfort • Style</p>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51Qn1Ey5YFL._AC_UF1000,1000_QL80_.jpg" alt="Casual Shoe">
+        <div class="product-name">Classic Casual Shoes</div>
+        <p class="price">
+          <span class="old-price">Rs 1,799</span>
+          <span class="new-price">Rs 1,399 </span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Rg3NAG2Ih6r89n63LkYmts7MWdUMJQi1_w&s" alt="Casual Shoe">
+        <div class="product-name">Men Everyday Casual Shoes</div>
+        <p class="price">
+          <span class="old-price">Rs 2,199</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/ECOM/Default/2024/7/436992001/KW/PH/ZW/124918422/dcuy4-512-500x500.webp" alt="Casual Shoe">
+        <div class="product-name">DailyPro Casual Shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 2,299</span>
+          <span class="new-price">Rs 1,899</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2025/1/478536631/AV/DC/GA/237597165/sos0007-500x500.png" alt="Casual Shoe">
+        <div class="product-name">Party wear shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 2,299</span>
+          <span class="new-price">Rs 2,199</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://funkytradition.com/cdn/shop/files/1_2019-Formal-Shoes-Men-Fashion-Black-Design-Wedding-Shoes-For-Men-Brand-Autumn-Footwear-New-Men.jpg?crop=center&height=694&v=1723517819&width=989" alt="Casual Shoe">
+        <div class="product-name">Party wear shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 2,399</span>
+          <span class="new-price">Rs 1,899</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+      
+        <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKTiClcPl0OtpDQtjWTrCVOxVVW6YIw65yXQ&s" alt="Casual Shoe">
+        <div class="product-name">Chelsea Boot</div>
+        <p class="price">
+          <span class="old-price">Rs 2,999</span>
+          <span class="new-price">Rs 2,500</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+       <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71LL6yCVP4L._AC_SL1500_.jpg" alt="Casual Shoe">
+        <div class="product-name">Dr.Martin tripple sole half</div>
+        <p class="price">
+          <span class="old-price">Rs 2,999</span>
+          <span class="new-price">Rs 2,500</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+       <div class="product-card">
+        <img src="https://cdn2.blanxer.com/uploads/6862bfe7b340cbaa4610cb0f/product_image-img20250702162539-8624.webp" alt="Casual Shoe">
+        <div class="product-name">Dr.martin single sole half</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,399</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+       <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/c8db0efbca5cb128461484b5b4025a83.jpg" alt="Casual Shoe">
+        <div class="product-name">Dr.martin single sole full</div>
+        <p class="price">
+          <span class="old-price">Rs 1,899</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://img.drz.lazcdn.com/g/kf/Sd0ae7696985f4231b52a794f9410602fv.jpg_720x720q80.jpg_.webp" alt="Casual Shoe">
+        <div class="product-name">Dr martin triple sole full</div>
+        <p class="price">
+          <span class="old-price">Rs 1,999</span>
+          <span class="new-price">Rs 1,699</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-column">
+      <h4>Prakash Shoe Center</h4>
+      <a href="aboutus.html">About Us</a>
+      <a href="brands.html">Brands</a>
+      <a href="location.html">Our Location</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Customer Service</h4>
+      <a href="contactus.html">Contact Us</a>
+      <a href="support.html">Customer Support</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Policies</h4>
+      <a href="refundpolicy.html">Refund Policy</a>
+      <a href="termsandcondition.html">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <p>📞 +977-9811252359</p>
+      <p>📧 prakashshoecenter767@gmail.com</p>
+      <p>📍 Hetauda 1, Rapti Road</p>
+      <a href="https://www.instagram.com/prakashshoecenter/" target="_blank">Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Prakash Shoe Center | Nepal
+  </div>
+</footer>
+
+</body>
+</html>
