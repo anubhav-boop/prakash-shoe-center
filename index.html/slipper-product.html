@@ -1,1 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slippers Collection | Prakash Shoe Center</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* PAGE WRAPPER */
+    .shop-wrapper {
+      padding: 30px 16px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .shop-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2a44;
+    }
+
+    .shop-subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* PRODUCT CARD */
+    .product-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* IMAGE */
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      background: #f7f7f7;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    .price {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+     .price {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #e53935;
+  font-weight: 600;
+}
+
+    .view-btn {
+      display: block;
+      text-align: center;
+      background: #1f2a44;
+      color: #fff;
+      padding: 8px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .view-btn:hover {
+      background: #ffd54f;
+      color: #111;
+    }
+
+    /* TABLET */
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+    }
+
+    /* DESKTOP */
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .product-card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart</a>
+    </nav>
+  </header>
+
+  <!-- SHOP SECTION -->
+  <section class="shop-wrapper">
+    <h1 class="shop-title">Slippers Collection</h1>
+    <p class="shop-subtitle">Comfort • Daily Use • Affordable</p>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/ea91c10c91d9f1000fb7550341d8d230.jpg" alt="Slipper">
+        <div class="product-name">Gambol Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,150</span>
+          <span class="new-price">Rs 899</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/3c07a64e43709a65f21c04f01a8db7d8.jpg" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/d06f4dd744d22af737cdc76db29474b5.jpg" alt="Slipper">
+        <div class="product-name">Kitto slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/12818a4767acfa5ff5bc3329abcf6a26.jpg" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDk6XlAMGyicHpNhAfbprYdDwUzlJDi0JfaA&s" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/912781827bfb7dba664e7a0024eb531e.jpg" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://img.drz.lazcdn.com/static/np/p/2f917f2d3c64780420f0bbf9adef90a8.jpg_720x720q80.jpg" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 800</span>
+          <span class="new-price">Rs 699</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/29ec9a1a2dd4963d049903f529f7c089.jpg" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://img.drz.lazcdn.com/static/np/p/7d0854432c1f97703b3c5447b80d3046.jpg_720x720q80.jpg" alt="Slipper">
+        <div class="product-name">Kitto Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,699</span>
+          <span class="new-price">Rs 1,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/ffc67ae0b0c80bf7d178e08c100a8103.jpg" alt="Slipper">
+        <div class="product-name">Yeezy slide</div>
+        <p class="price">
+          <span class="old-price">Rs 600</span>
+          <span class="new-price">Rs 500</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+<!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://imgs.search.brave.com/tiG7HhrautMPBdHnuGVkqQaIjBR31uTTG0dOnr_RAgU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2h1dHRlcnN0b2Nr/LmNvbS9pbWFnZS1p/bGx1c3RyYXRpb24v/cnViYmVyLWJsYWNr/LXNsaXBwZXJzLWlz/b2xhdGVkLW9uLTI2/MG53LTIzMzA2NzIx/NzkuanBn" alt="Slipper">
+        <div class="product-name"> Crocs</div>
+        <p class="price">
+          <span class="old-price">Rs 699</span>
+          <span class="new-price">Rs 550</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://imgs.search.brave.com/R8HlJs1Xi1JZfhUXh1P7ouvcm9JMc6sfpWXuZklxlHA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y3VzaGlvbmFpcmUu/Y29tL2Nkbi9zaG9w/L2ZpbGVzL0hBTkEt/TC1TRC1DQU1FTC0y/LmpwZz92PTE3NTc0/MzI5NDUmd2lkdGg9/NDAwMA" alt="Slipper">
+        <div class="product-name">Cloks Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 1,100</span>
+          <span class="new-price">Rs 800</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://imgs.search.brave.com/4lDQtdhzbfl2JFPyjPZd9_lD0ikTxL_IlrdZMGfl67g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzA3LzYy/LzA0LzA3NjIwNDM0/MzZjMWZhNWRkZjAz/OWM2NGVlOGEwMTZk/LmpwZw" alt="Slipper">
+        <div class="product-name">Nike Slipper</div>
+        <p class="price">
+          <span class="old-price">Rs 450</span>
+          <span class="new-price">Rs 400</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+
+    </div>
+  </section>
+
+
+    </div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-column">
+      <h4>Prakash Shoe Center</h4>
+      <a href="aboutus.html">About Us</a>
+      <a href="brands.html">Brands</a>
+      <a href="location.html">Our Location</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Customer Service</h4>
+      <a href="contactus.html">Contact Us</a>
+      <a href="support.html">Customer Support</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Policies</h4>
+      <a href="refundpolicy.html">Refund Policy</a>
+      <a href="termsandcondition.html">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <p>📞 +977-9811252359</p>
+      <p>📧 prakashshoecenter767@gmail.com</p>
+      <p>📍 Hetauda 1, Rapti Road</p>
+      <a href="https://www.instagram.com/prakashshoecenter/" target="_blank">Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Prakash Shoe Center | Nepal
+  </div>
+</footer>
+
+</body>
+</html>
+
 
