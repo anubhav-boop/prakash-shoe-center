@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gumboots | Prakash Shoe Center</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fb;
+    }
+
+    .shop-wrapper {
+      padding: 30px 16px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .shop-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: #1f2a44;
+      margin-bottom: 6px;
+    }
+
+    .shop-subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* CARD */
+    .product-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      background: #f2f2f2;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+     .price {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+}
+
+.new-price {
+  color: #e53935;
+  font-weight: 600;
+}
+
+    .view-btn {
+      display: block;
+      text-align: center;
+      padding: 9px;
+      border-radius: 10px;
+      background: #1f2a44;
+      color: #ffffff;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .view-btn:hover {
+      background: #ffd54f;
+      color: #111;
+    }
+
+    /* TABLET */
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-card img {
+        height: 190px;
+      }
+    }
+
+    /* DESKTOP */
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .product-card img {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart</a>
+    </nav>
+  </header>
+
+  <!-- PRODUCTS -->
+  <section class="shop-wrapper">
+    <h1 class="shop-title">Gumboots</h1>
+    <p class="shop-subtitle">Waterproof • Durable • Heavy-Duty Use</p>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/3f66e1eac75e1b92e88fe0d84613283e.jpg" alt="Gumboot">
+        <div class="product-name">Dolfin Gumboot</div>
+        <p class="price">
+          <span class="old-price">Rs 1,100</span>
+          <span class="new-price">Rs 899</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/9fc241951073b42f2d5524de87f025c2.jpg" alt="Gumboot">
+        <div class="product-name">Combat army color Gumboot</div>
+        <p class="price">
+          <span class="old-price">Rs 760</span>
+          <span class="new-price">Rs 650</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSHnG25WioCk_bDgghfbaYnOA7LibOuFvDyw&s" alt="Gumboot">
+        <div class="product-name">Light Gumboot</div>
+        <p class="price">
+          <span class="old-price">Rs 699</span>
+          <span class="new-price">Rs 550</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <img src="https://image.made-in-china.com/202f0j00kCqQaorcYOhG/Wholesale-Fashsion-Silicone-Gumboots-Wellington-Rubber-Rain-Boots-Women-Rain-Boots-with-Buckle-Ladies-Fashion-Gumboots.jpg" alt="Gumboot">
+        <div class="product-name">Ladies Gumboot</div>
+        <p class="price">
+          <span class="old-price">Rs 750</span>
+          <span class="new-price">Rs 599</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2022/1/ZP/YA/VT/145172493/paragon-safety-shoes.jpg" alt="Gumboot">
+        <div class="product-name">Labour shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 300</span>
+          <span class="new-price">Rs 275</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+    </div>
+  </section>
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <div class="footer-column">
+      <h4>Prakash Shoe Center</h4>
+      <a href="aboutus.html">About Us</a>
+      <a href="brands.html">Brands</a>
+      <a href="location.html">Our Location</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Customer Service</h4>
+      <a href="contactus.html">Contact Us</a>
+      <a href="support.html">Customer Support</a>
+      <a href="faq.html">FAQs</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Policies</h4>
+      <a href="refundpolicy.html">Refund Policy</a>
+      <a href="termsandcondition.html">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <p>📞 +977-9811252359</p>
+      <p>📧 prakashshoecenter767@gmail.com</p>
+      <p>📍 Hetauda 1, Rapti Road</p>
+      <a href="https://www.instagram.com/prakashshoecenter/" target="_blank">Instagram</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Prakash Shoe Center | Nepal
+  </div>
+</footer>
+
+</body>
+</html>
