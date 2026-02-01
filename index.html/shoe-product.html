@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shoes Collection | Prakash Shoe Center</title>
 
-  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- MAIN CSS -->
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f5f7fb;
-    }
-
+   
+    /* PAGE WRAPPER */
     .shop-wrapper {
+      padding: 30px 16px 60px;
       max-width: 1200px;
       margin: auto;
-      padding: 30px 16px 60px;
     }
 
     .shop-title {
       text-align: center;
       font-size: 28px;
       font-weight: 600;
+      margin-bottom: 10px;
       color: #1f2a44;
-      margin-bottom: 8px;
     }
 
     .shop-subtitle {
@@ -38,31 +32,32 @@
       margin-bottom: 30px;
     }
 
-    /* GRID */
+    /* PRODUCT GRID */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
-    /* CARD */
+    /* PRODUCT CARD */
     .product-card {
-      background: #fff;
+      background: #ffffff;
       border-radius: 14px;
       padding: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      transition: transform 0.25s ease;
+      transition: transform 0.3s ease;
     }
 
     .product-card:hover {
       transform: translateY(-4px);
     }
 
+    /* IMAGE FIX */
     .product-card img {
       width: 100%;
-      height: 160px;
+      height: 150px;
       object-fit: contain;
-      background: #f3f3f3;
+      background: #f8f8f8;
       border-radius: 10px;
       margin-bottom: 10px;
     }
@@ -70,24 +65,32 @@
     .product-name {
       font-size: 14px;
       font-weight: 500;
+      margin-bottom: 6px;
       color: #222;
-      margin-bottom: 4px;
     }
 
     .price {
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
+  font-size: 13px;
+  margin-bottom: 10px;
+}
 
-    .old-price {
-      text-decoration: line-through;
-      color: #999;
-      margin-right: 6px;
-    }
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+}
 
-    .new-price {
-      color: #e53935;
+.new-price {
+  color: #e53935;
+  font-weight: 600;
+}
+
+
+    .product-price {
+      font-size: 14px;
       font-weight: 600;
+      color: #1f2a44;
+      margin-bottom: 10px;
     }
 
     .view-btn {
@@ -99,7 +102,7 @@
       border-radius: 10px;
       font-size: 14px;
       text-decoration: none;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     .view-btn:hover {
@@ -127,7 +130,10 @@
       .product-card img {
         height: 200px;
       }
+      
     }
+
+    
   </style>
 </head>
 
@@ -142,53 +148,100 @@
     </nav>
   </header>
 
-  <!-- SHOP -->
+  <!-- SHOP SECTION -->
   <section class="shop-wrapper">
     <h1 class="shop-title">Shoes Collection</h1>
     <p class="shop-subtitle">Comfort • Style • Everyday Wear</p>
 
     <div class="product-grid">
 
-      <!-- PRODUCT -->
+      <!-- PRODUCT 1 -->
       <div class="product-card">
-        <img src="https://static-01.daraz.com.np/p/fe728ff57163ea622e128fa84c1c88e4.jpg" alt="Shoe">
-        <div class="product-name">TBL Running Shoe</div>
-        <p class="price">
-          <span class="old-price">Rs 4,200</span>
-          <span class="new-price">Rs 3,499</span>
-        </p>
+        <img src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2/ZXpvbi5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDIv/U2NyZWVuc2hvdF8y/MDI1LTAyLTI2LTIx/LTE3LTA3LTk3Lmpw/Zw" alt="Shoe">
+        <div class="product-name">TBL shoes</div>
+       <p class="price">
+  <span class="old-price">Rs 4,200</span>
+  <span class="new-price">Rs 3,499</span>
+</p>
         <a href="shoe-product.html" class="view-btn">View Product</a>
       </div>
 
+      <!-- PRODUCT 2 -->
       <div class="product-card">
-        <img src="https://np-live-21.slatic.net/kf/S380aa507387a4ce1b82e0642490d49f3R.jpg" alt="Shoe">
-        <div class="product-name">TBL Sneaker</div>
-        <p class="price">
-          <span class="old-price">Rs 4,500</span>
-          <span class="new-price">Rs 3,699</span>
-        </p>
+        <img src="https://imgs.search.brave.com/ArrY06QX9_5eCfOy-t5HRm2HJL8--i2A0kVgW5y7LZ8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZHJ6LmxhemNkbi5j/b20vc3RhdGljL25w/L3AvOTMzMDBkZTk4/MDMzMDlkMGI5NDkx/NGEyMDM5NzA3Zjgu/cG5nXzcyMHg3MjBx/ODAucG5n" alt="Shoe">
+        <div class="product-name">TBL Shoe</div>
+       <p class="price">
+  <span class="old-price">Rs 4,200</span>
+  <span class="new-price">Rs 3,499</span>
+</p>
         <a href="shoe-product.html" class="view-btn">View Product</a>
       </div>
 
-      <div class="product-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRxz2oZLJlHm3BEhvOkG5wgOIwgHqlONl43C5BV5sKwIi7xX9OQDtyvHoMYji7fqiXoc&usqp=CAU" alt="Shoe">
-        <div class="product-name">TBL Casual Shoe</div>
-        <p class="price">
-          <span class="old-price">Rs 4,000</span>
-          <span class="new-price">Rs 3,199</span>
-        </p>
-        <a href="shoe-product.html" class="view-btn">View Product</a>
-      </div>
-
+      <!-- PRODUCT 3 -->
       <div class="product-card">
         <img src="https://imgs.search.brave.com/hrECx7Yd0zpNeK10o7vXyBReFqZ5wGLyx7G5E3fsEpk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a2luYXVuLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvcHJvZHVj/dHMvM2MyODFmY2U1/YjU4OGZlMjVhNjQ3/ZDYzMTZiMjgyOGFf/NjAweDYwMHE4MC0z/MDB4MzAwLmpwZw" alt="Shoe">
-        <div class="product-name">TBL Sports Shoe</div>
+        <div class="product-name">TBL sneaker</div>
         <p class="price">
-          <span class="old-price">Rs 4,800</span>
-          <span class="new-price">Rs 3,899</span>
-        </p>
+  <span class="old-price">Rs 4,200</span>
+  <span class="new-price">Rs 3,499</span>
+</p>
         <a href="shoe-product.html" class="view-btn">View Product</a>
       </div>
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+        <img src="images/tian.jpg" alt="Shoe">
+        <div class="product-name">TBL sneaker</div>
+       <p class="price">
+  <span class="old-price">Rs 4,200</span>
+  <span class="new-price">Rs 3,499</span>
+</p> 
+ <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+    <div class="product-card">
+      <img src="https://np-live-21.slatic.net/kf/Sf5672f48c30e4898a1c484ea21563300J.jpg" alt="shoes">
+      <div class="product-name">TBL shoe</div>
+      <p class="price">
+      <span class="old-price">Rs 4,200</span>
+      <span class="new-price">Rs 3,499</span>
+      </p>
+      <a href="Shoe-product.html" class="view-btn">View product</a>
+
+    </div>
+
+      <div class="product-card">
+      <img src="https://static-01.daraz.com.np/p/fe728ff57163ea622e128fa84c1c88e4.jpg" alt="shoes">
+      <div class="product-name">TBL shoe</div>
+      <p class="price">
+      <span class="old-price">Rs 4,200</span>
+      <span class="new-price">Rs 3,499</span>
+      </p>
+      <a href="Shoe-product.html" class="view-btn">View product</a>
+
+    </div>
+    
+    <div class="product-card">
+      <img src="https://np-live-21.slatic.net/kf/S380aa507387a4ce1b82e0642490d49f3R.jpg" alt="shoes">
+      <div class="product-name">TBL shoe</div>
+      <p class="price">
+      <span class="old-price">Rs 4,200</span>
+      <span class="new-price">Rs 3,499</span>
+      </p>
+      <a href="Shoe-product.html" class="view-btn">View product</a>
+
+    </div>
+
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRxz2oZLJlHm3BEhvOkG5wgOIwgHqlONl43C5BV5sKwIi7xX9OQDtyvHoMYji7fqiXoc&usqp=CAU" alt="shoes">
+      <div class="product-name">TBL shoe</div>
+      <p class="price">
+      <span class="old-price">Rs 4,200</span>
+      <span class="new-price">Rs 3,499</span>
+      </p>
+      <a href="Shoe-product.html" class="view-btn">View product</a>
+
+    </div>
 
     </div>
   </section>
@@ -202,6 +255,3 @@
 
 </body>
 </html>
-
-
-
