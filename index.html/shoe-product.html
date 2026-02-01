@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shoes Collection | Prakash Shoe Center</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fb;
+    }
+
+    .shop-wrapper {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 16px 60px;
+    }
+
+    .shop-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: #1f2a44;
+      margin-bottom: 8px;
+    }
+
+    .shop-subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    /* GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* CARD */
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      background: #f3f3f3;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 4px;
+    }
+
+    .price {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #999;
+      margin-right: 6px;
+    }
+
+    .new-price {
+      color: #e53935;
+      font-weight: 600;
+    }
+
+    .view-btn {
+      display: block;
+      text-align: center;
+      background: #1f2a44;
+      color: #fff;
+      padding: 8px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .view-btn:hover {
+      background: #ffd54f;
+      color: #111;
+    }
+
+    /* TABLET */
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+    }
+
+    /* DESKTOP */
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .product-card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Prakash Shoe Center</div>
+    <nav>
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Cart</a>
+    </nav>
+  </header>
+
+  <!-- SHOP -->
+  <section class="shop-wrapper">
+    <h1 class="shop-title">Shoes Collection</h1>
+    <p class="shop-subtitle">Comfort • Style • Everyday Wear</p>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT -->
+      <div class="product-card">
+        <img src="https://static-01.daraz.com.np/p/fe728ff57163ea622e128fa84c1c88e4.jpg" alt="Shoe">
+        <div class="product-name">TBL Running Shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 4,200</span>
+          <span class="new-price">Rs 3,499</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://np-live-21.slatic.net/kf/S380aa507387a4ce1b82e0642490d49f3R.jpg" alt="Shoe">
+        <div class="product-name">TBL Sneaker</div>
+        <p class="price">
+          <span class="old-price">Rs 4,500</span>
+          <span class="new-price">Rs 3,699</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRxz2oZLJlHm3BEhvOkG5wgOIwgHqlONl43C5BV5sKwIi7xX9OQDtyvHoMYji7fqiXoc&usqp=CAU" alt="Shoe">
+        <div class="product-name">TBL Casual Shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 4,000</span>
+          <span class="new-price">Rs 3,199</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://imgs.search.brave.com/hrECx7Yd0zpNeK10o7vXyBReFqZ5wGLyx7G5E3fsEpk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a2luYXVuLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvcHJvZHVj/dHMvM2MyODFmY2U1/YjU4OGZlMjVhNjQ3/ZDYzMTZiMjgyOGFf/NjAweDYwMHE4MC0z/MDB4MzAwLmpwZw" alt="Shoe">
+        <div class="product-name">TBL Sports Shoe</div>
+        <p class="price">
+          <span class="old-price">Rs 4,800</span>
+          <span class="new-price">Rs 3,899</span>
+        </p>
+        <a href="shoe-product.html" class="view-btn">View Product</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      © 2026 Prakash Shoe Center | Nepal
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
+
