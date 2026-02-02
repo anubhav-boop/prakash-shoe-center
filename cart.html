@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | Prakash Shoe Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  color:#111;
+  padding:20px;
+}
+
+/* NAVBAR */
+.navbar{
+  background:#1f2a44;
+  color:#fff;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  border-radius:8px;
+}
+
+.nav-btn{
+  color:#fff;
+  text-decoration:none;
+  margin-left:16px;
+  font-weight:500;
+}
+
+/* CART CONTAINER */
+.cart-container{
+  max-width:900px;
+  margin:0 auto;
+  background:#fff;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* PRODUCT DISPLAY */
+.cart-item{
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  margin-bottom:20px;
+  align-items:center;
+}
+
+.cart-item img{
+  width:300px;
+  height:300px;
+  object-fit:contain;
+  border-radius:12px;
+  background:#f1f1f1;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cart-item-details{
+  flex:1;
+}
+
+.cart-item-details h2{
+  font-size:28px;
+  margin-bottom:12px;
+  color:#1f2a44;
+}
+
+.cart-item-details p{
+  font-size:16px;
+  margin-bottom:8px;
+  color:#555;
+}
+
+.brand-desc{
+  margin-top:20px;
+  background:#f9f9f9;
+  padding:15px 20px;
+  border-left:5px solid #ff9f00;
+  border-radius:8px;
+  font-size:15px;
+  color:#333;
+}
+
+/* BUTTONS */
+.button-row{
+  margin-top:30px;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.place-order-btn, .view-product-btn{
+  flex:1;
+  padding:16px 0;
+  font-size:18px;
+  font-weight:600;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.place-order-btn{
+  background:#fb641b;
+  color:#fff;
+}
+
+.place-order-btn:hover{
+  background:#e5530f;
+}
+
+.view-product-btn{
+  background:#1f2a44;
+  color:#fff;
+}
+
+.view-product-btn:hover{
+  background:#0f1a2b;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .cart-item{
+    flex-direction:column;
+    align-items:center;
+  }
+  .cart-item img{
+    width:80%;
+    height:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div>Prakash Shoe Center</div>
+  <nav>
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="cart.html" class="nav-btn">Cart</a>
+  </nav>
+</header>
+
+<div class="cart-container">
+  <h1>Your Cart</h1>
+
+  <div class="cart-item">
+    <img id="cartImg" src="" alt="TBL Shoes">
+    <div class="cart-item-details">
+      <h2 id="cartName"></h2>
+      <p id="cartPrice"></p>
+      <p id="cartSize"></p>
+
+      <div class="brand-desc">
+        TBL Sports Shoes are designed for comfort, style, and durability. The brand is known for high-quality materials, ergonomic design, and shoes that perform well in sports and daily activities.
+      </div>
+
+      <div class="button-row">
+        <button class="place-order-btn" id="placeOrder">Place Order</button>
+        <button class="view-product-btn" id="viewProduct">View Product</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Get the cart item from localStorage
+const cart = JSON.parse(localStorage.getItem('cartItem'));
+
+if(cart){
+  document.getElementById('cartImg').src = cart.img;
+  document.getElementById('cartName').innerText = cart.name;
+  document.getElementById('cartPrice').innerText = `Price: Rs ${cart.price}`;
+  document.getElementById('cartSize').innerText = `Size: ${cart.size}`;
+}else{
+  // If no cart, show empty
+  document.querySelector('.cart-item').innerHTML = '<p>Your cart is empty.</p>';
+}
+
+// Place Order button click → redirect to order.html
+document.getElementById('placeOrder').addEventListener('click', () => {
+  if(!cart){
+    alert('Your cart is empty!');
+    return;
+  }
+  window.location.href = 'order.html';
+});
+
+// View Product button click → redirect to tbl-one.html
+document.getElementById('viewProduct').addEventListener('click', () => {
+  window.location.href = 'tbl-one.html';
+});
+</script>
+
+</body>
+</html>
+
+
