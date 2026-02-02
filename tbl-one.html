@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TBL Shoes | Prakash Shoe Center</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f4f6f8;
+  color:#111;
+}
+
+/* NAVBAR */
+.navbar{
+  background:#1f2a44;
+  color:#fff;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.nav-btn{
+  color:#fff;
+  text-decoration:none;
+  margin-left:16px;
+  font-weight:500;
+}
+
+/* PAGE */
+.product-page{
+  max-width:1100px;
+  margin:40px auto;
+  background:#fff;
+  border-radius:14px;
+  padding:25px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+/* IMAGE SECTION */
+.image-section{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* MAIN IMAGE */
+.main-image{
+  width:100%;
+  height:380px;
+  background:#f1f1f1;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.main-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transition:transform 0.4s ease;
+}
+
+.main-image:hover img{
+  transform:scale(1.2);
+}
+
+/* THUMBNAILS */
+.thumb-row{
+  display:flex;
+  gap:10px;
+}
+
+.thumb-row img{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  background:#f1f1f1;
+  border-radius:8px;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+
+.thumb-row img.active{
+  border-color:#1f2a44;
+}
+
+/* PRODUCT INFO */
+.product-info h1{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.price{
+  margin:14px 0;
+}
+
+.old-price{
+  color:#777;
+  text-decoration:line-through;
+  margin-right:10px;
+}
+
+.new-price{
+  font-size:22px;
+  font-weight:600;
+  color:#1f2a44;
+}
+
+.desc{
+  font-size:14px;
+  color:#555;
+  margin:14px 0;
+}
+
+.size-box{
+  margin-top:14px;
+}
+
+.size-box span{
+  display:block;
+  font-weight:500;
+  margin-bottom:6px;
+}
+
+.size-btn{
+  padding:8px 14px;
+  margin-right:8px;
+  border:1px solid #ccc;
+  background:#fff;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.size-btn:hover{
+  border-color:#1f2a44;
+}
+
+/* BUTTONS */
+.btn-row{
+  margin-top:22px;
+}
+
+.cart-btn{
+  background:#ff9f00;
+  border:none;
+  padding:14px 26px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.buy-btn{
+  background:#fb641b;
+  color:#fff;
+  border:none;
+  padding:14px 26px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .product-page{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div>Prakash Shoe Center</div>
+  <nav>
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="cart.html" class="nav-btn">Cart</a>
+  </nav>
+</header>
+
+<section class="product-page">
+
+  <!-- IMAGE SIDE -->
+  <div class="image-section">
+
+    <!-- DEFAULT IMAGE -->
+    <div class="main-image">
+      <img id="mainImg" src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2/ZXpvbi5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDIv/U2NyZWVuc2hvdF8y/MDI1LTAyLTI2LTIx/LTE3LTA3LTk3Lmpw/Zw" alt="TBL Shoes">
+    </div>
+
+    <!-- THUMBNAILS -->
+    <div class="thumb-row">
+      <img class="active" src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2ZXpvbi5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjUvMDIvU2NyZWVuc2hvdF8yMDI1LTAyLTI2LTIxLTE3LTA3LTk3LmpwZw" onclick="changeImg(this)">
+      <img src="https://np-live-21.slatic.net/kf/Sf5672f48c30e4898a1c484ea21563300J.jpg" onclick="changeImg(this)">
+      <img src="https://static-01.daraz.com.np/p/fe728ff57163ea622e128fa84c1c88e4.jpg" onclick="changeImg(this)">
+    </div>
+
+  </div>
+
+  <!-- INFO SIDE -->
+  <div class="product-info">
+    <h1>TBL Sports Shoes</h1>
+
+    <div class="price">
+      <span class="old-price">Rs 4,200</span>
+      <span class="new-price">Rs 3,499</span>
+    </div>
+
+    <p class="desc">
+      Comfortable everyday sports shoes with durable sole and breathable design.
+    </p>
+
+    <div class="size-box">
+      <span>Select Size</span>
+      <button class="size-btn" data-size="6">6</button>
+      <button class="size-btn" data-size="7">7</button>
+      <button class="size-btn" data-size="8">8</button>
+      <button class="size-btn" data-size="9">9</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="cart-btn" id="addToCart">Add to Cart</button>
+      <button class="buy-btn" id="buyNow">Buy Now</button>
+    </div>
+  </div>
+
+</section>
+
+<script>
+// IMAGE CHANGE
+function changeImg(el){
+  document.querySelectorAll('.thumb-row img').forEach(img=>img.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('mainImg').src = el.src;
+}
+
+// SIZE SELECTION
+let selectedSize = null;
+document.querySelectorAll('.size-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.size-btn').forEach(b => b.style.borderColor = '#ccc');
+    btn.style.borderColor = '#1f2a44';
+    selectedSize = btn.dataset.size;
+  });
+});
+
+// ADD TO CART BUTTON
+document.getElementById('addToCart').addEventListener('click', () => {
+  if (!selectedSize) {
+    alert('Please select a size!');
+    return;
+  }
+
+  const product = {
+    name: 'TBL Sports Shoes',
+    price: 3499,
+    size: selectedSize,
+    img: document.getElementById('mainImg').src
+  };
+
+  localStorage.setItem('cartItem', JSON.stringify(product));
+  window.location.href = 'cart.html'; // redirect to cart page
+});
+
+// BUY NOW BUTTON
+document.getElementById('buyNow').addEventListener('click', () => {
+  if (!selectedSize) {
+    alert('Please select a size!');
+    return;
+  }
+
+  const product = {
+    name: 'TBL Sports Shoes',
+    price: 3499,
+    size: selectedSize,
+    img: document.getElementById('mainImg').src
+  };
+
+  localStorage.setItem('cartItem', JSON.stringify(product));
+  window.location.href = 'order.html'; // redirect to order page
+});
+</script>
+
+</body>
+</html>
+
+
