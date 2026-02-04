@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,150 +33,223 @@ body{
 .nav-btn{
   color:#fff;
   text-decoration:none;
-  margin-left:16px;
+  margin-left:18px;
   font-weight:500;
 }
 
 /* PAGE */
 .product-page{
   max-width:1100px;
-  margin:40px auto;
+  margin:30px auto;
   background:#fff;
-  border-radius:14px;
-  padding:25px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* IMAGE SECTION */
-.image-section{
+.product-flex{
   display:flex;
-  flex-direction:column;
-  gap:12px;
+  gap:40px;
+  flex-wrap:wrap;
 }
 
-/* MAIN IMAGE */
-.main-image{
-  width:100%;
+/* IMAGE ZOOM */
+.img-box{
+  position:relative;
+  width:380px;
   height:380px;
-  background:#f1f1f1;
-  border-radius:12px;
+  border-radius:14px;
   overflow:hidden;
+  background:#f2f2f2;
 }
 
-.main-image img{
+.img-box img{
   width:100%;
   height:100%;
   object-fit:contain;
-  transition:transform 0.4s ease;
 }
 
-.main-image:hover img{
-  transform:scale(1.2);
+.lens{
+  position:absolute;
+  width:120px;
+  height:120px;
+  border:2px solid #1f2a44;
+  background:rgba(255,255,255,0.4);
+  display:none;
+  cursor:crosshair;
+}
+
+.result{
+  width:380px;
+  height:380px;
+  border-radius:14px;
+  background-repeat:no-repeat;
+  display:none;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 /* THUMBNAILS */
-.thumb-row{
+.thumbs{
   display:flex;
   gap:10px;
+  margin-top:12px;
 }
 
-.thumb-row img{
+.thumbs img{
   width:70px;
   height:70px;
   object-fit:contain;
   background:#f1f1f1;
-  border-radius:8px;
+  border-radius:10px;
   cursor:pointer;
   border:2px solid transparent;
 }
 
-.thumb-row img.active{
+.thumbs img:hover{
   border-color:#1f2a44;
 }
 
-/* PRODUCT INFO */
+/* INFO */
+.product-info{
+  flex:1;
+}
+
 .product-info h1{
-  font-size:26px;
-  margin-bottom:10px;
+  font-size:28px;
+  color:#1f2a44;
 }
 
 .price{
   margin:14px 0;
 }
 
-.old-price{
-  color:#777;
+.old{
   text-decoration:line-through;
+  color:#888;
   margin-right:10px;
 }
 
-.new-price{
+.new{
+  color:#e53935;
   font-size:22px;
   font-weight:600;
-  color:#1f2a44;
 }
 
-.desc{
-  font-size:14px;
-  color:#555;
-  margin:14px 0;
+/* SIZE */
+.sizes{
+  margin:20px 0;
 }
 
-.size-box{
-  margin-top:14px;
-}
-
-.size-box span{
-  display:block;
-  font-weight:500;
-  margin-bottom:6px;
-}
-
-.size-btn{
-  padding:8px 14px;
-  margin-right:8px;
-  border:1px solid #ccc;
+.sizes button{
+  padding:10px 14px;
+  margin:6px;
+  border:2px solid #1f2a44;
   background:#fff;
-  border-radius:6px;
+  border-radius:8px;
   cursor:pointer;
+  font-weight:500;
 }
 
-.size-btn:hover{
-  border-color:#1f2a44;
+.sizes button.active{
+  background:#1f2a44;
+  color:#fff;
 }
+
+.colors{
+  margin:18px 0;
+}
+
+.color-circle{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:inline-block;
+  margin:6px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.color-circle.selected{
+  outline:3px solid #ff9f00;
+  transform:scale(1.1);
+}
+
 
 /* BUTTONS */
-.btn-row{
-  margin-top:22px;
+.actions{
+  margin-top:25px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.actions button{
+  flex:1;
+  padding:16px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
 }
 
 .cart-btn{
   background:#ff9f00;
-  border:none;
-  padding:14px 26px;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
 }
 
 .buy-btn{
   background:#fb641b;
   color:#fff;
-  border:none;
-  padding:14px 26px;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
-  margin-left:10px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
-  .product-page{
-    grid-template-columns:1fr;
-  }
+/* BRAND */
+.brand{
+  margin-top:30px;
+  background:#f9f9f9;
+  padding:20px;
+  border-left:5px solid #ff9f00;
+  border-radius:10px;
+  font-size:15px;
+}
+
+/* RATING */
+.rating{
+  margin:20px 0;
+}
+
+.star{
+  font-size:24px;
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star.active{
+  color:#ffb400;
+}
+
+/* YOU MAY LIKE */
+.like{
+  margin-top:40px;
+}
+
+.like-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:18px;
+}
+
+.like-card{
+  background:#fff;
+  padding:12px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+.like-card img{
+  width:100%;
+  height:150px;
+  object-fit:contain;
 }
 </style>
 </head>
@@ -193,109 +264,186 @@ body{
   </nav>
 </header>
 
-<section class="product-page">
+<div class="product-page">
+  <div class="product-flex">
 
-  <!-- IMAGE SIDE -->
-  <div class="image-section">
-
-    <!-- DEFAULT IMAGE -->
-    <div class="main-image">
-      <img id="mainImg" src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2/ZXpvbi5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDIv/U2NyZWVuc2hvdF8y/MDI1LTAyLTI2LTIx/LTE3LTA3LTk3Lmpw/Zw" alt="TBL Shoes">
+    <!-- IMAGE -->
+    <div>
+      <div class="img-box" id="imgBox">
+        <img id="mainImg" src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2/ZXpvbi5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDIv/U2NyZWVuc2hvdF8y/MDI1LTAyLTI2LTIx/LTE3LTA3LTk3Lmpw/Zw">
+        <div class="lens" id="lens"></div>
+      </div>
+      <div class="thumbs">
+        <img src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2/ZXpvbi5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjUvMDIv/U2NyZWVuc2hvdF8y/MDI1LTAyLTI2LTIx/LTE3LTA3LTk3Lmpw/Zw" onclick="changeImg(this)">
+        <img src="https://alivezon.com/wp-content/uploads/2025/02/Screenshot_2025-02-26-21-17-30-90-1.jpg" onclick="changeImg(this)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQW2pmFxbE6ZQiKwuQJf2p9eqoTJcj4Bhu6Q&s" onclick="changeImg(this)">
+      </div>
     </div>
 
-    <!-- THUMBNAILS -->
-    <div class="thumb-row">
-      <img class="active" src="https://imgs.search.brave.com/S-nNjvFapMdnvWF7B6q5G6Ykp2u1j1odjj6IgOMLDXU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hbGl2ZXpvbi5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjUvMDIvU2NyZWVuc2hvdF8yMDI1LTAyLTI2LTIxLTE3LTA3LTk3LmpwZw" onclick="changeImg(this)">
-      <img src="https://np-live-21.slatic.net/kf/Sf5672f48c30e4898a1c484ea21563300J.jpg" onclick="changeImg(this)">
-      <img src="https://static-01.daraz.com.np/p/fe728ff57163ea622e128fa84c1c88e4.jpg" onclick="changeImg(this)">
+    <div class="result" id="result"></div>
+
+    <!-- INFO -->
+    <div class="product-info">
+      <h1>TBL Sports Shoes</h1>
+
+      <div class="price">
+        <span class="old">Rs 4,200</span>
+        <span class="new">Rs 3,499</span>
+      </div>
+
+      <div class="sizes">
+        <strong>Select Size:</strong><br>
+        <button onclick="selectSize(this)">6</button>
+        <button onclick="selectSize(this)">7</button>
+        <button onclick="selectSize(this)">8</button>
+        <button onclick="selectSize(this)">9</button>
+        <button onclick="selectSize(this)">10</button>
+      </div>
+      
+      <div class="colors">
+  <strong>Select Color:</strong><br>
+
+  <span class="color-circle" style="background:#000" data-color="Black"></span>
+  <span class="color-circle" style="background:#fff;border:1px solid #ccc" data-color="White"></span>
+  <span class="color-circle" style="background:#1f2a44" data-color="Navy Blue"></span>
+  <span class="color-circle" style="background:#e53935" data-color="Red"></span>
+</div>
+
+
+      <div class="actions">
+        <button class="cart-btn" onclick="addToCart()">Add to Cart</button>
+        <button class="buy-btn">Buy Now</button>
+      </div>
+
+      <div class="rating">
+        <span class="star" onclick="rate(1)">★</span>
+        <span class="star" onclick="rate(2)">★</span>
+        <span class="star" onclick="rate(3)">★</span>
+        <span class="star" onclick="rate(4)">★</span>
+        <span class="star" onclick="rate(5)">★</span>
+      </div>
+
+      <div class="brand">
+        <strong>Tianbolun (TBL)</strong> is a trusted footwear brand known for durability,
+        lightweight comfort, breathable materials, and modern athletic design.
+        Ideal for daily wear, sports, and long walking hours.
+      </div>
     </div>
 
   </div>
 
-  <!-- INFO SIDE -->
-  <div class="product-info">
-    <h1>TBL Sports Shoes</h1>
-
-    <div class="price">
-      <span class="old-price">Rs 4,200</span>
-      <span class="new-price">Rs 3,499</span>
-    </div>
-
-    <p class="desc">
-      Comfortable everyday sports shoes with durable sole and breathable design.
-    </p>
-
-    <div class="size-box">
-      <span>Select Size</span>
-      <button class="size-btn" data-size="6">6</button>
-      <button class="size-btn" data-size="7">7</button>
-      <button class="size-btn" data-size="8">8</button>
-      <button class="size-btn" data-size="9">9</button>
-    </div>
-
-    <div class="btn-row">
-      <button class="cart-btn" id="addToCart">Add to Cart</button>
-      <button class="buy-btn" id="buyNow">Buy Now</button>
+  <div class="like">
+    <h3>You may also like</h3>
+    <div class="like-grid">
+      <div class="like-card">
+        <img src="https://static-01.daraz.com.np/p/80834b23d31edcc85177e9a09d8dda24.jpg">
+        <p>Slippers</p>
+      </div>
+      <div class="like-card">
+        <img src="https://agarson.in/wp-content/uploads/2024/09/Dreamer-Black.jpg">
+        <p>Gumboots</p>
+      </div>
     </div>
   </div>
 
-</section>
+</div>
 
 <script>
-// IMAGE CHANGE
-function changeImg(el){
-  document.querySelectorAll('.thumb-row img').forEach(img=>img.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('mainImg').src = el.src;
+let selectedSize = null;
+
+function selectSize(btn){
+  document.querySelectorAll('.sizes button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedSize = btn.innerText;
 }
 
-// SIZE SELECTION
-let selectedSize = null;
-document.querySelectorAll('.size-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.size-btn').forEach(b => b.style.borderColor = '#ccc');
-    btn.style.borderColor = '#1f2a44';
-    selectedSize = btn.dataset.size;
+function addToCart(){
+  if(!selectedSize){
+    alert('Please select a size');
+    return;
+  }
+  localStorage.setItem('cartItem', JSON.stringify({
+    name:'TBL Sports Shoes',
+    price:3499,
+    size:selectedSize,
+    img:document.getElementById('mainImg').src
+  }));
+  window.location.href='cart.html';
+}
+
+/* IMAGE CHANGE */
+function changeImg(el){
+  mainImg.src = el.src;
+  result.style.backgroundImage = `url(${el.src})`;
+}
+
+/* ZOOM */
+const imgBox=document.getElementById('imgBox');
+const lens=document.getElementById('lens');
+const result=document.getElementById('result');
+const mainImg=document.getElementById('mainImg');
+
+imgBox.addEventListener('mousemove',moveLens);
+imgBox.addEventListener('mouseenter',()=>{lens.style.display='block';result.style.display='block';});
+imgBox.addEventListener('mouseleave',()=>{lens.style.display='none';result.style.display='none';});
+
+result.style.backgroundImage=`url(${mainImg.src})`;
+result.style.backgroundSize='800px 800px';
+
+function moveLens(e){
+  const rect=imgBox.getBoundingClientRect();
+  let x=e.clientX-rect.left-lens.offsetWidth/2;
+  let y=e.clientY-rect.top-lens.offsetHeight/2;
+  x=Math.max(0,Math.min(x,imgBox.offsetWidth-lens.offsetWidth));
+  y=Math.max(0,Math.min(y,imgBox.offsetHeight-lens.offsetHeight));
+  lens.style.left=x+'px';
+  lens.style.top=y+'px';
+  result.style.backgroundPosition=`-${x*2}px -${y*2}px`;
+}
+
+function rate(n){
+  document.querySelectorAll('.star').forEach((s,i)=>{
+    s.classList.toggle('active',i<n);
+  });
+
+}
+</script>
+
+<script>
+let selectedColor = null;
+
+// COLOR SELECTION
+document.querySelectorAll('.color-circle').forEach(circle=>{
+  circle.addEventListener('click',()=>{
+    document.querySelectorAll('.color-circle').forEach(c=>c.classList.remove('selected'));
+    circle.classList.add('selected');
+    selectedColor = circle.getAttribute('data-color');
   });
 });
 
-// ADD TO CART BUTTON
-document.getElementById('addToCart').addEventListener('click', () => {
-  if (!selectedSize) {
-    alert('Please select a size!');
+// UPDATE addToCart FUNCTION
+function addToCart(){
+  if(!selectedSize){
+    alert('Please select a size');
+    return;
+  }
+  if(!selectedColor){
+    alert('Please select a color');
     return;
   }
 
-  const product = {
-    name: 'TBL Sports Shoes',
-    price: 3499,
-    size: selectedSize,
-    img: document.getElementById('mainImg').src
-  };
+  localStorage.setItem('cartItem', JSON.stringify({
+    name:'TBL Sports Shoes',
+    price:3499,
+    size:selectedSize,
+    color:selectedColor,
+    img:document.getElementById('mainImg').src
+  }));
 
-  localStorage.setItem('cartItem', JSON.stringify(product));
-  window.location.href = 'cart.html'; // redirect to cart page
-});
-
-// BUY NOW BUTTON
-document.getElementById('buyNow').addEventListener('click', () => {
-  if (!selectedSize) {
-    alert('Please select a size!');
-    return;
-  }
-
-  const product = {
-    name: 'TBL Sports Shoes',
-    price: 3499,
-    size: selectedSize,
-    img: document.getElementById('mainImg').src
-  };
-
-  localStorage.setItem('cartItem', JSON.stringify(product));
-  window.location.href = 'order.html'; // redirect to order page
-});
+  window.location.href = 'cart.html';
+}
 </script>
+
 
 </body>
 </html>
-
