@@ -3,183 +3,1049 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prakash Shoe Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <title>Prakash Shoe Center | Shoes, Slippers & Footwear in Hetauda</title>
+
+  <meta name="description"
+        content="Prakash Shoe Center – Shop shoes, slippers, sandals, boots, school shoes, football boots and more in Hetauda, Nepal.">
+
+  <meta name="theme-color" content="#111827">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Prakash Shoe Center | Shoes, Slippers & Footwear in Hetauda">
+  <meta property="og:description" content="Shop shoes, slippers, sandals, boots, school shoes, football boots and more in Hetauda, Nepal.">
+  <meta property="og:locale" content="en_US">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/jpg" href="favicon.jpg.png">
- </head>
+  <link rel="icon" type="image/png" href="favicon.jpg.png">
+
+  <!-- Local business structured data, for Google Search / Maps -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ShoeStore",
+    "name": "Prakash Shoe Center",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRSJR2lJaryH6RBszi7HX2uN94iYmHk8iG9w&s",
+    "telephone": "+977-9811252359",
+    "email": "prakashshoecenter767@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rapti Road, Hetauda 1",
+      "addressLocality": "Hetauda",
+      "addressCountry": "NP"
+    },
+    "sameAs": [
+      "https://www.instagram.com/prakashshoecenter/"
+    ]
+  }
+  </script>
+</head>
+
 <body>
-  
-  <!-- HERO SECTION -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Prakash Shoe Center</h1>
-      <p>TBL • Converse • Nike • Goldstar • Addidas • Outdoor • Puma • Vans • Seven line • New Balance • Campus • JQR </p>
-      <a href="#products" class="primary-btn">Shop Now</a>
-    </div>
-    <div class="hero-image-container">
-      <!-- Just replace this URL with your image link -->
-      <img id="hero-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRSJR2lJaryH6RBszi7HX2uN94iYmHk8iG9w&s" alt="Featured Shoe" class="hero-img">
-    </div>
-  </section>
 
-  <!-- CATEGORY / PRODUCT SECTIONS -->
-  <section id="products" class="categories">
-    <h2>Our Footwear</h2>
-    <div class="category-grid">
+  <a href="#products" class="skip-link">Skip to content</a>
 
-      <!-- CATEGORY CARD EXAMPLE -->
+  <!-- ================= NAVBAR ================= -->
 
-      <div class="category-card">
-        <img src="https://imgs.search.brave.com/dPnVO0yXIRrOK4RQcQaAeIrMHvzeQgVQ15NqWs28sjc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a2luYXVuLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvcHJvZHVj/dHMvdGFib2x1LWJy/b3dud2hpdGUtc29s/ZS1sYWNlLWZyZWUt/c3BvcnRzLXNob2Vz/LTMwMHgzMDAucG5n" alt="shoes">
-        <h3>shoes</h3>
-         <a href="shoe-product.html" class="category-btn">View Products</a>
-      </div>
+  <header class="navbar">
 
-      <div class="category-card">
-        <img src="https://static-01.daraz.com.np/p/8ced9025a08f67be8ec53925da576aa6.png" alt="Slippers">
-        <h3>Slippers</h3>
-        <a href="slipper-product.html" class="category-btn">View Products</a>
-      </div>
-      
-      <div class="category-card">
-        <img src="https://egoss.in/cdn/shop/files/DSC_2154_2f6cf36e-d984-4d5e-a7fa-72e7dc50cef0.jpg?v=1753876973&width=2048" alt="Casual shoe">
-        <h3>Casual shoes</h3>
-        <a href="casual-product.html" class="category-btn">View Products</a>
-      </div>
+    <a href="#home" class="logo">
+      <span class="logo-icon">👟</span>
+      <span>Prakash <strong>Shoe Center</strong></span>
+    </a>
 
-      <div class="category-card">
-        <img src="https://agarson.in/wp-content/uploads/2024/09/Dreamer-Black.jpg" alt="Gumboots">
-        <h3>Gumboots</h3>
-        <a href="gumboot-product.html" class="category-btn">View Products</a>
-      </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#products">Categories</a>
+      <a href="aboutus.html">About</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
 
-      <div class="category-card">
-        <img src="https://static-01.daraz.com.np/p/80834b23d31edcc85177e9a09d8dda24.jpg" alt="School Shoes">
-        <h3>School Shoes</h3>
-        <a href="school-product.html" class="category-btn">View Products</a>
-      </div>
+    <div class="nav-actions">
 
-      <div class="category-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT57c2cGHjJbMjVtJatsx9HQ0RILycT-OjgGw&s" alt="Sandals">
-        <h3>Sandals</h3>
-        <a href="sandles-product.html" class="category-btn">View Products</a>
-      </div>
+      <a href="cart.html" class="cart-btn" aria-label="Shopping cart">
+        🛒
+        <span>Cart</span>
+        <b id="cart-count">0</b>
+      </a>
 
-      <div class="category-card">
-        <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/356988819/UK/HW/HZ/49171487/sega-classic-football-studs-shoes.jpg" alt="Football boot">
-        <h3>Football boot</h3>
-        <a href="Football-product.html" class="category-btn">View Products</a>
-      </div>
-
-      <div class="category-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlY897KO-VzwOtS8KYjPX0EshWZqF99LQCAg&s" alt="Kids shoes">
-        <h3>Kids shoes</h3>
-        <a href="Kids-product.html" class="category-btn">View Products</a>
-      </div>
-
-      <div class="category-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK6YWmUUQXAunPYpeB8dyMHBjR6aUEBqO_G946kagXNQ&s" alt="Doctor chappal">
-        <h3>Doctor chappal</h3>
-        <a href="Doctor-product.html" class="category-btn">View Products</a>
-      </div>
-
-      <div class="category-card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzNmSJJeXypjoil5yA_5c4Jb_dKPFzuz20yA&s" alt="Makhmal chappal">
-        <h3>Makhmal chappal</h3>
-        <a href="Makhmal-product.html" class="category-btn">View Products</a>
-      </div>
-
-      <div class="category-card">
-        <img src="https://static-01.daraz.com.np/p/68f79a9176223df132f376ca453c1d9a.jpg" alt="Trekking boot">
-        <h3>Trekking boot</h3>
-        <a href="Trekking-product.html" class="category-btn">View Products</a>
-      </div>
-     
-      <div class="category-card">
-        <img src="https://5.imimg.com/data5/IN/EH/MY-13439772/army-pt-shoes-500x500.jpg" alt="Army shoes">
-        <h3>Army shoes</h3>
-        <a href="Army-product.html" class="category-btn">View Products</a>
-      </div>
-     
-      <div class="category-card">
-        <img src="https://m.media-amazon.com/images/I/71wlY6eXF5L._SY500_.jpg" alt="Lancer slipper">
-        <h3>Lancer slipper</h3>
-        <a href="Lancer-product.html" class="category-btn">View Products</a>
-      </div>
-
-
-
-
-      <div class="category-card">
-        <img src="https://cdn2.shopclues.com/images/thumbnails/45868/320/320/CYMERA201610152031301476630406.jpg" alt="PU chappal">
-        <h3>PU chappal</h3>
-        <a href="PU-product.html" class="category-btn">View Products</a>
-      </div>
-
-
-      <div class="category-card">
-        <img src="https://img.drz.lazcdn.com/static/np/p/be9c824fb792172e824b3616f761f24e.jpg_720x720q80.jpg" alt="Close Shoes">
-        <h3>Close Shoes</h3>
-        <a href="closesshoe-product.html" class="category-btn">View Products</a>
-      </div>
-
-      <div class="category-card">
-        <img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/83/3288552/1.jpg" alt="Ladies Hills">
-        <h3>Ladies Hills</h3>
-        <a href="hills-product.html" class="category-btn">View Products</a>
-      </div>
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰
+      </button>
 
     </div>
-  </section>
-   
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <main>
+
+    <section id="home" class="hero">
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="hero-badge">
+          👟 QUALITY FOOTWEAR • HETAUDA
+        </div>
+
+        <h1>
+          Step Into Your
+          <span>Best Style.</span>
+        </h1>
+
+        <p>
+          Discover stylish, comfortable and affordable footwear
+          for men, women and kids at Prakash Shoe Center.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#products" class="primary-btn">
+            Shop Collection
+            <span>→</span>
+          </a>
+
+          <a href="contactus.html" class="secondary-btn">
+            Contact Us
+          </a>
+
+        </div>
+
+        <div class="hero-features">
+
+          <div>
+            <strong>16+</strong>
+            <small>Categories</small>
+          </div>
+
+          <div>
+            <strong>100+</strong>
+            <small>Styles</small>
+          </div>
+
+          <div>
+            <strong>COD</strong>
+            <small>Available</small>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-image-container">
+
+        <div class="hero-glow"></div>
+
+        <img
+          id="hero-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRSJR2lJaryH6RBszi7HX2uN94iYmHk8iG9w&s"
+          alt="Featured footwear"
+          class="hero-img"
+          fetchpriority="high"
+        >
+
+        <div class="floating-card">
+
+          <span class="floating-icon">⭐</span>
+
+          <div>
+            <strong>Quality Footwear</strong>
+            <small>Made for every step</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= TRUST BAR ================= -->
+
+    <section class="trust-bar">
+
+      <div class="trust-item">
+        <span>🚚</span>
+        <div>
+          <strong>Easy Ordering</strong>
+          <small>Simple online shopping</small>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <span>💵</span>
+        <div>
+          <strong>Cash on Delivery</strong>
+          <small>Pay when you receive</small>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <span>👟</span>
+        <div>
+          <strong>Wide Selection</strong>
+          <small>Something for everyone</small>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <span>📍</span>
+        <div>
+          <strong>Hetauda Based</strong>
+          <small>Rapti Road, Hetauda 1</small>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORY SECTION ================= -->
+
+    <section id="products" class="categories">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-label">EXPLORE OUR COLLECTION</span>
+
+          <h2>
+            Find Your Perfect
+            <span>Footwear</span>
+          </h2>
+
+          <p>
+            From everyday comfort to special occasions,
+            find the right pair for every step.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- SEARCH -->
+
+      <div class="category-tools">
+
+        <div class="search-box">
+
+          <span>🔍</span>
+
+          <input
+            type="text"
+            id="categorySearch"
+            placeholder="Search footwear categories..."
+            autocomplete="off"
+            aria-label="Search footwear categories"
+          >
+
+          <button
+            type="button"
+            id="clearSearch"
+            class="clear-search-btn"
+            aria-label="Clear search"
+            hidden
+          >✕</button>
+
+        </div>
+
+        <div class="category-count" aria-live="polite">
+          <span id="visibleCount">16</span> Categories
+        </div>
+
+      </div>
+
+
+      <!-- CATEGORY GRID -->
+
+      <div class="category-grid" id="categoryGrid">
+
+
+        <!-- 1 -->
+
+        <div class="category-card" data-name="shoes">
+
+          <div class="card-image">
+            <span class="card-tag">POPULAR</span>
+
+            <img
+              src="https://imgs.search.brave.com/dPnVO0yXIRrOK4RQcQaAeIrMHvzeQgVQ15NqWs28sjc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/a2luYXVuLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvcHJvZHVj/dHMvdGFib2x1LWJy/b3dud2hpdGUtc29s/ZS1sYWNlLWZy/ZWUtc3BvcnRzLXNob2Vz/LTMwMHgzMDAucG5n"
+              alt="Shoes"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="card-content">
+            <h3>Shoes</h3>
+            <p>Everyday & stylish footwear</p>
+            <a href="shoe-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="category-card" data-name="slippers">
+
+          <div class="card-image">
+
+            <img
+              src="https://static-01.daraz.com.np/p/8ced9025a08f67be8ec53925da576aa6.png"
+              alt="Slippers"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Slippers</h3>
+            <p>Comfort for every day</p>
+            <a href="slipper-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="category-card" data-name="casual shoes">
+
+          <div class="card-image">
+
+            <img
+              src="https://egoss.in/cdn/shop/files/DSC_2154_2f6cf36e-d984-4d5e-a7fa-72e7dc50cef0.jpg?v=1753876973&width=2048"
+              alt="Casual shoes"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Casual Shoes</h3>
+            <p>Relaxed everyday style</p>
+            <a href="casual-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="category-card" data-name="gumboots boots">
+
+          <div class="card-image">
+
+            <img
+              src="https://agarson.in/wp-content/uploads/2024/09/Dreamer-Black.jpg"
+              alt="Gumboots"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Gumboots</h3>
+            <p>Ready for rough weather</p>
+            <a href="gumboot-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="category-card" data-name="school shoes">
+
+          <div class="card-image">
+            <span class="card-tag">STUDENTS</span>
+
+            <img
+              src="https://static-01.daraz.com.np/p/80834b23d31edcc85177e9a09d8dda24.jpg"
+              alt="School Shoes"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>School Shoes</h3>
+            <p>Smart & comfortable</p>
+            <a href="school-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="category-card" data-name="sandals">
+
+          <div class="card-image">
+
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT57c2cGHjJbMjVtJatsx9HQ0RILycT-OjgGw&s"
+              alt="Sandals"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Sandals</h3>
+            <p>Light & comfortable</p>
+            <a href="sandles-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="category-card" data-name="football boots football boot">
+
+          <div class="card-image">
+            <span class="card-tag">SPORTS</span>
+
+            <img
+              src="https://5.imimg.com/data5/SELLER/Default/2023/10/356988819/UK/HW/HZ/49171487/sega-classic-football-studs-shoes.jpg"
+              alt="Football boots"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Football Boots</h3>
+            <p>Built for the game</p>
+            <a href="Football-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="category-card" data-name="kids shoes kids">
+
+          <div class="card-image">
+
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlY897KO-VzwOtS8KYjPX0EshWZqF99LQCAg&s"
+              alt="Kids Shoes"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Kids Shoes</h3>
+            <p>Fun & comfortable</p>
+            <a href="Kids-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 9 -->
+
+        <div class="category-card" data-name="doctor chappal">
+
+          <div class="card-image">
+
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK6YWmUUQXAunPYpeB8dyMHBjR6aUEBqO_G946kagXNQ&s"
+              alt="Doctor Chappal"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Doctor Chappal</h3>
+            <p>Comfortable daily wear</p>
+            <a href="Doctor-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 10 -->
+
+        <div class="category-card" data-name="makhmal chappal">
+
+          <div class="card-image">
+
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzNmSJJeXypjoil5yA_5c4Jb_dKPFzuz20yA&s"
+              alt="Makhmal Chappal"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Makhmal Chappal</h3>
+            <p>Traditional & comfortable</p>
+            <a href="Makhmal-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 11 -->
+
+        <div class="category-card" data-name="trekking boot trekking">
+
+          <div class="card-image">
+            <span class="card-tag">OUTDOOR</span>
+
+            <img
+              src="https://static-01.daraz.com.np/p/68f79a9176223df132f376ca453c1d9a.jpg"
+              alt="Trekking Boots"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Trekking Boots</h3>
+            <p>Adventure starts here</p>
+            <a href="Trekking-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 12 -->
+
+        <div class="category-card" data-name="army shoes army">
+
+          <div class="card-image">
+
+            <img
+              src="https://5.imimg.com/data5/IN/EH/MY-13439772/army-pt-shoes-500x500.jpg"
+              alt="Army Shoes"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Army Shoes</h3>
+            <p>Strong & durable</p>
+            <a href="Army-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 13 -->
+
+        <div class="category-card" data-name="lancer slipper">
+
+          <div class="card-image">
+
+            <img
+              src="https://m.media-amazon.com/images/I/71wlY6eXF5L._SY500_.jpg"
+              alt="Lancer Slipper"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Lancer Slipper</h3>
+            <p>Simple & reliable</p>
+            <a href="Lancer-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 14 -->
+
+        <div class="category-card" data-name="pu chappal">
+
+          <div class="card-image">
+
+            <img
+              src="https://cdn2.shopclues.com/images/thumbnails/45868/320/320/CYMERA201610152031301476630406.jpg"
+              alt="PU Chappal"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>PU Chappal</h3>
+            <p>Everyday comfort</p>
+            <a href="PU-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 15 -->
+
+        <div class="category-card" data-name="close shoes close shoe">
+
+          <div class="card-image">
+
+            <img
+              src="https://img.drz.lazcdn.com/static/np/p/be9c824fb792172e824b3616f761f24e.jpg_720x720q80.jpg"
+              alt="Close Shoes"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Close Shoes</h3>
+            <p>Classic everyday style</p>
+            <a href="closesshoe-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+        <!-- 16 -->
+
+        <div class="category-card" data-name="ladies hills hills">
+
+          <div class="card-image">
+            <span class="card-tag">LADIES</span>
+
+            <img
+              src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/83/3288552/1.jpg"
+              alt="Ladies Hills"
+              loading="lazy"
+            >
+
+          </div>
+
+          <div class="card-content">
+            <h3>Ladies Hills</h3>
+            <p>Elegant & stylish</p>
+            <a href="hills-product.html" class="category-btn">
+              Explore <span>→</span>
+            </a>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- NO RESULTS -->
+
+      <div id="noResults" class="no-results" aria-live="polite">
+
+        <div>🔎</div>
+
+        <h3>No category found</h3>
+
+        <p>Try searching for shoes, slippers, boots or sandals.</p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="store-cta">
+
+      <div>
+
+        <span class="section-label">VISIT US</span>
+
+        <h2>
+          Looking for the perfect pair?
+        </h2>
+
+        <p>
+          Visit Prakash Shoe Center at Rapti Road, Hetauda 1
+          or explore our collection online.
+        </p>
+
+      </div>
+
+      <div class="cta-buttons">
+
+        <a href="location.html" class="primary-btn">
+          📍 Find Our Store
+        </a>
+
+        <a href="contactus.html" class="secondary-btn dark">
+          Contact Us
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= FOOTER ================= -->
+
   <footer class="site-footer">
-  <div class="footer-grid">
 
-    <div class="footer-column">
-      <h4>Prakash Shoe Center</h4>
-      <a href="aboutus.html">About Us</a>
-      <a href="brands.html">Brands</a>
-      <a href="location.html">Our Location</a>
+    <div class="footer-grid">
+
+
+      <div class="footer-brand">
+
+        <a href="#home" class="footer-logo">
+          👟 Prakash Shoe Center
+        </a>
+
+        <p>
+          Quality footwear for every step.
+          Serving Hetauda with a wide range of
+          shoes, slippers, boots and more.
+        </p>
+
+        <div class="social-links">
+
+          <a
+            href="https://www.instagram.com/prakashshoecenter/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Shop</h4>
+
+        <a href="shoe-product.html">Shoes</a>
+        <a href="slipper-product.html">Slippers</a>
+        <a href="sandles-product.html">Sandals</a>
+        <a href="gumboot-product.html">Gumboots</a>
+        <a href="Football-product.html">Football Boots</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Customer Service</h4>
+
+        <a href="contactus.html">Contact Us</a>
+        <a href="support.html">Customer Support</a>
+        <a href="faq.html">FAQs</a>
+        <a href="refundpolicy.html">Refund Policy</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Information</h4>
+
+        <a href="aboutus.html">About Us</a>
+        <a href="brands.html">Brands</a>
+        <a href="location.html">Our Location</a>
+        <a href="termsandcondition.html">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+
+      </div>
+
+
+      <div class="footer-column contact-column">
+
+        <h4>Get In Touch</h4>
+
+        <p>📞 <a href="tel:+9779811252359">+977-9811252359</a></p>
+
+        <p>
+          📧
+          <a href="mailto:prakashshoecenter767@gmail.com">
+            prakashshoecenter767@gmail.com
+          </a>
+        </p>
+
+        <p>📍 Hetauda 1, Rapti Road, Nepal</p>
+
+      </div>
+
     </div>
 
-    <div class="footer-column">
-      <h4>Customer Service</h4>
-      <a href="contactus.html">Contact Us</a>
-      <a href="support.html">Customer Support</a>
-      <a href="faq.html">FAQs</a>
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Prakash Shoe Center. All rights reserved.
+      </p>
+
+      <p>
+        Hetauda, Nepal 🇳🇵
+      </p>
+
     </div>
 
-    <div class="footer-column">
-      <h4>Policies</h4>
-      <a href="refundpolicy.html">Refund Policy</a>
-      <a href="termsandcondition.html">Terms & Conditions</a>
-      <a href="#">Privacy Policy</a>
-    </div>
+  </footer>
 
-    <div class="footer-column">
-      <h4>Connect</h4>
-      <p>📞 +977-9811252359</p>
-      <p>📧 prakashshoecenter767@gmail.com</p>
-      <p>📍 Hetauda 1, Rapti Road</p>
-      <a href="https://www.instagram.com/prakashshoecenter/" target="_blank">Instagram</a>
-    </div>
+
+  <!-- FLOATING CONTACT -->
+
+  <div class="floating-stack">
+
+    <a
+      href="https://wa.me/9779811252359"
+      target="_blank"
+      rel="noopener"
+      class="floating-contact whatsapp"
+      aria-label="Message Prakash Shoe Center on WhatsApp"
+    >
+      💬
+    </a>
+
+    <a
+      href="tel:+9779811252359"
+      class="floating-contact"
+      aria-label="Call Prakash Shoe Center"
+    >
+      📞
+    </a>
 
   </div>
 
-  <div class="footer-bottom">
-    © 2026 Prakash Shoe Center | Nepal
-  </div>
-</footer>
+
+  <script>
+
+    /* ==============================
+       MOBILE MENU
+    ============================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuBtn.addEventListener("click", () => {
+
+      const isOpen = navLinks.classList.toggle("show");
+
+      menuBtn.textContent = isOpen ? "✕" : "☰";
+      menuBtn.setAttribute("aria-expanded", isOpen);
+      menuBtn.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu"
+      );
+
+    });
+
+
+    /* Close mobile menu after clicking */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("show");
+        menuBtn.textContent = "☰";
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "Open menu");
+
+      });
+
+    });
+
+
+    /* ==============================
+       CATEGORY SEARCH
+    ============================== */
+
+    const searchInput =
+      document.getElementById("categorySearch");
+
+    const cards =
+      document.querySelectorAll(".category-card");
+
+    const visibleCount =
+      document.getElementById("visibleCount");
+
+    const noResults =
+      document.getElementById("noResults");
+
+    const clearSearchBtn =
+      document.getElementById("clearSearch");
+
+
+    function filterCategories() {
+
+      const searchValue =
+        searchInput.value.toLowerCase().trim();
+
+      let count = 0;
+
+
+      cards.forEach(card => {
+
+        const name =
+          card.dataset.name.toLowerCase();
+
+        if (name.includes(searchValue)) {
+
+          card.style.display = "";
+
+          count++;
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+
+      visibleCount.textContent = count;
+
+      noResults.classList.toggle(
+        "show",
+        count === 0
+      );
+
+      clearSearchBtn.hidden = searchValue.length === 0;
+
+    }
+
+
+    searchInput.addEventListener("input", filterCategories);
+
+    clearSearchBtn.addEventListener("click", () => {
+
+      searchInput.value = "";
+      filterCategories();
+      searchInput.focus();
+
+    });
+
+
+    /* ==============================
+       CART COUNT
+    ============================== */
+
+    function updateCartCount() {
+
+      let cart = [];
+
+      try {
+
+        cart =
+          JSON.parse(localStorage.getItem("cart")) || [];
+
+      } catch (error) {
+
+        cart = [];
+
+      }
+
+
+      const count =
+        cart.reduce(
+          (total, item) =>
+            total + (Number(item.quantity) || 1),
+          0
+        );
+
+
+      document.getElementById("cart-count")
+        .textContent = count;
+
+    }
+
+
+    updateCartCount();
+
+
+    /* Update if another page changes localStorage */
+
+    window.addEventListener(
+      "storage",
+      updateCartCount
+    );
+
+
+    /* ==============================
+       SCROLL NAVBAR EFFECT
+    ============================== */
+
+    const navbar =
+      document.querySelector(".navbar");
+
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 30) {
+
+        navbar.classList.add("scrolled");
+
+      } else {
+
+        navbar.classList.remove("scrolled");
+
+      }
+
+    });
+
+
+  </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
